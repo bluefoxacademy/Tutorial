@@ -1,0 +1,295 @@
+UI developer :
+
+
+Application:(Web Application, web app)
+
+	Web Applications/web apps
+	Mobile Applications
+	Desktop Applications 
+	Windows apps
+
+
+
+UI (presention layer)
+	HTML 
+	JavaScript
+	CSS
+	...
+
+
+Middleware(backend tech)/Services
+	C#
+	Java
+	Php
+	..
+	..
+
+
+
+database(Oracle, MySql, sql server...)
+	tables
+	functions
+	stored proc
+
+
+
+==============
+UI (User interface)
+	* Presetation Layer 
+	
+	* behavior (Application logic)
+
+
+UI Desiger vs UI developer 
+
+UI Designer :
+	Presentation Layer (look & feel)	
+
+	
+UI Developer : 
+	* Look & feel (PL)
+
+	* Application Logic
+
+
+
+PL : 
+	Designing the web page
+		page layout 
+		format the page
+		responsive design 
+		styling...
+
+Behavior:
+	DOM manipulation(read/write form/page)
+	client side validation (browser)
+	manipulate the data before present on the UI.
+	Submit the data to the server.
+	Asychronous calls 
+	Store the data in the  client side...
+	decting browser
+	redirect from one page to page dynamically
+	...
+	
+========================
+
+What is the skillset for UI developer?
+
+
+PL  :
+	HTML 4.x(5) ( Page layout, content)
+	
+	CSS 2.x, 3 (formating)
+
+	CSS3 Media queries (RWD) (formating)
+	
+	CSS Bootstrap (3rd party RWD framework) 
+	
+	LESS, SASS ( CSS Pre-Processors)
+
+	
+
+Behavior :
+	JavaScript
+
+	JavaScript OOP
+
+	jQuery 
+
+	jQuery UI 
+
+	PrototypeJS (JavaScript OOP)
+
+	MomentJS (Date manipulation)
+
+	Single Page Application ( SPA)
+	
+	JavaScript Design patterns
+			MVC, MVVM, Singleton
+
+	
+	Angularjs 1.x, 2.x
+
+	Backbonejs(outdated)
+
+	ReactJS( still using)
+	
+
+	AJAX (connecting the UI with Middleware(Services/REST API))
+	
+
+
+API & frameworks 
+
+jquery , Jquery UI , Moment.js, prototypejs, underscore.js, reactjs : API(library)
+
+
+Angularjs , emberjs, .. : Frameworks 
+
+
+API : Library (includes some builtin functions)
+
+
+Frameworks : It includes some design pattern(singleton, MVC, MVVM,..) , and library 
+
+
+Desingning , Developing(behavior)
+
+Application is ready: UI , Application logic
+	
+Testing:
+	Manual Testing ( testing the UI)(skip)
+
+
+	Unit Testing (test units(components))
+	
+		
+
+behaviour:
+	methods 
+
+e.g.
+
+	getSum(arg1, arg2)
+
+Unit Testing:
+	QUnit (JavaScript, jQuery)
+	Salenium (any UI ) (Angularjs application)(prefferred)
+	Protractor (only for angular)
+	Mocha
+
+
+Application is done.
+UI is ready
+Unit testing is done...
+
+3 files:
+	.html
+	.css
+	.js
+
+
+Improve the performance
+
+Automation tools: 
+
+	Bundling & minification
+	
+	Image compression
+
+
+	Gulp(current), Grunt (past)
+
+
+============
+
+Source controls/Version Controls
+
+
+Team collobaration
+
+
+share,save, distribute the code among the team, we use source controls.
+
+e.g.
+	Git(Distributed version control).
+
+	CVS
+	
+	SVN
+
+	TFS
+
+	Bitbucket (Distributed)
+
+=============================
+IDE's 
+
+Web IDE's
+
+netbeans
+eclipse
+
+
+	e.g.
+		Sublime 
+		webstorm
+		brackets
+		Visual Studio & Visual Studio Code
+		Textmate
+		VIM
+		
+
+=====================================
+
+NodeJs
+	Javascript Server side platform.
+
+	REST API
+	connect to database
+	Http server(web server)
+	File server
+	sockets
+	..
+	
+
+Middleware (Node)
+UI (javascript)
+	
+Single Page Application(SPA)
+	WE can do everything in javascript
+
+
+MEAN stack developer
+
+	MongoDb ( database)
+	Express (part of NodeJS) ( RESTful API)
+	AngularJS (SPA : UI development)
+	NodeJS ( platform for building client & server app using javascript)
+================================================
+HTML 4 ,5 
+	Designing the web page
+	creating the page layout html 5 elements 
+	splitting the page into various sections
+	creating navigation
+	creating sidebar
+	creating footer
+	creating forms 
+	styling the forms (vertical, horizontal, inline)
+	
+CSS (styling)
+	formating the page
+	aligning 
+	font
+	images 
+	borders
+	layout(height, width)
+	position
+
+CSS 2 , 3(new set of attributes)
+
+JavaScript
+	
+JavaScript OOP 
+
+jQuery , jQuery 
+
+AJAX
+
+RWD(responsive web design)
+	CSS 3 Media queries
+	Bootstrap
+
+
+Single page Application
+
+Design patterns (MVC, MVVM, Singleton)
+
+AngularJS 1.x(complete)
+
+Less, SASS
+
+NodeJS (NPM)
+...
+...
+...

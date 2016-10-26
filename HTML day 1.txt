@@ -1,0 +1,183 @@
+Web Applications/Web Apps 
+
+Web Application:
+	It is for desktop browser only 
+
+
+Web Apps:
+	we can use in any device 
+			desktop browser
+			mobile browser 
+
+
+Web programing: 
+	HTML 
+
+
+HTML , CSS , JavaScript 
+
+Once app is ready, we have to host it(deploy)
+
+
+
+* Application( web application)
+
+* Web Server (host)( IIS, tomcat, apache, ..., create custom own web server)
+
+* Web Client (browser)
+
+
+
+We can access the app using the end point(url).
+
+What is url : 
+	It is an endpoint for the web site.
+
+e.g.
+	https://www.test.com
+=================================
+
+
+Web Server ( IIS, tomcat)
+
+
+Web Client (browser)
+
+
+
+client side scripting( JavaScript)
+
+
+server side scripting (c#, JAVA)
+
+
+Postback:
+	submit some data to the server.
+
+e.g.
+	Login form:
+		username
+		password
+			Login
+
+
+			On server, process the username and passsword, get some dynamic data to the requested user(login user) if the credentails are valid.
+
+
+
+Right now, we use REST API for server side programing.
+
+RESTful API in Java
+
+RESTful API in C#
+
+Java: 
+	JSP
+	Servlets
+	Spring MVC 
+
+
+.NET :
+	ASP.NET Web Forms
+	ASP.NET MVC
+	ASP.NET Web API
+
+
+Note:
+	we use javascript(AJAX), to connect the client application with Server application(RESTful service).
+
+
+
+Let us take a simple task for web app:
+
+
+Online UI Training App
+	* Design the page layout
+
+	* Add some header to the page
+	
+	* Add some footer to the page
+
+	* Add navigation to the page
+
+	* Sidebar (additional navigation)
+
+	* Login (user can login)
+	
+	* Register (user can create an account)
+
+	* View courses 
+	
+	* enrole for courses
+
+	* Pay Online 
+	
+	* Logout
+
+
+	
+
+You need some IDE for developing web application:
+
+	* webstorm
+	
+	* subline
+
+	* Visual Studio 
+
+
+
+HTML 4 Vs HTML 5
+
+
+HTML 4 : Completely static 
+
+
+HTML 5 : It includes some dynamic content.
+
+e.g.
+	dymaic form
+	builtin validations
+	builtin animnation	
+	data storage
+
+
+we use polyfils to support old browsers 
+
+e.g.
+	modernizer 
+
+
+use any IDE
+
+Tomorrow will give : task
+
+
+loose coupled
+
+
+server side program (eclipse)
+
+
+client side program ( Sublime or webstorm)
+
+
+Visual Studio 
+
+
+New guys : 
+	Webstorm Or sublime 
+
+
+	Visual Studio (1 hour)
+
+only front end : Visual Studio Code.
+
+
+
+
+
+
+
+
+

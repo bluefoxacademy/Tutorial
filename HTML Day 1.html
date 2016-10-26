@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Page</title>
+	<meta charset="utf-8" />
+    <meta name="keywords" content="html, javascript" />
+    <meta name="description" content="Test Web app" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        body{
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        #container{
+            border:1px solid #000000;
+            border-radius:5px;
+            margin:5px;
+            padding:5px;
+            
+        }
+
+        #pageHeader{
+            height:200px;
+            border:1px solid #c0ed96;
+            border-radius:10px;
+            margin:10px;
+            padding:10px;
+
+        }
+
+        #pageHeader #header h1{
+            text-align:center;
+            font-family:cursive;
+            font-style:italic;
+            text-shadow:20px 10px 5px #1b9ecb;
+        }
+        #topMenu ul{
+            float:right;
+        }
+        #topMenu ul li{
+            list-style:none;
+            display:inline;
+        }
+
+        #topMenu ul li a{
+            text-decoration:none;
+        }
+
+        #topMenu ul li a:hover{
+            text-decoration:underline;
+            font-size:16px;
+        }
+        #sidebar{
+            float:left;
+            width:30%;
+            margin:10px;
+            padding:10px;
+            border:1px dotted #e29b10;
+            border-radius:10px;
+            min-height:500px;
+        }
+
+        #maincontent{
+            float:right;
+            width:60%;
+            margin:10px;
+            padding:10px;
+            border:1px solid #b8e944;
+            border-radius:10px;
+            min-height:500px;
+
+        }
+
+        #pageFooter{
+            border:1px solid #6f2484;
+            border-radius:10px;
+            margin:10px;
+            padding:10px;
+        }
+
+        #pageFooter footer{
+            text-align:center;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight:bold;
+        }
+
+        #clear{
+            clear:both;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <section id="pageHeader">
+            <div id="pageLogo">
+
+            </div>
+            <div id="header">
+                <header>
+                    <h1>UI Developer Tutorial</h1>
+                </header>
+            </div>
+            <nav id="topMenu">
+                <ul>
+                    <li>
+                        <a href="Login.html">Login</a>
+                    </li>
+                    <li>
+                        <a href="Register.html">Register</a>
+                    </li>
+                    <li>
+                        <a href="About.html">About Us</a>
+                    </li>
+                    <li>
+                        <a href="Contact.html">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+        <section id="sidebar">
+            <div id="sideHeader">
+                <span>Quick Links</span>
+            </div>
+            <nav id="sideMenu">
+                <ul>
+                    <li>
+                        <a href="HtmlNotes.html">HTML</a>
+                    </li>
+                    <li>
+                        <a href="HtmlNotes.html">JavaScript</a>
+                    </li>
+                    <li>
+                        <a href="HtmlNotes.html">CSS</a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+        <section id="maincontent">
+            <section id="contentHeader">
+                <header>Main content goes...</header>
+            </section>
+            <section id="content">
+                <p>
+                    Page content goes here...
+                </p>
+            </section>
+        </section>
+
+        <section id="clear">
+
+        </section>
+        <section id="pageFooter">
+            <footer>
+                <span>&copy;All Rights Reserved. 2016</span>
+            </footer>
+        </section>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Page</title>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="html, javascript" />
+    <meta name="description" content="Test Web app" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="site.css" />
+    <style>
+        .lnkHeader{
+            background-color:#b2d8d4;
+            color:#ff6a00;
+            border:1px solid #27bc1d;
+            width:300px;
+        }
+
+        #logo{
+            position:absolute;
+            top:15px;
+            left:15px;
+        }
+
+        #grid{
+            border:1px solid #b6ff00;
+            border-radius:5px;
+        }
+        #grid{
+            height:200px;
+            width:500px;
+        }
+        #grid thead{
+            color:red;
+            background-color:#6ff38a;
+        }
+        #grid tbody{
+            color:blue;
+            background-color:#eaacde;
+        }
+        #grid tfoot{
+            color:#ffffff;
+            background-color:#000000;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Container begins-->
+    <div id="container">
+
+        <!--header begins-->
+        <section id="pageHeader">
+            <div id="pageLogo">
+                <img id="logo" src="logo.png" alt="site log" />
+            </div>
+            <div id="header">
+                <header>
+                    <h1>UI Developer Tutorial</h1>
+                </header>
+            </div>
+            <nav id="topMenu">
+                <ul>
+                    <li>
+                        <a href="Index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="Login.html">Login</a>
+                    </li>
+                    <li>
+                        <a href="Register.html">Register</a>
+                    </li>
+                    <li>
+                        <a href="About.html">About Us</a>
+                    </li>
+                    <li>
+                        <a href="Contact.html">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+        <!--header ends-->
+        <section id="sidebar">
+            <div id="sideHeader" class="lnkHeader">
+                <span style="color:darkblue;float:left;">Quick Links</span>
+                <span style="float:right;">Close</span>
+            </div>
+            <nav id="sideMenu">
+                <ul>
+                    <li>
+                        <a href="HtmlNotes.html">HTML</a>
+                    </li>
+                    <li>
+                        <a href="HtmlNotes.html">JavaScript</a>
+                    </li>
+                    <li>
+                        <a href="HtmlNotes.html">CSS</a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+        <section id="maincontent">
+            <section id="contentHeader">
+                <header>HTML Notes...</header>
+            </section>
+            <section id="content">
+               <ul>
+                   <li>
+                       <a href="http://www.w3schools.com" target="_blank" title="HTML Tutial">HTML Tags</a>                      
+                   </li>
+                   <li>
+                       <a href="http://www.w3schools.com">HTML forms</a>
+                      
+                   </li>
+                   <li>
+                       <a href="http://www.w3schools.com">HTML Tabs</a>
+                   </li>
+                   <li>
+                       <a href="mailto:dotnetsatya@gmail.com">Contact Me</a>
+                   </li>
+               </ul>
+                <h3>table demo</h3>
+                <table id="grid">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Job</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>101</td>
+                            <td>Satya</td>
+                            <td>manager</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">Cusstomer Info</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+            <section>
+                <iframe src="Index.html" height="500" width="500">
+
+                </iframe>
+            </section>
+        </section>
+
+        <section id="clear"></section>
+        <section id="pageFooter">
+            <footer>
+                <span style="color:rebeccapurple;">&copy;All Rights Reserved. 2016</span>
+            </footer>
+        </section>
+    </div>
+
+    <!--Container ends-->
+</body>
+</html>

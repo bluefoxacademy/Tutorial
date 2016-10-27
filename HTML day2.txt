@@ -1,0 +1,258 @@
+Let us talk about advanced HTML : 
+
+
+Links
+
+Images
+
+creating tables 
+
+
+creating forms 
+
+form elements  & form attributes
+
+
+
+global attributes for all  HTML elements:
+
+ID : Identification (Must be unique)
+
+Class : for adding css class
+
+Style  : for adding inline style
+
+
+creating:
+table
+
+
+
+<p></p>
+<h1</p>
+
+
+attributes:
+
+img:
+	src
+	alt
+
+a:
+	href
+	target
+	
+body
+	onload
+	onunload
+
+form:
+	onsubmit
+	name
+	action
+	method
+	...
+
+e.g.
+<img src="" alt="">
+<a href="" alt="" title="" target="">link Me</a>
+
+
+
+To create custom attribuute, we can use "data-" as per HTML 5.
+
+<p data-subject="english">content</p>
+
+
+<span data-culture="en-us">test content</span>
+
+
+
+comment : 
+
+<!-- test comment-->
+
+
+entity:
+&copy;
+
+&amp;
+
+&lt;
+
+&gt;
+
+
+
+note:
+
+<div> : creating block 
+<nav> : creating some navigation
+<section> : creating sections in a block.
+<aside> : creating a sidebar.
+
+
+<div> & <span>
+
+
+<div> : it will create a separate block(line break before and after)
+
+
+span: It will create an inline block.(It does not give any line breaks. it flows inline).
+
+==============
+
+Working with Forms in HTML 5:
+
+<form id="" name="" action="" method="" onSubmit="">
+</form>
+
+
+action:
+	It is the uri of the server side page(.jsp,.php, .aspx, or any server side action)
+
+method:
+	GET
+	POST
+
+
+when you click on the submit, where does that form data goes? 
+The form data goes to action page.(.php, .aspx, .jsp,..)
+
+
+e.g.
+<form id="loginform" name="loginform" action="login.aspx" method="get">
+
+	<input type="submit" value="submit"/>
+</form>
+
+
+get vs post:
+
+
+	get: we submit the form data using query string.
+
+
+e.g.
+	http://localhost:8000/Login.aspx?txtuser=satya&txtpassword=satya
+
+
+
+post:
+	In this case, the form data will be sent using request body.
+
+Note:
+You must give "name" attrite to the input field to pass data to server.
+
+<form>
+</form>
+	method
+	action
+
+
+how to create input fields:
+
+<input type="" id="" name=""/>
+e.g.
+	type="text"
+	type="password"
+	type="checkbox"
+	type="radio"
+	type="email"
+	...
+
+
+
+<input /> : single text or any input field.
+
+<select> : dropdown list 
+
+<textarea/> : multiline text box.
+
+
+e.g.
+
+<input type="text" id="txtuser" name="txtname"/>
+
+
+<select id="ddlgender" name="ddlgender">
+	<option selected="selected" value="0">Please Select</option>
+	<option value="1">Male</option>
+	<option value="2">Female</option>
+</select>
+
+
+<textarea rows="5" cols="100">Default text</textarea>
+
+
+
+To create group box for form:
+
+
+<fieldset>
+	<legend>Group Header></legend>
+</fieldset>
+
+
+
+ button types:
+
+submit
+
+reset
+
+simple button
+
+<input type="button" value="click Me"/> : no action by default (You can use javascript for 		client side action)
+
+
+<input type="submit" value="login"/> : submit the form data to the server.
+
+
+<input type="reset" value="reset"/>  : reload the form without submitting.
+
+
+OR
+
+
+<button type="button">click me</button>
+
+<button type="submit">login</button>
+
+<button type="reset">reset</button>
+
+
+outlines for tommorrow:
+
+
+web 2.0
+
+javascript
+=============================
+
+Let me give a simple task for HTML:
+
+
+
+Create Your portfolio:
+
+
+	* create a website to present yourself online.
+
+	* Create page layout with different sections
+
+	* Add your photo to the page
+
+	* add navigation to introduce your skills.
+
+	* add href for each link to demonostrate that link
+
+	* add a link with your email to contact.
+
+
+
+
+
+
+
+

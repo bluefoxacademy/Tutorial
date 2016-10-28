@@ -1,0 +1,83 @@
+﻿  body{
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                background-color:#b5b5b5;
+        }
+        #container{
+            border:1px solid #000000;
+            border-radius:5px;
+            margin:5px;
+            padding:5px;
+
+            /*background-color:#f1f7d0;*/
+            /*background-image:url('pageBackground.png');*/
+            
+        }
+
+        #pageHeader{
+            height:200px;
+            border:1px solid #c0ed96;
+            border-radius:10px;
+            margin:10px;
+            padding:10px;
+
+        }
+
+        #pageHeader #header h1{
+            text-align:center;
+            font-family:cursive;
+            font-style:italic;
+            text-shadow:20px 10px 5px #1b9ecb;
+        }
+        #topMenu ul{
+            float:right;
+        }
+        #topMenu ul li{
+            list-style:none;
+            display:inline;
+        }
+
+        #topMenu ul li a{
+            text-decoration:none;
+        }
+
+        #topMenu ul li a:hover{
+            text-decoration:underline;
+            font-size:16px;
+        }
+        #sidebar{
+            float:left;
+            width:30%;
+            margin:10px;
+            padding:10px;
+            border:1px dotted #e29b10;
+            border-radius:10px;
+            min-height:500px;
+        }
+
+        #maincontent{
+            float:right;
+            width:60%;
+            margin:10px;
+            padding:10px;
+            border:1px solid #b8e944;
+            border-radius:10px;
+            min-height:500px;
+
+        }
+
+        #pageFooter{
+            border:1px solid #6f2484;
+            border-radius:10px;
+            margin:10px;
+            padding:10px;
+        }
+
+        #pageFooter footer{
+            text-align:center;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight:bold;
+        }
+
+        #clear{
+            clear:both;
+        }

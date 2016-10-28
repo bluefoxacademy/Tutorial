@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Page</title>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="html, javascript" />
+    <meta name="description" content="Test Web app" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="Content/Styles/site.css" />
+    <script src="App/app.js"></script>
+</head>
+<body>
+    <div id="container">
+        <section id="pageHeader">
+            <div id="pageLogo">
+
+            </div>
+            <div id="header">
+                <header>
+                    <h1>UI Developer Tutorial</h1>
+                </header>
+            </div>
+            <nav id="topMenu">
+                <ul>
+                    <li>
+                        <a href="Index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="Login.html">Login</a>
+                    </li>
+                    <li>
+                        <a href="Register.html">Register</a>
+                    </li>
+                    <li>
+                        <a href="About.html">About Us</a>
+                    </li>
+                    <li>
+                        <a href="Contact.html">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+        <section id="sidebar">
+            <div id="sideHeader">
+                <span>Quick Links</span>
+            </div>
+            <nav id="sideMenu">
+                <ul>
+                    <li>
+                        <a href="HtmlNotes.html">HTML</a>
+                    </li>
+                    <li>
+                        <a href="HtmlNotes.html">JavaScript</a>
+                    </li>
+                    <li>
+                        <a href="HtmlNotes.html">CSS</a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+        <section id="maincontent">
+            <section id="content">
+                <form name="registerForm" id="registerFormm" action="" method="get" >
+                    <fieldset>
+                        <legend>Register Form</legend>
+                        <div>
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username" autofocus required/>
+                        </div>
+                        <div>
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" required />
+                        </div>
+                        <div>
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email"  pattern="\w+\@\w+\.[a-zA-Z]{2,4}" required/>
+                        </div>
+                        <div>
+                            <label for="mobile">Mobile:</label>
+                            <input type="text" id="mobile" name="mobile" pattern="\d{10}" required/>
+                        </div>
+                      <div>
+                          <label>Country:</label>
+                          <input list="countryList" />
+                          <datalist id="countryList">
+                              <option>India</option>
+                              <option>China</option>
+                              <option>United States</option>
+                          </datalist>
+                      </div>
+                        <div>
+                            <input type="submit"  value="Submit"  />
+                        </div>
+                    </fieldset>
+                </form>
+
+            </section>
+        </section>
+
+        <section id="clear"></section>
+        <section id="pageFooter">
+            <footer>
+                <span>&copy;All Rights Reserved. <span id="spnDateTime"></span></span>
+            </footer>
+        </section>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Page</title>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="html, javascript" />
+    <meta name="description" content="Test Web app" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="Content/Styles/site.css" />
+    <script src="App/app.js"></script>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        function getInfo() {
+            var name = document.getElementById("txtName").value;
+            document.getElementById("message").innerHTML = "<h1>Hello..." + name + " Welcome our site...</h1> ";
+        }
+    </script>
+</head>
+<body>
+    <div id="container">
+        <section id="pageHeader">
+            <div id="pageLogo">
+
+            </div>
+            <div id="header">
+                <header>
+                    <h1>UI Developer Tutorial</h1>
+                </header>
+            </div>
+            <nav id="topMenu">
+                <ul>
+                    <li>
+                        <a href="Index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="About.html">About Us</a>
+                    </li>
+                    <li>
+                        <a href="Contact.html">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+        <section id="sidebar">
+            <div id="sideHeader">
+                <span>Quick Links</span>
+            </div>
+            <nav id="sideMenu">
+                <ul>
+                    <li>
+                        <a href="HtmlNotes.html">HTML</a>
+                    </li>
+                    <li>
+                        <a href="HtmlNotes.html">JavaScript</a>
+                    </li>
+                    <li>
+                        <a href="HtmlNotes.html">CSS</a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+        <section id="maincontent">
+            <section id="contentHeader">
+                <header>Main content goes...</header>
+            </section>
+            <section id="content">
+               
+                   <h1>Hello...Useer</h1>
+              <br />
+                <form>
+                    <div>
+                        <label>Name:</label>
+                        <input type="text" id="txtName" name="txtName"/>
+                    </div>
+                    <div>
+                        <button type="button"  onclick="getInfo()">Click Me</button>
+                    </div>
+                    <div>
+                        <span id="message"></span>
+                    </div>
+                </form>
+                <button type="button" onclick="goBack()">Back</button>
+            </section>
+        </section>
+
+        <section id="clear"></section>
+        <section id="pageFooter">
+            <footer>
+                <span>&copy;All Rights Reserved. <span id="spnDateTime"></span></span>
+            </footer>
+        </section>
+    </div>
+
+</body>
+</html>

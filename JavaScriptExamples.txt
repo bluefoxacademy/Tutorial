@@ -1,0 +1,1741 @@
+HTML : It is for designing web pages(static) 
+
+we use HTML for displaying static content on the UI 
+
+
+CSS : 
+	It is for formatting the HTML document. 
+	we use CSS for applying the styles(look & feel) 
+
+
+HTML & CSS are static
+That means, when the page is loaded ,the static content is displayed and css is aplied. 
+
+
+how to add dynamic content on the web page? 
+how to apply the styles dynamically? 
+how to read data from the web page(UI)? 
+how to manipulate the HTML form? 
+how to detect the browser? 
+how to store the data on the client system?
+how to provide the interaction to the User? 
+
+
+To provide solution for all these problems , we use client side script. 
+
+JavaScript
+
+Today's session is : JavaScript 
+
+
+
+
+
+HTML & CSS are static 
+To make the web page dynamic ,we use JavaScript 
+
+what is JavaScript ? 
+	It is a client side scripting language.
+	IT is executed on browser itself.
+
+why JavaScript? 
+	It provides user interaction . 
+	It can add dynamic content on the UI. 
+	It can read/write form feilds.
+	It can add styles dynamically to the HTML page. 
+	It can detect the browsers(finds the client 
+			browser) 
+	It can store data on the client system. (cookies,SessionStorage & LocalStorage)(to remember the state of the page, we use these objects).
+	It can trigger the events (click, mouseover ,mouseout, ...)
+	We use JavaScript to Perform validation on the Page before submiting the page to server. 
+	Javascript is for client side validation. 
+
+	
+	
+
+how JavaScript works? 
+	It is a client side script. 
+	It is executed on browser itself.
+	It is executed before the user submits the form. 
+	Javascript uses AJAX standard for communicating to the server using javascript.(asynchronous communication).
+
+
+
+
+
+Examples
+
+<!doctype html>
+<html>
+	<head>
+		<title>javaScript demo</title>
+		<script type="text/javaScript">
+			function greet()
+			{
+			var user=document.getElementById("txtuser").value;
+			document.getElementById("s1").innerHTML="<b>Welcome :"+user+"</b>";
+			}
+		</script>
+	</head>
+	<body>	
+		<form name="form1" id="form1">
+		User name : <input type="text" id="txtuser"/> <br/> 
+		<input type="button" value="clickMe" onclick="greet()" /> 
+<br/> 
+	<span id="s1"></span>
+		</form> 
+	</body>
+</html>
+
+
+
+Steps:
+	Creating javascript functions and write the required code in that functions.
+
+	Then, you can invoke that js functions using event handlers.
+
+e.g.
+onclick
+onfocus
+onblur
+onmouseover
+onmouseout 
+onchange
+onabort 
+onkeyup
+onkeydown
+onkeypress
+onload 
+onunload
+onsubmit
+onreset 
+
+
+syntax : - 
+	<script type="text/javascript">
+		//javascript goes here
+	</script> 
+
+In case of HTML 5,we can ignore the type attribute. 
+	<script>
+		//script goes here
+	</script>
+
+
+
+example for <script> in <body> 
+If you embed <script> in the body , the script will be executed sequentially. 
+As per the markup we write.
+
+But, if you define some javascript functions, that will be invoked only as per the event handler.
+
+
+<!doctype html>
+<html>
+	<head>
+		<title>javascript demo</title>
+	</head>
+	<body>
+		<h1>welcome marlabs(static)</h1>
+		<script>
+			alert("javascript:dynamic");
+		</script>
+		<h3>again static content</h3>
+	</body>
+</html>
+
+<script> in <head> section 
+
+<!doctype html>
+<html>
+	<head>
+		<title>javascript demo</title>
+			<script>		
+			function foo()
+			{document.getElementById("s1").innerHTML="welcome";
+			}
+		</script>
+	</head>
+	<body>
+		<h1>welcome marlabs(static)</h1>
+		<form>
+		<input type="button" value="clickMe" onclick="foo()"/> 
+		<span id="s1"></span>
+		</form>
+	</body>
+</html>
+
+
+Note : 
+	always go for <script> in <head> section.
+	because ,here we separate HTML content and Javascript code. 
+	
+
+
+comments :
+	<-- html commet goes here--> 
+
+
+	/* javaScript multi line comment */
+	//javascript single line comment 
+
+	<!--
+		your script goes here
+	//-->
+
+
+The script under this comment will be executed ,if the browser support the JavaScript. 
+If the browser does not support javascript, script under that comment will not be executed.
+
+
+
+
+
+Internal JavaScript: 
+	It is applicable for only the current HTML document. 
+	It is embeded directly in HTML doc by using <script>...</script> tag.
+
+
+e.g.
+	<html>
+		<head>
+			<title>page title</title>
+		<script type="text/javaScript">
+			//some script
+		</script>
+		</head>
+		<body>
+			<!--static html--> 
+		</body>
+	</html>
+
+
+External JavaScript : 
+	if at all ,we need some script for multiple documents ,we put all the script in a file and save it as .js extension. 
+	Then embed .js file into the HTML documents.
+
+
+syntax : - 
+	<html>
+		<head>
+			<title>page</title>
+		<script type="text/javascript src="myscript.js"></script> 
+
+			<script>
+				//internal javascript 
+			</script>
+
+		</head>
+		<body>
+		</body>
+	</html>
+
+
+myscript.js
+----------
+	function f1()
+	{
+	}
+	function f2()
+	{
+	}
+	.........
+
+
+Note : 
+	<link> is for linking .css file. 
+	for javascript, we <script> tag only 
+
+
+Note: 
+	In case of external javascript file, we must not include <script>...</script> tag. 
+	You define only functions.
+
+e.g.
+	myscript.js
+	-----------
+function addition(a,b)
+{
+	return parseInt(a)+parseInt(b);
+}
+function multiply(a,b)
+{
+	return parseInt(a)*parseInt(b);
+}
+
+
+demo.html
+---------
+<!doctype html>
+<html>
+	<head>
+		<title>javascript</title>
+	<script type="text/javascript" src="myscript.js">
+	</script> 
+	<script type="text/javascript">
+		//internal javascript
+
+		function foo()
+		{
+		var a=document.getElementById("txt1").value;
+		var b=document.getElementById("txt2").value;
+	var c=addition(a,b);
+	var d=multiply(a,b);
+	document.getElementById("s1").innerHTML="The sum is:"+c;
+	document.getElementById("s2").innerHTML="The product is:"+d;
+	
+		}
+	
+	</script>
+	</head>
+	<body>
+		<form>
+		value1 : <input type="text" id="txt1"/> <br/> 
+		value2: <input type="text" id="txt2"/><br/>  
+		Result1 : <span id="s1"></span> <br/> 
+		Result2 : <span id="s2"></span> <br/> 
+		<input type="button" value="clickMe" onclick="foo()"/> 
+		</form>
+	</body>
+</html>
+
+Variable declaration : 
+	we use var keyword for declaring any type of variables in Javascript. 
+	
+syntax : - 
+	var variablename="value";
+e.g.
+	var user="satya";
+	var a=100;
+	var pi=3.14;
+Note : 
+	In case of JavaScript, implicit variable declaration is there by default. 
+	that means, we can use any variable without declaring . 
+
+e.g.
+	a=100;
+	user="satya";
+	
+
+
+
+Scope of variables : 
+	Local variables have the function scope.
+	Global variables have page scope. 
+
+
+
+
+JavaScript DOM :
+	DOM : document Object Model 
+	we use DOM  for reading/writing the html elements. 
+	We can use DOM for writing new elements to the HTML page.
+
+	JavaScript provides some pre-defined objects to work with DOM. 
+
+
+e.g. 
+	window  : it is the base object.
+	
+In window object, we have 3 derived objects 
+	document 
+	location 
+	history 
+
+
+document object provides various methods to read/write the document elements. 
+
+e.g. 
+	getElementByID()
+	getElementsByName()
+	getElementsByTagName()
+	
+Note: 
+	To access any of these methods or properties we use dot operator(.) 
+
+e.g. 
+	window.document.getElementById()
+
+Note : 
+	window refers to the current window
+	so we can ignore winowo object and directly we can use document object. 
+
+e.g. 
+	document.getElementById()
+	document.getElementsByName()
+	document.getElementsByTagName()
+	...
+	...
+
+JavaScript DOM provides set of pre-defined objects 
+	Date
+	Array
+	String
+	Math 
+	window.document
+	window.history 
+	window.location 
+
+JavaScript DOM also enables us to create user defined objects(will discuss later in the today's session)
+
+
+Read/write form data 
+-------------------
+	we use ID or name attribute for the form fields. 
+	by using this ID or name ,we can read/write data on the UI by using JavaScript DOM.
+
+syntax : for ID 
+
+	document.getElementByID("elementID")
+		It refers your element(object)
+
+	document.getElementById("elementID").value 
+		It refers the value of your element. 
+
+
+syntax: for name
+	document.getElementsByName("elementName")
+
+Note: 
+	In html ,there might be multiple elements with the same name.
+
+	So that,whenver we use getElementsByName(),we get list of elements(multiple).
+
+
+	To get a single element, you provide unique ID for the element and access it by using getElementById()
+
+
+
+.value 
+.innerHTML 
+.innerText 
+
+.value : It is used to get/set the value property of <form> <input> types. 
+
+	e.g. 
+		<input type="text" id="txtuser" value="satya"/> 
+
+	To get this we value: 
+		document.getElementById("txtuser").value;
+
+	To set new value: 		
+	document.getElementById("txtuser").value="sat";
+
+
+To get element directly instead of value:
+	var userobj=document.getElementById("txtuser");
+	userobj.value 
+
+
+
+innerHTML :
+	It is used to get/set html markup to an HTML element. (<div> <span> <p> .....) 
+	Here, we can set plain text as well as some markup. 
+
+
+e.g. 
+	<div id="d1">
+		welcome marlabs 
+	</div> 
+
+	To get innerHTML of this element : 
+		document.getElementById("d1").innerHTML;
+	To set new innerHTML to this element : 		document.getElementById("d1").innerHTML="<b>Marlabs Software</b>";
+
+
+innerText : 
+	It is used to get/set some plain text to an HTML element. 
+
+e.g. 
+	<p id="p1">
+		my para
+	</p> 
+
+	To get the text of this element : 
+		document.getElementById("p1").innerText;
+
+	To set new text into this element : 		document.getElementById("p1").innerText="marlabs Software";
+
+
+Note : 
+	In case of innerText ,we can only get/set plain text.(no markup is allowed here) 
+
+
+
+Example for alert(),confirm() and prompt()
+
+<!doctype html>
+<html>
+	<head>
+		<title>popup demo</title>
+	</head>
+	<body>
+		<h1>Popup demo's</h1>
+		<script type="text/javascript">
+		var user=prompt("enter name","satya");
+		var flag=confirm("Are you "+user+"?");
+			if(flag==true)
+			{
+				alert("hello..."+user+" welome");
+			}
+			else
+			{
+			alert("hello...,you are not valid");
+			}
+		</script>
+	</body>
+</html>
+
+
+Working with User defined functions 
+----------------------------------
+	In JavaScript DOM, we have many buultin functions in each object. 
+
+	e.g. 
+		document 
+			getElementById()
+			getElementsByName()
+			getelementsByTagName()
+			...
+			...
+		String
+			length 
+			indexOf()
+			chatAt()
+			...
+		Date
+			toString()
+			toLoacleDateString()
+			....
+
+All these are pre-defined methods
+
+
+We can also create User defined functions in JavaScript. 
+
+syntax : - 
+	function functionName(arg1,arg2,...)
+	{
+		//some script 
+		return value;
+	}
+
+Note : 
+	here, arguments are optional
+
+	function functionName()
+	{
+	}
+
+
+Note :
+	return keyword is also optional.
+	If you need to return some value to the caller , then use return keyword.
+
+
+example for functions 
+
+<!doctype html>
+<html>
+	<head>
+		<title>function demo</title>
+		<script type="text/javascript">
+			function fnValidate()
+			{
+			var num=document.getElementById("txt1").value;
+			if(parseInt(num)%2==0)
+			{
+				alert("even number");
+			}
+			else
+			{
+				alert("odd number");
+			}
+			}
+		</script>
+	</head>
+	<body>
+	
+	<h3>check the input is even or odd number</h3>
+
+		<form name="form1" id="form1">
+			number : <input type="text" id="txt1"/> <br/> 
+	<input type="button" value="clickMe" onclick="fnValidate()"/> 
+		</form>
+	</body>
+</html>
+
+
+
+JavaScript Event Handling
+-------------------------
+	In HTML, for every element we have some event handlers. 
+	These event handler can invoke the javascript functions. 
+
+e.g. 
+onclick 
+ondblclick 
+onmousemove
+onmouseover
+onmouseout
+onmusedown
+onmouseup 
+onkeypress
+onkeyup
+onkeydown
+onblur : while leaving the element(losing the focus)
+onfocus : while getting the focus 
+onreset : while reseting the form 
+onsubmit : while submiting the form. 
+
+onload  (body)
+onunload  (body)
+<form> : onsubmit ,onreset 
+
+<input type="text" /> : onblur ,onfocus,onchange,onkeydown,onkeyup, onkeypress
+ 
+
+mouseover,mouseout,mousemove,mousedown,mouseup for any element 
+
+
+Example for onblur 
+------------------
+	validate the textbox by using onblur event for checking whether it is even number or odd number
+
+<!doctype html>
+<html>
+	<head>
+		<title>function demo</title>
+		<script type="text/javascript">
+			function fnValidate(args)
+			{
+			var num=parseInt(args.value);
+			if(num%2==0)
+				alert("event number");
+			else
+				alert("odd number");
+			}
+		</script>
+	</head>
+	<body>
+	
+	<h3>check the input is even or odd number</h3>
+
+		<form name="form1" id="form1">
+			number : <input type="text" id="txt1" onblur="fnValidate(this)"/> <br/> 	 
+		</form>
+	</body>
+</html>
+
+Description of the example : 
+	here, we have define a functdion (fnValidate) , with one parameter. 
+	Here, the parameter is the Object(element type)
+	On textbox , onblur event we are invoking that function by passing the current element. 
+
+this : it refers to the current element(object type).
+
+here, args is the argument name taken as parameter. 
+here, args is the object(element). 
+To get it's value, we use args.value 
+============================
+Creating Arrays in JavaScript:
+	Simple arrays (Arrays of simple elements)
+	
+	var arr=new Array(); // no length 
+	var arr=new Array(10); //with 10 elements 
+	var arr=new Array(item1,item2,...);
+
+	var arr=[item1,item2,... itemn];
+
+	var arr=new Array();
+	arr[0]=item1;
+	arr[1]=item2;
+	..
+	..
+
+  //var arr = ["Satya", "Scott", "John"];
+            var arr = new Array();
+            arr[0] = "Satya";
+            arr[1] = "Scott";
+            arr[2] = "James";
+
+            for (index in arr) {
+                alert(arr[index]);
+            }
+
+
+
+
+	Array of Objects(collection)
+
+	for single object: JavaScrict object 
+
+	var obj={Prop1:value, Prop2:value, ... }
+	
+e.g.
+	 var employee={EmployeeId:"101",EmployeeName:"Satya",Job:"Manager",Salary:"34434.34"};
+
+            alert(employee.EmployeeId);
+            alert(employee.EmployeeName);
+            alert(employee.Job);
+            alert(employee.Salary);
+
+
+	For collections(Array of Objects)
+
+	var data=[{prop1:value, prop2:value,.... },{prop1:value, prop2:value,.... },{}];
+
+
+e.g.
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script>
+        function foo() {
+            var data = [{ EmployeeId: "101", Name: "Satya", Job: "Manager", Salary: "12000" }, { EmployeeId: "102", Name: "James", Job: "Admin", Salary: "34534" }];
+            var table = "<table border='1'><tr><th>Id</th><th>Name</th><th>Job</th><th>Salary</th></tr>";
+
+            for (index in data) {
+                var obj = data[index];
+                var row = "<tr><td>" + obj.EmployeeId + "</td><td>" + obj.Name + "</td><td>" + obj.Job + "</td><td>" + obj.Salary + "</td></tr>";
+                table += row;
+            }
+
+            table += "</table";
+
+
+            document.getElementById("result").innerHTML = table;
+        }
+    </script>
+</head>
+<body onload="foo()">
+    <div id="result">
+
+    </div>
+</body>
+</html>
+
+
+We have JSON for Javascript object notation.
+Here, we use JSON syntax for :
+	creating simple object (single dim)
+	creating Array of objects (two-dim)
+	creating Array of Arrays  (multi-dim) 
+
+
+
+forEach() Example:
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script>
+        function foo() {
+            
+
+            var data = [{ EmployeeId: "101", Name: "Satya", Job: "Manager", Salary: "12000" }, { EmployeeId: "102", Name: "James", Job: "Admin", Salary: "34534" }];
+            var table = "<table border='1'><tr><th>Id</th><th>Name</th><th>Job</th><th>Salary</th></tr>";
+
+            data.forEach(function (entry) {
+                var row = "<tr><td>" + entry.EmployeeId + "</td><td>" + entry.Name + "</td><td>" + entry.Job + "</td><td>" + entry.Salary + "</td></tr>";
+                table += row;
+            });
+
+            
+                
+           
+
+            table += "</table";
+
+
+            document.getElementById("result").innerHTML = table;
+        }
+
+     
+    </script>
+</head>
+<body onload="foo()">
+    <div id="result">
+
+    </div>
+</body>
+</html>
+==========
+Javascript includes many predefined objects:
+	String 
+var str=new String();
+str.length;
+str.toUpperCase();
+...
+..
+	Date
+var today = new Date();
+            today.getDate();
+            today.getTime();
+            today.getFullYear();
+
+Math.PI
+
+
+How to create User defined objects?
+	Syntax : 
+function ConstructorName(arg1,arg2,....)
+{
+	this.Propperty1=value;
+	this.Property2=value;
+	....
+	...
+
+	this.method1=function(arglist){
+	}
+
+	this.method2=function(arglist){
+	}
+
+	..
+	..
+}
+
+
+var obj=new ConstructorName(arg1,arg2,....);
+obj.Property1
+obj.Property2
+....
+...
+obj.method1();
+obj.method2();
+..
+..
+
+Example:
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script>
+        function EmployeeModel(id, firstname, lastname, job, salary) {
+            this.EmployeeId = id;
+            this.EmployeeFirstName = firstname;
+            this.EmployeeLastName = lastname;
+            this.Job = job;
+            this.Salary = salary;
+
+            this.FullName = function () {
+                return this.EmployeeFirstName + " " + this.EmployeeLastName;
+            }
+
+            this.getSalary = function () {
+                return this.Salary;
+            }
+
+            this.getJob = function () {
+                return this.Job;
+            }
+        }
+            
+       
+
+        function loadEmployee() {
+            
+            var employee = new EmployeeModel(101, "Scott", "John", "manager", 34534);
+            var data = "Id:" + employee.EmployeeId + " Full Name:" + employee.FullName() + " Job:" + employee.getJob() + " Salary:" + employee.Salary;
+
+            document.getElementById("data").innerHTML = "<b>" + data + "</b>";
+
+        }
+    </script>
+</head>
+<body onload="loadEmployee()">
+   <div id="data">
+
+   </div>
+</body>
+</html>
+
+
+
+Example for isNaN()
+-------------------
+	isNaN() is used to check whether the given input is numeric or not. 
+	isNaN() returns true if the input is not a number. 
+	isNaN() returns false, if the input is number. 
+
+check the input is valid mobile or not
+for mobile ,the input should be numeric and should contain only 10 digits. 
+
+
+Example:
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script>
+        function fnValidateMobile(arg) {
+            var mobile = arg.value;
+            if (mobile.length == 10 && isNaN(mobile) == false) {
+                alert("valid mobile");
+            }
+            else {
+                alert("invalid mobile");
+                arg.focus();
+            }
+        }
+    </script>
+</head>
+<body>
+    <form name="form1">
+        Mobile : <input type="text" id="txtmobile" onblur="fnValidateMobile(this)" /> 
+    </form>
+</body>
+</html>
+
+
+
+
+JavaScript Form validation 
+--------------------------
+	onsubmit : it is an event handler for <form> element. 
+	It allows us to perform the complete form validation. 
+	If the complete form is valid,then it allows us to submit the page. 
+	It the form not valid,It stops submiting the page and give's error message. 
+
+Steps to perform form validation: 
+	
+	step 1: define all the required validation functions 
+	
+	step 2: define a common function (form validation)and call all the validations , if all returns true ,then return true in the common function. otherwise return false.
+
+	step 3: bind the common validation function to the onsubmit event handler of the <form> element. 
+
+syntax : - 
+	<form name="formname" onsubmit="return commonfunction()">
+	</form> 
+
+
+
+Example:
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script>
+        function fnRequired(arg) {
+            var val = arg.value;
+            if (val == "" || val == null) {
+                alert("field is missing");
+                arg.focus();
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+        function fnValidateForm() {
+            var user = document.getElementById("txtusername");
+            var password = document.getElementById("txtpassword");
+
+            if (fnRequired(user) && fnRequired(password)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+        <form name="loginform" onsubmit="return fnValidateForm()">
+            <h3>Please Login here...</h3>
+            <p>
+                Username : <input type="text" id="txtusername"  />
+            </p>
+            <p>
+               Password: <input type="password" id="txtpassword"  />
+            </p>
+            <p>
+                <input type="submit" value="submit" />
+            </p>
+        </form>
+
+
+</body>
+</html>
+
+
+Example : 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>form demo</title>
+    <script>
+        function fnRequired(arg) {
+            var val = arg.value;
+            if (val != null && val != "") {
+                return true;
+            }
+            else {
+                alert("field is empty");
+                arg.focus();
+                return false;
+            }
+            
+        }
+
+        function fnValidateLength(arg, min, max) {
+            var val = arg.value;
+            if (val.length >= parseInt(min) && val.length <= parseInt(max)) {
+                return true;
+            }
+            else {
+                alert("Invlaid length");
+                arg.focus();
+                return false;
+            }
+        }
+
+        function fnValidateMobile(arg) {
+            var mobile = arg.value;
+            if (mobile.length == 10 && isNaN(mobile) == false) {
+                return true;
+            }
+            else {
+                alert("Invalid Mobile");
+                arg.focus();
+                return false;
+            }
+        }
+
+        function fnCompare(arg1, arg2) {
+            if (arg1.value == arg2.value) {
+                return true;
+            }
+            else {
+                alert("Password not matching");
+                arg2.focus();
+                return false;
+            }
+        }
+        function fnValidateForm() {
+            var username = document.getElementById("txtuser");
+            var password = document.getElementById("txtpassword");
+            var confirmPassword = document.getElementById("txtconfirm");
+            var mobile = document.getElementById("txtmobile");
+
+            if (fnRequired(username) && fnValidateLength(username, 6, 12) && fnRequired(password) && fnValidateLength(password, 6, 12) && fnCompare(password, confirmPassword) && fnValidateMobile(mobile)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form name="registerform" onsubmit="return fnValidateForm()">
+        <h3>Register Your Account here...</h3>
+        <p>
+           Username :<input type="text" id="txtuser"  />
+        </p>
+        <p>
+            Password : <input type="password" id="txtpassword" /> 
+        </p>
+        <p>
+            Confirm Password: <input type="password" id="txtconfirm" /> 
+        </p>
+        <p>
+            Mobile : <input type="text" id="txtmobile" />
+        </p>
+        <p>
+            <input type="submit" value="Submit" />
+        </p>
+    </form>
+</body>
+</html>
+
+
+Note : 
+	to work with onSubmit event handler, there must be  submit button (<input type="submit" value="submit"/> ) 
+
+
+Validation using Regular Expression:
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>form demo</title>
+    <script>
+        function fnRequired(arg) {
+            var val = arg.value;
+            var regex = /^[a-zA-Z0-9]+$/;
+            if (val.match(regex)) {
+                return true;
+            }
+            else {
+                alert("field is empty");
+                arg.focus();
+                return false;
+            }
+            
+        }
+
+        function fnValidateLength(arg) {
+            var val = arg.value;            
+            var regex = /^[a-zA-Z0-9]{6,12}$/;
+            if (val.match(regex)){
+                return true;
+            }
+            else {
+                alert("Invlaid length");
+                arg.focus();
+                return false;
+            }
+        }
+
+        function fnValidateMobile(arg) {
+            var mobile = arg.value;
+            var regex=/^\d{10}$/;
+            if (mobile.match(regex)) {
+                return true;
+            }
+            else {
+                alert("Invalid Mobile");
+                arg.focus();
+                return false;
+            }
+        }
+
+        function fnCompare(arg1, arg2) {
+            if (arg1.value == arg2.value) {
+                return true;
+            }
+            else {
+                alert("Password not matching");
+                arg2.focus();
+                return false;
+            }
+        }
+        function fnValidateForm() {
+            var username = document.getElementById("txtuser");
+            var password = document.getElementById("txtpassword");
+            var confirmPassword = document.getElementById("txtconfirm");
+            var mobile = document.getElementById("txtmobile");
+
+            if (fnRequired(username) && fnValidateLength(username) && fnRequired(password) && fnValidateLength(password) && fnCompare(password, confirmPassword) && fnValidateMobile(mobile)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form name="registerform" onsubmit="return fnValidateForm()">
+        <h3>Register Your Account here...</h3>
+        <p>
+           Username :<input type="text" id="txtuser"  />
+        </p>
+        <p>
+            Password : <input type="password" id="txtpassword" /> 
+        </p>
+        <p>
+            Confirm Password: <input type="password" id="txtconfirm" /> 
+        </p>
+        <p>
+            Mobile : <input type="text" id="txtmobile" />
+        </p>
+        <p>
+            <input type="submit" value="Submit" />
+        </p>
+    </form>
+</body>
+</html>
+
+
+=================================================================
+
+Adding Styles dynamically 
+-------------------------
+Syntax : - 	document.getElementById("elementId").style.property=value;
+
+e.g.
+	<p id="p1">my para</p> 
+	to change the fore color of this <p> 
+
+	document.getElementById("p1").style.color="blue";
+
+e.g.
+<!doctype html>
+<html>
+	<head>
+		<title>dynamic style</title>
+		<script type="text/javascript">
+			function foo()
+			{	
+			document.getElementById("p1").style.color="red";
+document.getElementById("p1").style.backgroundColor="blue";
+			}
+
+			function foo1()
+			{
+document.getElementById("p1").style.color="blue";
+document.getElementById("p1").style.backgroundColor="red";
+
+			}
+		</script>
+	</head>
+	<body>
+		<form name="form1">
+		<p id="p1" onmouseover="foo()" onmouseout="foo1()">
+			marlabs Software
+		</p>
+		
+		</form>
+	</body>
+</html>
+
+Example for Hide/Show
+---------------------
+<!doctype html>
+<html>
+	<head>
+		<title>dynamic style</title>
+		<style>
+			#s1
+			{
+				background-color:#666;
+			}
+			
+			#s2
+			{
+				background-color:#666;
+			}
+			
+			#p1
+			{
+				color:red;
+				width:200px;
+			}
+		</style>
+
+		<script type="text/javascript">
+			function show()
+			{			document.getElementById("p1").style.display="block";
+			}
+			
+			function hide()
+			{
+document.getElementById("p1").style.display="none";
+			}
+		</script>
+	</head>
+	<body>
+		<form name="form1">
+		<span id="s1" onclick="show()">Show</span>&nbsp;&nbsp;&nbsp; <span id="s2" onclick="hide()">Hide</span> <br/> 
+		<p id="p1">
+			Marlabs software			Marlabs software			Marlabs software			Marlabs software			Marlabs software			Marlabs software			Marlabs software			Marlabs software
+		</p>
+		</form>
+	</body>
+</html>
+
+void(0) function 
+----------------
+	It is used to stop the anchor tag's navigation or refresh functionality. 
+	Instead of navigation, we can call the client side function by using <a> tag. 
+
+
+syntax : - 
+	<a href="javascript:void(0)" >link text</a> 
+e.g.
+
+
+<!doctype html>
+<html>
+	<head>
+		<title>void function</title>
+		<script type="text/javascript">
+			function foo()
+			{
+			alert("you clicked on link");		
+			document.bgColor="#b5bb5";
+			}	
+		</script>
+	</head>
+	<body>
+		<form name="form1">
+			<a href="javascript:void(0)" onclick="foo()">click Me</a> 
+		</form>
+	</body>
+</html>
+
+
+example for dynamic Image
+--------------------------
+<!doctype html>
+<html>
+	<head>
+		<title>image demo</title>
+	<script type="text/javascript">
+		function foo()
+		{	document.getElementById("image1").src="marlabslogo.png";
+		}
+		
+		function foo1()
+		{
+document.getElementById("image1").src="logo.png";	
+		}
+	</script>
+	</head>
+	<body>
+		<form name="form1">
+			<img id="image1" src="logo.png" height="100px" width="150px" onmouseover="foo()" onmouseout="foo1()" /> 
+		</form>
+	</body>
+
+</html>
+
+Example for Date object
+-----------------------
+<!doctype html>
+<html>
+	<head>
+		<title>date demo</title>
+		<script type="text/javascript">
+			function foo()
+			{
+				var today=new Date();
+		var time=today.toLocaleTimeString();	
+		document.getElementById("s1").innerHTML="<h3>Current Time: "+time+"</h3>";
+			}
+		</script>
+	</head>
+	<body>
+		<form name="form1">
+			<input type="button" value="get Time" onclick="foo()"/> 
+		<br/> 
+		<span id="s1"></span> 
+		</form>
+	</body>
+</html>
+
+
+Example for setTimeout()
+------------------------
+<!doctype html>
+<html>
+	<head>
+		<title>delay</title>
+	<script type="text/javascript">
+		function foo()
+		{
+			alert("hi...after 2 secs");
+		}
+		function delay()
+		{
+			setTimeout("foo()",2000);
+		}
+	</script>
+	</head>
+	<body>
+		<a href="javascript:void(0)" onclick="delay()">click Me</a> <br/> 
+	</body>
+</html>
+
+
+Example for setTimeout() for Image Slide Show
+---------
+<!doctype html>
+<html>
+	<head>
+		<title>delay demo</title>
+	<script type="text/javascript">
+		var t;
+		var i=1;
+		function startShow()
+		{
+			i++;				document.getElementById("image1").src="l"+i+".jpg";
+		t=setTimeout("startShow()",2000);
+			
+		}
+		function stopShow()
+		{
+			clearTimeout(t);
+			i=1;
+		}
+	</script>
+	</head>
+	<body>
+		<form name="form1">
+			<h2>Image Slide Show</h2>
+		<img src="l1.jpg" id="image1" height="200px" width="400px"/> <br/> 
+	<input type="button" value="Start" onclick="startShow()" /> 
+	&nbsp;	&nbsp;	&nbsp;	&nbsp;	
+	<input type="button" value="Stop" onclick="stopShow()"/> 
+		</form>
+	</body>
+</html>
+
+Example for location 
+---------------------
+<!doctype html>
+<html>
+	<head>
+		<title>location</title>
+		<script type="text/javascript">
+			function foo()
+			{			window.location="http://www.google.com";
+			}
+		</script>
+	</head>
+	<body>
+		<a href="javascript:void(0)" onclick="foo()">click here for google</a> 
+	</body>
+</html>
+
+
+Example for disabled 
+--------------------
+<!doctype html>
+<html>
+	<head>
+		<title>disabled demo</title>
+	<script type="text/javascript">
+		function foo()
+		{
+		var user=document.getElementById("txtuser").value;
+		if(user=="" || user==null)
+		{
+document.getElementById("btnsubmit").disabled=true;
+		}
+		else
+		{
+document.getElementById("btnsubmit").disabled=false;
+		}
+	
+		}
+	</script>
+	</head>
+	<body>
+		<form name="form1">
+			user : <input type="text" id="txtuser" onblur="foo()"/> <br/> 
+		<input type="submit" id="btnsubmit" value="submit" disabled/> 
+		</form>
+	</body>
+</html>
+
+Example for dropdown list
+-------------------------
+working with dropdownlist(<select>) 
+
+syntax : - single selection 
+	<select name="list" id="list">
+		<option value="somevalue">text</option>
+		.......
+		......
+	</select>
+
+
+
+syntax : multiple selection 
+
+	<select name="list" id="list" multiple="multiple">
+		<option value="somevalue">text</option>
+		......
+		......
+	</select>
+
+
+To make any item as selected by default  ,use selected property
+
+e.g.
+	<select name="gender" id="gender">	
+		<option value="" selected>Choose Gender</option>
+		<option value="1">male</option>
+		<option value="2">female</option>
+	</select>
+
+
+
+How to get the selected Item 
+----------------------------
+	var list=document.getElementById("list);
+		list.options[list.selectedIndex].text
+		list.options[list.selectedIndex].value
+
+
+
+how to get the multiple selected items (in case of multi selection) 
+---------------------------------------
+	var list=document.getElementById("list");
+	var str="";
+	for(i=0;i<list.length;i++)
+	{
+		if(list[i].selected)
+		{
+		str +=list[i].text;
+		}
+	}
+
+
+
+
+<!doctype html>
+<html>
+	<head>
+		<title>list demo</title>
+		<script type="text/javascript">
+			function foo()
+			{
+			var list=document.getElementById("gender");
+	var gender=list.options[list.selectedIndex].text;
+	alert("you are :"+gender);	
+			}
+		</script>
+	</head>
+	<body>
+		<form name="form1">
+		Select Gender: 
+	<select name="gender" id="gender">
+		<option selected>Choose Gender</option>
+		<option value="1">Male</option>
+		<option value="2">Female</option>
+	</select>
+	<br/> 
+	<input type="button" value="get Gender" onclick="foo()"/> 
+		</form>
+	</body>
+</html>
+
+
+for multi selection 
+-------------------
+<!doctype html>
+<html>
+	<head>	
+		<title>list demo</title>
+	<script type="text/javascript">
+		function foo()
+		{
+			var str="";
+			var list=document.getElementById("list");
+			var index;
+		
+			for(index=0;index<list.length;index++)
+{
+	if(list[index].selected)
+	{
+		str +="<li>"+list[index].text +"</li>";
+	}
+}
+	document.getElementById("s1").innerHTML=str;
+		}
+	</script>
+	</head>
+	<body>
+		<form name="form1">		
+		Select your Interests : 
+	<select name="list" id="list" multiple size="3">
+		<option value="1">Browsing</option>
+		<option value="2">Teaching</option>
+		<option value="3">Coding</option>
+		<option value="4">Playing</option>
+		<option value="5">Singing</option>
+	</select>
+<br/> 
+<input type="button" value="Get Intersts" onclick="foo()"/> 
+
+<br/> 
+<span id="s1"></span>
+
+		</form>
+	</body>
+</html>
+
+Example for multi selection 
+--------------------------
+
+
+<!doctype html>
+<html>
+	<head>
+		<title>list demo</title>
+		<script type="text/javascript">
+			function foo()
+			{
+			var list=document.getElementById("gender");
+	var gender=list.options[list.selectedIndex].text;
+	alert("you are :"+gender);	
+			}
+		</script>
+	</head>
+	<body>
+		<form name="form1">
+		Select Gender: 
+	<select name="gender" id="gender">
+		<option selected>Choose Gender</option>
+		<option value="1">Male</option>
+		<option value="2">Female</option>
+	</select>
+	<br/> 
+	<input type="button" value="get Gender" onclick="foo()"/> 
+		</form>
+	</body>
+</html>
+
+
+for multi selection 
+-------------------
+<!doctype html>
+<html>
+	<head>	
+		<title>list demo</title>
+	<script type="text/javascript">
+		function foo()
+		{
+			var str="";
+			var list=document.getElementById("list");
+			var index;
+		
+			for(index=0;index<list.length;index++)
+{
+	if(list[index].selected)
+	{
+		str +="<li>"+list[index].text +"</li>";
+	}
+}
+	document.getElementById("s1").innerHTML=str;
+		}
+	</script>
+	</head>
+	<body>
+		<form name="form1">		
+		Select your Interests : 
+	<select name="list" id="list" multiple size="3">
+		<option value="1">Browsing</option>
+		<option value="2">Teaching</option>
+		<option value="3">Coding</option>
+		<option value="4">Playing</option>
+		<option value="5">Singing</option>
+	</select>
+<br/> 
+<input type="button" value="Get Intersts" onclick="foo()"/> 
+
+<br/> 
+<span id="s1"></span>
+
+		</form>
+	</body>
+</html>
+
+
+Example for checkbox
+---------------------
+	when the checkbox is checked ,show the <div> tag.
+	When the checkbox is unchecked ,hide the <div> tag.
+
+<!doctype html>
+<html>
+	<head>
+		<title>checkbox</title>
+	<script type="text/javascript">
+		function foo()
+		{
+		var ch=document.getElementById("chothers");
+		if(ch.checked)
+			{			document.getElementById("d1").style.display="block";
+			}
+			else
+			{
+document.getElementById("d1").style.display="none";
+			}
+		}
+		function getResult()
+		{
+		var ch=document.getElementById("chothers");
+		var l="";
+		if(ch.checked)
+		{
+			l=document.getElementById("txt1").value;	
+		}
+		else
+		{
+			var list=document.getElementById("l1");
+			l=list.options[list.selectedIndex].text;
+		}
+		alert("your language is:"+l);
+		}
+	</script>
+	</head>
+	<body>
+		<form name="form1">
+			Select your language: 
+	<select id="l1">
+		<option selected>Choose language</option>
+		<option>English</option>
+		<option>French</option>
+		<option>Hindi</option>
+	</select>
+	<br/> 
+	Others: <input type="checkbox" id="chothers" onclick="foo()" /> <br/> 
+	<div id="d1" style="display:none">
+		Enter language: <input type="text" id="txt1"/> 
+	</div>
+	<input type="button" value="get languge" onclick="getResult()"/> 
+		</form>
+	</body>
+</html>
+
+Example for window.open() and close()
+-------------------------------------
+<!doctype html>
+<html>
+	<head>
+		<title>window demo</title>
+		<script type="text/javascript">
+			function foo()
+			{
+				window.open("http://www.google.com","google","height=200px,width=400px");
+			}
+		</script>
+	</head>
+	<body>
+		<a href="javascript:void(0)" onclick="foo()">click here for new window</a> <br/> 
+	<a href="javascript:window.close()">close</a>
+	</body>
+</html>
+
+
+Example for timer by using setInterval()
+--------------------------------------
+<!doctype html>
+<html>	
+	<head>
+		<title>Interval functions</title>
+		<script type="text/javascript">
+			var t;
+			function clock()
+			{
+var today=new Date();
+var t=today.toLocaleTimeString();document.getElementById("s1").innerHTML="<h2>Current Time:"+t +"</h2>";
+			}
+			function start()
+			{				t=setInterval("clock()",1000);
+			}
+			function stop()
+			{
+			clearInterval(t);
+			}
+		</script>
+	</head>
+	<body>
+
+		<form name="form1">
+	<span id="s1"></span> <br/> 
+		<input type="button" value="Start Timer" onclick="start()"/> 
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="button" value="Stop Timer" onclick="stop()"/> 
+		</form>
+	</body>
+</html>

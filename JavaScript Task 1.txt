@@ -1,0 +1,219 @@
+Application: 
+
+Online Telephone Book:
+
+	* We have roles
+		. Admin role
+		. user role
+
+
+	Admin : 
+		admin can login to the system with some standard credentails (satya & 			password)
+
+		can view all the users 
+	
+		can delete users 
+
+		reset password 
+
+		view his info
+
+		Edit his info 
+
+		logout 
+
+
+	User:
+		register to the system
+		login to the system 
+		can view his info
+
+		edit info
+	
+		add contacts (firstname,lastname, email,tel,...)
+		update contacts
+		delete contact 
+		search contact (filter)
+		
+		reset password
+
+		logout 
+
+
+UI:
+	HTML 5 , CSS
+	Web forms for User interface(form)
+
+JavaScript:
+	DOM manipulation
+
+
+======================
+
+<input type="hidden" value="" name="" id=""/>
+	It does not have any visibility on the UI.
+	Instead, it can hold value in the page, and when you submit the form,  that hidden fields will be sent to the server.
+
+
+e.g.
+	edit user info:
+		e.g.
+			Id(int: unique)
+			Username
+			email
+			....
+
+
+
+	View info:
+			show all the except id 
+
+	edit info:
+			modify all fields except id(not showing)
+
+	submit : 
+			sumbit all the data including ID.
+
+
+
+e.g
+	<form>
+
+		<div>
+			<input type="hidden" value="1" name="Id"/>
+		</div>
+
+		<div>
+			<input type="submit" value="submit"/>
+		</div>
+	</form>
+	
+
+
+e.g.
+	<input type="text" name="" id=""/>
+
+
+e.g.
+	<input type="email" />
+	<input type="number"/>
+	
+=========================================================================
+Let us talk about JavaScript:
+
+Note:
+
+JavaScript:
+	connect the client and server 	(AJAX)
+	submit data to the server (AJAX)
+	Get some data from and Update on the Page (AJAX)
+	DOM Manipuation
+	dynamic styles
+
+	Animation
+
+	data storage(client side)
+
+	
+Note:
+
+JavaScript : Object Oriented (Prototype based)
+
+	C# /Java : Oriented Oriented (class based)
+
+
+e.g.C#/Java
+	public class TestClass
+	{
+		public void TestMethod(){
+		}
+	}
+
+	TestClass testObj=new TestClass();
+		testObj.TestMethod();
+
+e.g. (javaScript)
+
+	function TestClass(){
+		this.testMethod=function(){
+			return "hello..";
+		}
+	}
+
+	var testObj=new TestClass();
+		testObj.testMethod();
+
+
+In Java Script, we can implement class style object oriented programing, using "TypeScript"
+
+
+In any object:
+	Properties : variables with respect to that object.
+	Methods : function (some task).
+
+
+e.g.
+	Car (object)
+		Make (property)
+		Model (property)
+	
+		Accelerate() method (task)
+
+
+
+window : In bultin object
+
+
+Note:
+Coding standard for JavaScript:
+
+	for methods : camelCase
+
+	for constants : Uppercase
+
+	for variables : lowercase
+
+	for properties: camelCase
+
+	
+e.g. (method)
+	function loadData()
+	{
+	}
+
+e.g. (constant)
+
+	const PI=234.34; (read only)
+	const DATA="Test Data";
+
+e.g. (variables)
+
+	var x=34;
+
+
+Form:
+	.value ( input fields)
+
+	.checked (input type : radio/checkbox)
+
+
+Page elements:
+	.innerHTML ( text with markup)
+
+	.innerText (plain text)
+
+
+to get element by ID:
+	document.getElementById("elementId")
+			.value
+			.innerHTML
+			.innerText
+			.checked
+			..
+	
+======================
+
+
+Design the screens for this application:
+
+

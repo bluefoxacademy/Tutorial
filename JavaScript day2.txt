@@ -1,0 +1,421 @@
+JavaScript:
+
+client Side script
+
+* client side validation
+
+* AJAX calls 
+
+* Dynamic navigation
+
+
+* Dynamic styles 
+
+
+* DOM manipulation
+=========================
+
+JavaScripts basics:
+
+
+variable declaration:
+
+* var 
+
+* let
+
+* const
+
+
+
+Note:
+	DataType is not required.
+
+	Number
+	Boolean
+	NULL
+	Object
+	Array
+	Undefined
+	
+
+var : 
+	It is for declaring global or local variable.
+
+	If you declare a variable within the function, then it is called local.
+
+
+	If you declare a variable outside a fuction, then it is called global.
+
+
+	var : Scope is either function level or global based on the declaration.
+
+e.g.
+<script>
+		var name="satya"
+		function foo(){
+			var number=-34;
+			console.log(name);
+		}
+
+		console.log(number); //error 
+</script>
+
+
+
+let : 
+	It is similar to var, but it's scope is different.
+
+	It's scope is based on the declaration block.
+
+	It is a block-level
+
+e.g.
+	function foo(){
+		if(true){
+			let x=43;
+			
+var a=4;
+		}
+
+		console.log(x); //error 
+		console.log(a); //valid 
+	}
+
+
+==============================
+const : 
+	It is for declaring read-only variables.
+	Once intialized, we can't update the content of the const variable.
+
+
+e.g.
+	const USERNAME='satya@gmail.com';
+	USERNAME='sat'; //error 
+
+
+======================================================
+Creating functions:
+
+	* Named function( we give some name, so that we can use later)
+	* Anonymous function (define  a function , execute immedietely).
+
+e.g. Named function 
+	function testMethod(){
+		var name="satya";
+		return "Hello."+name;
+	}
+
+
+	var response=testMethod();
+
+
+	OR
+
+var testMethod=function(){
+		var name="satya";
+		return "Hello."+name;
+}
+	var response=testMethod();
+
+e.g. (anonymous function)
+
+	function(){
+		console.log('test method');
+	}();
+
+
+
+creating objects:
+
+Object : 
+	It includes properties and methods.
+
+
+we can create an object in different ways:
+
+Syntax : Creating an empty object, then add properties and methods.
+
+
+var objName={};
+	objName.propertyName="value";
+	objName.methodName=function(arg1,arg2,...){
+	}
+	
+e.g.
+
+var myApp={};
+	myApp.greetUser=function(name){
+		return "hello..."+name;
+	}
+
+
+var response=myApp.greetUser("satya");
+
+
+var employee={employeeId:101,employeeName:'satya',job:'manager'};
+
+
+===========
+creating an Array:
+	var arrayName=new Array();
+		arrayName[0]=4;
+		arrayName[1]=5;
+		...
+		...
+		OR
+
+	var arrayName=[item1, item2,...];
+
+
+e.g.
+var names=["satya","James","scott"];
+
+var nums=[1,2,4,5];
+
+var data=[4,"satya",4.4,true];
+
+
+Creating an array of objects:
+
+var data=[{prop1:value,prop2:value,...},{},{},...];
+
+e.g.
+
+var employees=[{employeeId:101,employeeName:'satya',job:'manager'},{employeeId:102,employeeName:'james',job:'Developer'}];
+
+
+====================================
+
+How to iterate an Array : 
+
+while()
+
+do..while()
+
+for()
+
+for..in()
+
+forEach()
+
+
+e.g.
+	var arr=[4,5,6];
+
+
+	for(var i=0;i<arr.length;i++)
+	{
+		console.log(arr[i]); 
+	}
+
+
+	
+	for(var index in arr){
+		console.log(arr[index]);
+	}
+
+
+	arr.forEach(function(entry){
+		console.log(entry);
+	});
+
+
+
+e.g. for array of objects
+var employees=[{employeeId:101,employeeName:'satya',job:'manager'},{employeeId:102,employeeName:'james',job:'Developer'}];
+
+
+	for(var i=0;i<employees.length;i++)
+	{
+		console.log(employees[i].employeeId);
+		console.log(employees[i].employeeName);
+		console.log(employees[i].job);
+	}
+
+	employees.forEach(function(entry){
+		console.log(entry.employeeId);
+		console.log(entry.employeeName);
+		console.log(entry.job);
+	});
+
+======================= (collection or Array)
+	Add/remove items to/from array
+
+
+	builtin methods for arrays:
+		length : get count
+		push() : add new  item to the array 
+		pop()  :  remove the top item(last item)
+		splice() : remove/add set of elements to the array 
+		slice()  : get the subset from the array
+		join:  to join all the elements and return as string
+		..
+		..
+
+
+e.g.
+	var arr=[4,1,2];
+	arr.push(5);
+
+	arr.pop();
+
+	arr.sort();
+
+
+	arr.splice(1,1);
+		splice(indexAt,NumOfElements);
+
+===================
+
+converting data from JavaScript Object to JSON string 
+
+JSON to JavaScript
+
+
+JSON : JavaScript Object Notation
+		It is for represent data in key-value pair.
+		This for sending or receiving the data from/to server.
+
+
+e.g.
+	var employee={employeeId:101,employeeName:'satya',job:'manager'}; (javascript object)
+		employee.employeeId
+		employee.employeeName
+		employee.job
+
+
+Convert JavaScript object to JSON string:
+	var jsonData=JSON.stringify(employee);
+
+Convert JSON data to JavaScript Object:	
+	var obj=JSON.parse(jsonData);
+===================================
+This is required to send the data to the server.
+
+To manipulate the data which get's from server and show on the UI, we should convert to javascript object ,then manipulate.
+
+
+steps:
+	post call
+		convert from JavaScript object to JSON data , then submit that JSON data.
+
+
+	get call:
+		get JSON data, convert to JavaScript object, manipulate and show on the UI
+
+============================================================================================
+How to persisent(store) data the client side:
+	In the browser machine
+
+	e.g.
+	cookies ( for transmitting the data between server and  client)
+		add cookie as part of the request and send to server.
+		server can read the data from cookie, process the request and return some response.
+		Useful for User identifiy(session identifier)
+		Authentication and Authorization.
+
+
+
+
+	hidden fields ( It is for storing data in the page itself)
+
+
+	HTML 5 web storage(localStorage, sessionStorage)
+
+
+
+sessionStorage
+	We can store some key-value pair.
+	It's scope is for only current session.
+
+
+
+localStorage
+	here, we can store any key-value pair.
+
+	It's scope is permanent.
+
+	You have to delete explicitly.
+
+
+Web storage is only for client side.
+It does not send any data to the server.
+
+e.g.
+Page is loaded, some data is loaded.
+we need to that data acroos the application.
+
+	store in a sesssion,access across the application in the current session.
+
+syntax : -
+
+	sessionStorage.key=value;
+
+	localStorage.key=value;
+
+Note:
+	Here, the value must be string type.
+	Value can be anything ,but should convert JSON string and store it.
+============================================================================================
+
+
+javascript objects:
+
+var app={};
+
+app.AnotherObjet={
+	property:value,
+	property1:value,
+	fun1:function(){},
+	fun2:funcdtion(){}
+};
+===================
+
+Finish this application:
+
+* Login as admin and show all the registered users in a table.
+* Enable Delete button for each user in the table and when you click on delete, delete that userr.
+
+* User Login : 
+	reset password
+	
+	view Info
+
+	edit info
+
+=====================
+
+objects(Oriented)
+
+key-value
+{,,,,,}
+
+
+
+Advanced javascript(OOP IN javascript)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

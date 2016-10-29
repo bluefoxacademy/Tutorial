@@ -8,6 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="Content/Styles/site.css" />
     <script src="App/app.js"></script>
+    <script>
+        function saveUser() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var email = document.getElementById("email").value;
+           
+            var newUser = { userId: 0, username: username, password: password, email: email };
+            myApp.UserModule.registerUser(newUser);
+            document.location.href = "login.html";
+        }
+    </script>
 </head>
 <body>
     <div id="container">
@@ -74,22 +85,9 @@
                         <div>
                             <label for="email">Email:</label>
                             <input type="email" id="email" name="email"  pattern="\w+\@\w+\.[a-zA-Z]{2,4}" required/>
-                        </div>
+                        </div>                       
                         <div>
-                            <label for="mobile">Mobile:</label>
-                            <input type="text" id="mobile" name="mobile" pattern="\d{10}" required/>
-                        </div>
-                      <div>
-                          <label>Country:</label>
-                          <input list="countryList" />
-                          <datalist id="countryList">
-                              <option>India</option>
-                              <option>China</option>
-                              <option>United States</option>
-                          </datalist>
-                      </div>
-                        <div>
-                            <input type="submit"  value="Submit"  />
+                            <input type="button"  value="Submit" onclick="saveUser()"  />
                         </div>
                     </fieldset>
                 </form>

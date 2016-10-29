@@ -12,10 +12,17 @@
         function fnValiate() {
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
-            if (username == "satya" && password == "password") {
-                document.location.href = "adminHome.html";
+            var isValid = myApp.UserModule.validateUser(username, password);
+            if (isValid) {
+                sessionStorage.loggedUser = username;
+                if (username == 'admin') {
+                    document.location.href = "adminHome.html";
+                } else {
+                    document.location.href = "userHome.html";
+                }              
+                
             } else {
-                document.location.href = "userHome.html";
+                document.getElementById("errorMessage").style.display = "block";
             }
         }
     </script>
@@ -84,6 +91,9 @@
                         </div>
                         <div>
                             <input type="button" value="Login" onclick="fnValiate()" />
+                        </div>
+                        <div >
+                            <span id="errorMessage" style="color:red;display:none;">Invalid Credentails</span>
                         </div>
                     </fieldset>
                 </form>

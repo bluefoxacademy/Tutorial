@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Page</title>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="html, javascript" />
+    <meta name="description" content="Test Web app" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="Content/Styles/site.css" />
+    <script src="App/app.js"></script>
+    <script src="App/productApp.js"></script>
+    <script>
+        function getProducts() {
+            var prodObj = new productApp.ProductRepository();
+            var data = prodObj.data;
+            var table = "<table border='1'><tr><th>Id</th><th>Name</th><th>Price</th><th>Action</th></tr>";
+            data.forEach(function (entry) {
+                var tr = "<tr><td>" + entry.Id + "</td><td>" + entry.Name + "</td><td>" + entry.Price + "</td><td><a href=''>Edit</a>|<a href=''>View</a>|<a href=''>Delete</a></td></tr>";
+                table += tr;
+            });
+            table += "</table>";
+            document.getElementById("grid").innerHTML = table;
+        }
+    </script>
+</head>
+<body>
+    <div id="container">
+        <section id="pageHeader">
+            <div id="pageLogo">
+
+            </div>
+            <div id="header">
+                <header>
+                    <h1>UI Developer Tutorial</h1>
+                </header>
+            </div>
+            <nav id="topMenu">
+                <ul>
+                    <li>
+                        <a href="Index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="Login.html">Login</a>
+                    </li>
+                    <li>
+                        <a href="Register.html">Register</a>
+                    </li>
+                    <li>
+                        <a href="About.html">About Us</a>
+                    </li>
+                    <li>
+                        <a href="Contact.html">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+        <section id="sidebar">
+            <div id="sideHeader">
+                <span>Quick Links</span>
+            </div>
+            <nav id="sideMenu">
+                <ul>
+                    <li>
+                        <a href="HtmlNotes.html">HTML</a>
+                    </li>
+                    <li>
+                        <a href="HtmlNotes.html">JavaScript</a>
+                    </li>
+                    <li>
+                        <a href="HtmlNotes.html">CSS</a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+        <section id="maincontent">
+            <section id="contentHeader">
+                <header>Main content goes...</header>
+            </section>
+            <section id="content">
+               <div id="grid">
+
+               </div>
+                <div>
+                    <button type="button" onclick="getProducts()">Get Products</button>
+                </div>
+            </section>
+        </section>
+
+        <section id="clear"></section>
+        <section id="pageFooter">
+            <footer>
+                <span>&copy;All Rights Reserved. <span id="spnDateTime"></span></span>
+            </footer>
+        </section>
+    </div>
+
+</body>
+</html>

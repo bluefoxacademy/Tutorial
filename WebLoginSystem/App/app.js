@@ -58,3 +58,48 @@ myApp.UserModule = {
         }
     }
 };
+
+
+function fnRequired(args) {
+    var input = args.value;
+    if (input == null || input == undefined || input=='' ) {
+        var errorMessage = args.getAttribute('title');
+        alert(errorMessage);
+        args.focus();
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+function fnValidateMobile(args) {
+    var input = args.value;
+
+    //var regEx=/^\d{10}$/;
+    var regEx = /^\d{3}\-\d{3}\-\d{4}$/;
+    //if (input.length == 10 && isNaN(input) == false) {
+    if(input.match(regEx)){
+        return true;
+    } else {
+        var errorMessage = args.getAttribute('title');
+        alert(errorMessage);
+        args.focus();
+        return false;
+    }
+}
+function fnEmailValidate(args) {
+    var input = args.value;
+
+    var regEx = /^\w+\@\w+\.[a-zA-Z]{2,4}$/;
+
+    if (input.match(regEx)) {
+        return true;
+    } else {
+        var errorMessage = args.getAttribute('title');
+        alert(errorMessage);
+        args.focus();
+        return false;
+    }
+
+}

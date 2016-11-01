@@ -1,0 +1,231 @@
+Today: 
+
+Form validation using javascript(client side)
+
+Regular Expression using javascript for validation
+
+Creating OOP in JavaScript
+
+
+
+Form validation: 
+
+
+HTML 5 :
+	New Attributes:
+			required
+			pattern 
+			max
+			min
+			
+
+	New Input types :
+			email
+			tel
+			number
+			date
+			datetime
+			time
+			range	
+			..
+			
+
+e.g.
+	<form name="" id="" method="" action="">
+			<div>
+				<label>Username:</label>
+				<input type="text" id="" name="" required/>
+			</div	
+			<div>
+				<input type="submit" value="" />
+			</div>
+	</form>
+
+here:
+	we submit the form data to the server(action)
+	This is called tight coupling(postback).
+
+
+Note:
+	We should not submit the form data to the server.
+
+	Instead, we need to submit the data using javascript(REST API(AJAX)).
+
+
+
+<form name="" id="" method="" action="">
+			<div>
+				<label>Username:</label>
+				<input type="text" id="" name="" required/>
+			</div	
+			<div>
+				<input type="button" value="" />
+			</div>
+	</form>
+
+Here: 
+	It does not do any validation as we don't have any submit button.
+
+To perform validation, we need to write custom validation using javascript.
+==============================
+
+* OnSubmit
+* Client Side Validation without OnSubmit
+
+
+OnSubmit:
+	In this case, we need a form and Submit button (<input type="submit" />)
+	In this, whether you press enter on the keyword or click on submit button, it will submit the form data to the server. (if we use html 5 validation, it stops submiting).
+
+	if you do custom validation and if you use OnSubmit and Submit button, it will submit the form though there are some missing validations.	
+	
+	To stop the default action, we use event.preventDefault();
+
+
+
+
+If you implement validation without onSubmit and Submit :
+	
+	Here, you need to take regular button, invoke the validation in that button click.
+	but, here the default form action(submit) does not work when you press enter on the keyboard.
+======================
+
+To peform adavance validations :
+	we can make use of Regular expressions.
+
+
+===============
+
+The problem with creating an object with {} and adding properties and methods:
+
+* It is complex.
+
+* Here, we need to invoke all the methods explicity to initialize the data.
+
+
+To avoid problem, we can make use of contstructors to create objects.
+
+
+
+syntax : (creating constructor)
+
+function ConstructorName(arg1, arg2,...){
+	this.Property1=value;
+	this.Property2=value;
+	this.testMethod1=function(arg,arg){
+	}
+
+	this.testMethod2=function(arg,arg){
+	}
+}
+
+Note:	
+	we can use "this" to add properties or methods to the object.(this refers to instance members.)
+	If you declare property or method with "this", we can access them only by creating an instance.
+
+e.g.
+function EmployeeRepository(firstName,lastName){
+	this.firstName=firstName;
+	this.lastName=lastName;
+	
+	this.getFullName=function(){
+		return this.firstName+" "+this.lastName;
+	}
+}
+
+var employee1=new EmployeeRepository('scott','james');
+
+console.log(employee1.getFullName()); 
+
+employee1.firstName='james';
+employee1.lastName='scott';
+
+console.log(employee1.getFullName());
+
+
+Note:
+To initilze the object while creating an instance, we can use some internal(inline) methods.
+
+
+e.g.
+
+function UserRepository(){
+	this.data=[];
+
+	function init(){
+	
+		this.data.push({userId:1,username:'satya'});
+		this.data.push({userId:2,username:'john'});
+	}
+
+	init();
+
+
+}
+
+var user1=new UserRepository();
+
+	user1.data.length; // 2 
+========================
+
+
+function Employee(){
+
+	this.name;
+		//this refers to the object which we create to  constuctor 
+
+	var that=this;
+	function foo(){
+		//this refers to this foo function ...
+		//To use class members here, you need to create an alias name for class, then use it here...
+			//"that" refers to the global members.
+	}
+}
+
+var emp1=new Employee();
+	emp1.name='satya';
+
+var emp2=new Employee();
+		emp2.name='john';
+===================
+
+Use that example for refernce: 
+
+develop the below tasks:
+
+	Take a grid
+		Load the products on get button
+
+	Take a button , add New product 
+
+
+	Create actions in the grid for each product
+			* Edit
+			* View
+			* Delete
+
+	
+	Take a textbox, Search Button:
+
+
+
+toggle option:
+
+by default : 
+	show grid , Show Add New product button
+
+	Edit : hide the grid, then show form to edit the product, modify and resubmit, then reload the grid.
+
+	Add new : 
+		Show empty form 
+		add new content , save, then reload grid
+
+	delete: Just the delete the current record and reload
+
+
+
+
+
+
+
+	

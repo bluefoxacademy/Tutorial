@@ -1,0 +1,591 @@
+OOP in JavaScript 
+
+* DOM Manipulation 
+* Dynamic Styles
+* Form Validation 
+* Create Animations 
+* AJAX calls 
+
+
+DOM manipulation: 
+
+Document :
+	HTML elements 
+	Form elements
+
+
+
+To find any element in HTML ,we use document object in javascsript.
+
+
+ID
+class
+name
+tagname
+document 
+	getElementById()
+	getElementsByName()
+	getElementsByTagName()
+	getElementsByClassName()
+
+
+.innerHTML (html elements)
+.innerText (html elements)
+.value (form elements)
+
+
+<p>plain text </p>
+
+
+alert()
+confirm()
+prompt()
+===================
+function functionName(arg1,arg2,...){
+}
+=================
+window 
+	This is the global object in javascript
+
+if you declare any variable, that will be part of window object.
+
+
+example:
+<script>
+	var fname='';
+	var lname='';
+	function getFullName()
+	{
+		
+		fullName=fname+" " +lname;
+	}
+</script>
+
+
+
+================
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>HTML demos</title>
+    <script>
+        var fname;
+        var lname;
+
+        var message = 'Hello..JavaScript';
+
+        function getFullName() {
+            var fname = document.getElementById("txtfname").value;
+            var lname = document.getElementById("txtlname").value;
+
+            fullName = fname + ' ' + lname;
+
+            document.getElementById("message").innerHTML = "<h3>Helllo..." + fullName + "</h3>";
+
+        }
+
+        function greetUser() {
+            var message = 'Hello...' + fullName;
+
+            alert(this.message);
+            alert(message);
+
+
+
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <label>
+            First Name: 
+        </label>
+        <input type="text" name="txtname" id="txtfname" /> <br />
+
+        <label>
+            last Name:
+        </label>
+
+       <input type="text" name="txtlname" id="txtlname" /> <br /> 
+
+
+        <input type="button" value="Click Me" onclick="getFullName()" /> <br /> 
+       
+         <span id="message">
+
+        </span>
+
+        <br />
+        <button type="button" onclick="greetUser()">Greet</button>
+    </form>
+</body>
+</html>
+
+=============================================
+form validations:
+
+<form onsubmit="return formValidation();">
+</form>
+
+
+email: Regular Expression 
+
+dotnetsatya@gmail.com
+dot_satya@gmail.com
+
+\w+[\._]*\w*\@\w+\.[a-zA-Z]{2,4}
+
+
++ : one or more 
+? : zero or one 
+* : zero or more
+{min,max}
+{,max}
+{absolute}
+
+These are quantifiers 
+
+\d{10}
+	It allows a numeric with 10 digits
+
+\d{3}-\d{3}-\d{4}
+
+
+
+Example : validations
+
+formvalidations.js
+
+function fnRequried(arg) {
+
+    var input = arg.value;
+    if (input == "" || input == null) {
+        alert("Field is missing");
+        arg.focus();
+        return false;
+    }
+    else {
+        return true;
+    }   
+}
+
+function fnValidateEmail(arg) {
+    var input = arg.value;
+    var regEx = /^\w+\@\w+\.[a-zA-Z]{2,4}$/;
+
+    if (input.match(regEx)) {
+        return true;
+    }
+    else {
+        alert("invalid email");
+        arg.focus();
+        return false;
+    }
+
+}
+
+function fnValiateMobile(arg) {
+    var input = arg.value;
+    var regEx = /^\d{10}$/;
+    if (input.match(regEx)) {
+        return true;
+    }
+    else {
+        alert("invalid mobile");
+        arg.focus();
+        return false;
+    }
+}
+
+
+
+HTMLPage
+
+<!doctype html>
+<html lang="en-us">
+    <head>
+        <title>js demo</title>
+        <meta charset="utf-8" /> 
+        <script src="formvalidations.js"></script>
+        <script>
+            function fnFormValidation() {
+                var txtname = document.getElementById("txtname");
+                var txtemail = document.getElementById("txtemail");
+                var txtmobile = document.getElementById("txtmobile");
+
+                if (fnRequried(txtname) && fnRequried(txtemail) && fnRequried(txtmobile) && fnValidateEmail(txtemail) && fnValiateMobile(txtmobile)) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        </script>
+        <style>
+            #wrapper {
+                width:960px;
+                margin:5px;
+            }
+
+            #header {
+
+                width:900px;
+                padding:10px;
+                margin:5px;
+
+                border:2px solid green;
+                border-radius:5px;
+                background-color:#f5d5d5;
+
+            }
+
+                header {
+                    text-align:center;
+                }
+
+            #header header {
+                font-family:Calibri;
+                font-weight:bolder;
+                font-style:italic;
+            }
+
+            #topMenu ul li {
+                display:inline-block;
+            }
+
+                #topMenu ul li a {
+                    text-decoration:none;
+                    display:block;
+                    font-size:large;
+                    background-color:white;
+                    color:grey;
+
+                }
+                #topMenu ul li a:hover {
+
+                    text-decoration:underline;
+                    color:blue;
+                }
+
+
+            #sidebar {
+                width:200px;
+                min-height:500px;
+                float:left;
+                padding:10px;
+                margin:5px;
+                background-color:#d2b2b2;
+
+                  border:2px solid green;
+                border-radius:5px;
+            }
+
+            #content {
+                width:600px;
+                min-height:500px;
+                float:right;
+
+                  padding:10px;
+                margin:5px;
+                background-color:#d2b2b2;
+
+                  border:2px solid green;
+                border-radius:5px;
+            }
+
+            #footer {
+                clear:both;
+                font-weight:bold;
+                text-align:center;
+                font-family:Cambria;
+            }
+
+        </style>
+    </head>
+    <body>
+        <section id="wrapper">
+                <section id="header">
+                        <header>
+                            <h1>Hello..JavaScript</h1>
+                        </header>
+
+                       <nav id="topMenu">
+                           <ul >
+                               <li><a href="#">Home</a></li>
+                               <li><a href="#">Contacts</a></li>
+                               <li><a href="#">About</a></li>
+                           </ul>
+                       </nav>
+                </section>
+
+                <section id="sidebar">
+                       <header>
+                            HTML Demos
+                       </header>
+                        <div>
+                                Ads goes...
+                        </div>
+                </section>
+
+
+                <section id="content">
+                    <header>
+                        User Form
+                    </header>
+
+                   <form id="userform" name="userform" onsubmit="return fnFormValidation()">
+                       <fieldset>
+                           <legend>
+                               User form
+                           </legend>
+
+                         <div>
+                             <label>Name</label>
+                             <input type="text" id="txtname" name="txtname" /> 
+                         </div>
+
+                        <div>
+                            <label>email</label>
+                            <input type="text" id="txtemail" name="txtemail" /> 
+                        </div>
+
+                        <div>
+                            <label>Mobile</label>
+                            <input type="text"  id="txtmobile" name="txtmobile" /> 
+                        </div>
+
+                        <div>
+                            <button type="submit" id="btnsubmit">Submit</button>
+                            &nbsp;
+                            &nbsp;
+                            <button type="reset">Reset</button>
+
+                        </div>
+
+
+                       </fieldset>
+                   </form>
+                </section>
+
+                <section id="footer">
+                    <footer>
+                        &copy; @Marlabs -2015
+                    </footer>
+                </section>
+        </section>
+    </body>
+</html>
+
+========================================
+Creating objects in JavaScript:
+
+
+First method:
+
+var app={};
+app.propert=value;
+app.method=function(){
+}
+
+
+
+
+OR
+
+
+var app=new Object();
+app.propert=value;
+app.method=function(){
+}
+
+
+OR
+
+
+function modelName(arg1,arg2,...){
+	this.prop1=value;
+	this.prop2=value;
+	this.method1=function(){
+}
+	this.method2=function(){
+	}
+}
+
+
+e.g.
+function customerModel(fname,lname,city){
+	this.fname=fname;
+	this.lname=lname;
+	this.city=city;
+	
+	this.addCustomer=function(){
+	}
+
+	this.getCustomer=function(){
+	}
+}
+
+var customer1=new customerModel('satya','james','nj');
+customer1.fname;
+customer1.lname;
+customer1.city
+customer1.addCustomer();
+
+Example:
+Customer Form 
+Add Customer
+Get Customers
+Get Customer By Id
+
+
+JavaScript and jQuery 
+====================
+Example On OOP
+
+app.js
+var app = {};
+app.appName = 'Customer Form';
+app.appVersion = 1.0;
+
+app.customerModule = {
+    newCustomer: {},
+    customers: [{id:1, name: 'scott', email: 'scott@gmail.com', city: 'nj' }],
+    addCustomer: function (customer) {
+       
+        var newid = this.customers.length+1;
+        customer.id = newid;
+       
+
+        this.customers.push(customer);
+    }
+};
+
+app.employeeModule = {
+    newEmployee: {},
+    employees: [],
+    addEmployee: function (employe) {
+        this.employees.push(employe);
+    }
+};
+
+
+
+
+
+HMTL Page:
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>OOP in JavaScript</title>
+    <script src="jquery-2.1.1.min.js">
+    </script>
+    <script src="app.js">
+
+    </script>
+
+    <script>
+        $(function(){
+            $("#addNewCustomer").hide();
+
+            getCustomers();
+
+
+            $("#btnAddNew").click(function () {
+                $("#grid").hide();
+
+                $("#addNewCustomer").show(1000);
+            });
+
+
+
+            $("#btnSave").click(function () {
+                
+                var customer = { id: '', name: $("#txtname").val(), email: $("#txtemail").val(), city: $("#txtcity").val() };
+                
+                app.customerModule.addCustomer(customer);
+                
+                $("#addNewCustomer").hide();
+                getCustomers();
+                $("#grid").show();
+            });
+
+            $("#btnCancel").click(function () {
+                $("#addNewCustomer").hide();
+                $("#grid").show();
+            });
+        });
+
+
+        function getCustomers() {
+            var table = "<table border=1><tr><th>Id</th><th>Name</th><th>Email</th><th>city</th></tr>";
+
+            app.customerModule.customers.forEach(function (entry) {
+                table += "<tr><td>" + entry.id + "</td><td>" + entry.name + "</td><td>" + entry.email + "</td><td>" + entry.city + "</td><tr>";
+            });
+
+            table += "</table";
+
+            $("#content").html(table);
+        }
+    </script>
+</head>
+<body>
+
+    <div id="addNewCustomer">
+            <form>
+                <label>Name</label>
+                <input type="text" id="txtname" /> <br />
+
+                <label>Email:</label>
+                <input type="text" id="txtemail" /> <br /> 
+
+                <label>City:</label>
+                <input type="text" id="txtcity" /> <br />
+                <button type="button" id="btnCancel">Cancel</button> 
+                &nbsp;
+                &nbsp;
+                <button type="button" id="btnSave">Save</button>
+            </form>
+    </div>
+
+    <div id="grid">
+        <button type="button" id="btnAddNew">Add New</button>
+
+        <br />
+       
+           <div id="content">
+
+           </div>
+
+    </div>
+
+</body>
+</html>
+
+
+
+Enhancements to this application:
+
+
+* add actions in the Grid 
+	* Edit
+	* Delete
+	*View 
+
+If you click on Edit, the current record must display in the form for editing and updating.
+
+If you click on Delete, the current record has to delete and reload the grid.
+
+
+If you click' on View, the current record has to be displayed for read-only.
+
+
+You need to add css styles for table for good UX 
+table border
+spacing
+create rounded corners for only first and last row .
+create alternate styles for table.
+
+
+create style for form and form controls
+=======================

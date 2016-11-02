@@ -8,6 +8,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="Content/Styles/site.css" />
     <script src="App/app.js"></script>
+    <style>
+        #block1{
+            height:100px;
+            width:100px;
+            background-color:#808080;
+            position:relative;
+            top:100px;
+            left:100px;
+            z-index:1000;
+        }
+
+        #block2{
+              height:100px;
+            width:100px;
+            background-color:#00ff21;
+             position:relative;
+                top: -10px;
+    left: 20px;
+    z-index:500;
+        }
+    </style>
 </head>
 <body>
     <div id="container">
@@ -66,9 +87,15 @@
                 <header><h3>Main content goes...</h3></header>
             </section>
             <section id="content">
-               <h4>  Page content goes here...</h4>
-                  
-               
+                <h4>  Page content goes here...</h4>
+
+                  <div id="block1">
+
+                  </div>
+
+                   <div id="block2">
+
+                   </div>
             </section>
         </section>
 

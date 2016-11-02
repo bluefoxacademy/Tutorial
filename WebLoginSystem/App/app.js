@@ -56,5 +56,65 @@ myApp.UserModule = {
             this.data.push(newUser);
             localStorage.userData = JSON.stringify(this.data);
         }
+    },
+    resetPassword: function (username, oldPassword, newPassword) {
+        if (localStorage.userData != null && localStorage.userData != undefined) {
+            this.data = JSON.parse(localStorage.userData);
+        }
+        for (var i = 0; i < this.data.length; i++) {
+            if (this.data[i].username == username && this.data[i].password == oldPassword) {
+                this.data[i].password = newPassword;
+                break;
+            }
+        }
+        localStorage.userData = JSON.stringify(this.data);
     }
+
+
+
 };
+
+
+function fnRequired(args) {
+    var input = args.value;
+    if (input == null || input == undefined || input=='' ) {
+        var errorMessage = args.getAttribute('title');
+        alert(errorMessage);
+        args.focus();
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+function fnValidateMobile(args) {
+    var input = args.value;
+
+    //var regEx=/^\d{10}$/;
+    var regEx = /^\d{3}\-\d{3}\-\d{4}$/;
+    //if (input.length == 10 && isNaN(input) == false) {
+    if(input.match(regEx)){
+        return true;
+    } else {
+        var errorMessage = args.getAttribute('title');
+        alert(errorMessage);
+        args.focus();
+        return false;
+    }
+}
+function fnEmailValidate(args) {
+    var input = args.value;
+
+    var regEx = /^\w+\@\w+\.[a-zA-Z]{2,4}$/;
+
+    if (input.match(regEx)) {
+        return true;
+    } else {
+        var errorMessage = args.getAttribute('title');
+        alert(errorMessage);
+        args.focus();
+        return false;
+    }
+
+}

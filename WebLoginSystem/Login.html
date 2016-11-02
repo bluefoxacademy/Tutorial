@@ -9,20 +9,37 @@
     <link rel="stylesheet" type="text/css" href="Content/Styles/site.css" />
     <script src="App/app.js"></script>
     <script>
-        function fnValiate() {
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-            var isValid = myApp.UserModule.validateUser(username, password);
-            if (isValid) {
-                sessionStorage.loggedUser = username;
-                if (username == 'admin') {
-                    document.location.href = "adminHome.html";
+        function fnValiate(event) {
+            event.preventDefault();
+            var usernameArg = document.getElementById("username");
+            var passwordArg = document.getElementById("password");
+            var username = usernameArg.value;
+            var password = passwordArg.value;
+            if (formValidate(usernameArg, passwordArg)) {
+                document.getElementById("errorMessage").style.display = "none";
+                var isValid = myApp.UserModule.validateUser(username, password);
+                if (isValid) {
+                    sessionStorage.loggedUser = username;
+                    if (username == 'admin') {
+                        document.location.href = "adminHome.html";
+                    } else {
+                        document.location.href = "userHome.html";
+                    }
+
                 } else {
-                    document.location.href = "userHome.html";
-                }              
-                
+                    document.getElementById("errorMessage").style.display = "block";
+                }
             } else {
                 document.getElementById("errorMessage").style.display = "block";
+            }
+          
+        }
+
+        function formValidate(usernameArg, passwordArg) {
+            if (fnRequired(usernameArg) && fnRequired(passwordArg)) {
+                return true;
+            } else {
+                return false;
             }
         }
     </script>
@@ -78,19 +95,19 @@
         </section>
         <section id="maincontent">
             <section id="content">
-                <form name="loginForm" id="loginForm">
+                <form class="form" name="loginForm" id="loginForm"  OnSubmit="return fnValiate(event);">
                     <fieldset>
                         <legend>Login Form</legend>
-                        <div>
-                            <label>Username:</label>
-                            <input type="text" id="username" name="username" autofocus placeholder="enter username" required />
+                        <div class="form-group">
+                            <label class="control-label">Username:</label>
+                            <input type="text" id="username" name="username" autofocus placeholder="enter username" title="Username is missing" class="form-control" />
                         </div>
-                        <div>
-                            <label>Password:</label>
-                            <input type="password" id="password" name="password"  placeholder="enter password" required/>
+                        <div class="form-group">
+                            <label class="control-label">Password:</label>
+                            <input type="password" id="password" name="password"  placeholder="enter password" title="Password is missing" class="form-control"/>
                         </div>
-                        <div>
-                            <input type="button" value="Login" onclick="fnValiate()" />
+                        <div class="form-group">
+                            <input type="submit" value="Login" class="btn-green" />
                         </div>
                         <div >
                             <span id="errorMessage" style="color:red;display:none;">Invalid Credentails</span>

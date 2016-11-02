@@ -1,0 +1,252 @@
+Creating Objects in JavaScript:
+
+we can create an object in javascript in 3 ways:
+
+Using an empty {} object : 
+syntax : -
+
+var objName={};
+objName.Property1=value;
+objName.Property2=value;
+...
+...
+objName.Method1=funtion(){
+	//logic 
+	//return value;
+}
+
+
+Note:
+Here, the properties can be simple type(number, bool, string) or object type. (complex types)
+
+how do you create complex type? 
+var app={};
+app.appName="Simple App";
+app.appVersion=1.0;
+app.data=[];
+app.selectedUser={};
+app.flags={status:true, visited:false};
+app.Init=function(){	
+	//Initialization logic
+}
+app.addUser=functon(user){
+}
+
+app.updateUser=function(user){
+}
+..
+..
+
+
+Once, the object is created , you implement properties and methods in  that objeects. 
+
+Then, you can access those properties and method methods wherever you want in your application.
+
+
+We can also create an object using "new Object()".
+
+syntax : - 
+var app=new Object();
+app.appName="Simple OOP App";
+app.appVersion=1.0;
+..
+..
+
+
+===============
+Example:
+Let us do a simple application using JavaScript OOP:
+
+Name : ProductManager Application
+
+Operations:
+Can add product 
+Can update Product 
+Delete product 
+View Product based on ProductId 
+
+Steps:
+
+Create a new web Application
+	ProductManagerApp 
+
+Create the folder structure 
+	app 
+	   app.js 
+	Index.html 
+
+
+Open app.js and write your required OOP code for your application 
+
+
+
+=========================
+
+
+Creating an object using Constructor in JavaScript: 
+
+What is contructor?
+	This is a special method, which get's invoked automatically as soon as you create an objec to that constructor/class.
+	In JavaScript, we use functions as constructors.
+	If you want to add properties /methods to the constructor , we use "this" pointer.
+If you want to invoke the methods and initialize the data automatically as soon as you create an instance , then we can use Constructors.
+
+
+syntax : -
+function ContructorName(arg1,arg2,arg3,...){
+	this.Property1=arg1;	
+	this.Property2=arg2;
+	this.Property3=arg3;
+	..
+	..
+	..
+
+	this.Method1=functiion(){
+	}
+
+
+	this.Method2=function(){
+	}
+	function init(){
+	//logic 
+	}
+
+	init();
+	
+}
+
+function ProductModel() {
+            this.data = [];
+
+            var self = this;
+            function init() {
+                self.data = [{id:1,name:'satya'}, {id:2,name:'john'}];
+            }
+            init();
+        }
+
+      
+
+
+        window.onload = function () {
+            var app = new ProductModel();
+            fillGrid(app.data);
+            
+          
+        }
+        
+
+        function fillGrid(data) {
+            alert(data.length);
+        }
+
+
+  function Person(firstName, lastName) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.getfullName = function () {
+                return this.firstName + " " + this.lastName;
+            }
+        }
+
+        var person = new Person('satya', 'p');
+        console.log(person.getfullName());
+
+
+
+
+
+e.g.
+
+function PersonModel(firstName,lastName,email){
+	this.firstName=firstName;
+	this.lastName=lastName;
+	this.email=email;
+
+	 var data=[];
+	var self=this;
+	function init(){
+		
+	self.data.push({fistName:'scott',lastName:'John',email:'scott@gmail.com'});
+	}
+	init();
+	this.getData=function(){
+		return self.data;
+	}
+}
+
+How to create instance for the constructor:
+var person=new Person('satya','sat','sat@gmail.com');
+alert(person.firstName);
+alert(person.lastName);
+alert(person.email);
+alert(person.getData()[0].lastName);
+
+
+====================
+var productManagerApp = {};
+productManagerApp.appName = "Product Manager Application";
+productManagerApp.version = 1.0;
+productManagerApp.ProductModule =function(){
+   var data= [];
+   var  selectedProduct= {};
+
+ function init() {       
+       data.push({ productId: 101, productName: 'IPod', productPrice: 100 });
+    }
+init();
+
+    this.addProduct= function (product) {
+     data.push(product);
+       
+    }
+    this.editProduct=function (productId) {
+    }
+
+    this.updateProduct= function (product) {
+    }
+
+   this. deleteProduct= function (productId) {
+       
+        for (var i = 0; i <data.length; i++) {
+            if (productId ==data[i].productId) {
+                      data.splice(i, 1);
+                break;
+            }
+        }
+    }
+    this.getProducts= function () {
+        return data;
+    }
+    this.getProductById=function (productId) {
+        for (var i = 0; i < data.length; i++) {
+            if (productId ==data[i].productId) {
+               selectedProduct =data[i];
+                break;
+            }
+        }
+        return selectedProduct;
+    }
+this. flags= {isAdding:true,isEditing:false,isViewing:false}
+
+}
+
+var prodApp=new productManagerApp.ProductModule();
+var result=prodApp.getProducts();
+prodApp.addProduct();
+..
+..
+
+
+var pApp=new ............();
+
+=============
+In the constructor, we can create private/public members
+
+for public members : we can use "this". 
+for private members: we don't need "this".
+
+if it is public member, we can access outside constructor using the instance of the constructor.
+If it is private, we can't access outside constuctor.
+but we can use inside the constructor.
+===========

@@ -1,0 +1,38 @@
+﻿/* Styles for page Header*/
+        #pageHeader{
+            height:200px;
+            border:1px solid #c0ed96;
+            border-radius:10px;
+            margin:10px;
+            padding:10px;
+
+           background-image:url('/Content/Images/calendarbg.jpg');
+           background-repeat:repeat-x;
+           
+           
+        }
+
+        #pageHeader #header h1{
+            text-align:center;
+            font-family:cursive;
+            font-style:italic;
+            text-shadow:20px 10px 5px #1b9ecb;
+            color:rgba(100%,150%,200,.7);
+        }
+        #topMenu ul{
+            float:right;
+        }
+        #topMenu ul li{
+            list-style:none;
+            display:inline;
+        }
+
+        #topMenu ul li a{
+            text-decoration:none;
+            text-transform:uppercase;
+        }
+
+        #topMenu ul li a:hover{
+            text-decoration:underline;
+            font-size:16px;
+        }

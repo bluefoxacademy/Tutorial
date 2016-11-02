@@ -8,6 +8,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="Content/Styles/site.css" />
     <script src="App/app.js"></script>
+    <script src="App/productApp.js"></script>
+    <script>
+        function getProducts() {
+            setTimeout(loadGrid, 1000);
+        }
+
+        function loadGrid() {
+            var prodObj = new productApp.ProductRepository();
+            var data = prodObj.data;
+            var table = "<table border='1'><tr><th>Id</th><th>Name</th><th>Price</th><th>Action</th></tr>";
+            data.forEach(function (entry) {
+                var tr = "<tr><td>" + entry.Id + "</td><td>" + entry.Name + "</td><td>" + entry.Price + "</td><td><a href=''>Edit</a>|<a href=''>View</a>|<a href=''>Delete</a></td></tr>";
+                table += tr;
+            });
+            table += "</table>";
+            document.getElementById("grid").innerHTML = table;
+        }
+
+
+        function clock() {
+            var today = new Date();
+            document.getElementById("spnTime").innerHTML = today.toLocaleTimeString();
+        }
+
+        window.onload = function () {
+            clock();
+            setInterval(clock, 1000);
+        }
+    </script>
+
+    <style>
+        .blueButton{
+            background-color:blue;
+        }
+    </style>
 </head>
 <body>
     <div id="container">
@@ -59,16 +94,21 @@
             </nav>
         </section>
         <section id="maincontent">
-            <section id="contentMainHeader">
-                <header><h1>Conent Main header...</h1></header>
-            </section>
             <section id="contentHeader">
-                <header><h3>Main content goes...</h3></header>
+                <header>Main content goes...</header>
+            </section>
+            <section id="timerSection">
+                <div id="timer" style="float:right;background-color:gray;color:red;">
+                        <span id="spnTime"></span>
+                </div>
             </section>
             <section id="content">
-               <h4>  Page content goes here...</h4>
-                  
-               
+               <div id="grid" class="blueButton" >
+
+               </div>
+                <div>
+                    <button type="button" onclick="getProducts()" class="blueButton">Get Products</button>
+                </div>
             </section>
         </section>
 

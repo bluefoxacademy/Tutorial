@@ -1,0 +1,183 @@
+Creating objects:
+
+function TestClass(){
+	this.Property=value;
+	this.testMethod=function(){	
+	}
+
+}
+var obj=new TestClass();
+	obj.Property
+	obj.testMethod();
+var user={Id:1,Name:'sdatya'};
+==============================
+
+JavaScript:
+
+	Reset Password:
+
+
+
+	You find the user with logged username
+
+	Replace that users' password with new password.
+===========================================================
+
+JavaScript:
+	JavaScripts basics
+	validation 
+	DOM manipulatio
+			HTML manipulation:
+				.innerHTML
+				.innerText
+			Form Manipulation:
+				.value (input)
+				.checked (radiobutton, checkbox)
+
+
+			DropDownList
+				options
+				options[index]
+					value
+					text
+
+e.g.
+	<select id="ddlOptions" name="ddlOptions">
+		<option value="0">Please Select</option>
+		<option value="1">Male</option>
+		<option value="2">Female</option>
+	</select>
+
+
+	var genders=document.getElementById("ddlOptions");
+		genders.options[genders.selectedIndex].value;
+		genders.options[genders.selectedIndex].text;
+
+================
+
+Images:
+	<img src="logo.png" alt="" id="logoImage"/>
+
+	document.getElementById("logoImage").src="newLogo.png";
+
+=============================================
+
+setInterval()
+clearInterval()
+
+setTimeout()
+clearTimeout()
+
+
+setTimeout();
+	It is for executing some task(function), with some delay.
+
+
+clearTimeout();
+	It is to stop the delay.
+e.g.g
+
+
+	var t=setTimout(function(){alert('load after 1 sec');},10000);
+
+
+	clearTimeout(t);
+
+
+
+Note:
+This setTimeout() will invoke the given task(function) with some delay, but only once.
+
+
+
+
+setInterval()
+	It is simlar to setTimeout(), but it can invoke the given task again and again with given interval.
+
+	To stop it, we have to use clearInterval() explicitly.
+==================
+
+Task : 
+	Take list of Images
+	Implement Slide show for these images.
+
+
+e.g.
+	Show the first image intiatially.
+	then,for every second change to next image.
+=========================================================================
+Today's topic is : CSS
+
+
+To work with CSS:
+
+	* The element to whom we are applying CSS
+
+	* What style(rule) you are applying
+
+	* What value for that style(rule).
+
+e.g.
+	<button type="button" id="btnSubmit">click Me</button>
+
+
+	#btnSubmit{
+		background-color:"blue";
+	}
+============
+<div>
+<section>
+<nav>
+<aside>
+..
+	These are for creating blocks(these separated with line breaks).
+
+
+<span>
+	This is for inline block.
+
+============
+
+position:
+
+static (This is the default flow)
+	Here, the elements goes one after other.
+
+
+fixed
+	Here, we can choose the fixed position.
+		e.g.
+			top left
+			top right
+			left bottom
+			bottom right
+
+			center
+
+e.g.
+	<div id="topNav">
+	</div>
+
+
+	#topNav{
+		position:fixed;
+		top:0px;
+		left:0px;
+	}
+
+absolute
+	This is for placing the element wherever you need as per the parent coordinate system.
+	The the parent is (whole document/page).
+
+
+relative:
+	This is similar to absolute.
+	but,the position is with respect to that current elements parent element.
+====================================
+
+
+
+
+
+
+				

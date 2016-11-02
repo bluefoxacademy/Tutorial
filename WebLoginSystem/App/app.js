@@ -56,7 +56,22 @@ myApp.UserModule = {
             this.data.push(newUser);
             localStorage.userData = JSON.stringify(this.data);
         }
+    },
+    resetPassword: function (username, oldPassword, newPassword) {
+        if (localStorage.userData != null && localStorage.userData != undefined) {
+            this.data = JSON.parse(localStorage.userData);
+        }
+        for (var i = 0; i < this.data.length; i++) {
+            if (this.data[i].username == username && this.data[i].password == oldPassword) {
+                this.data[i].password = newPassword;
+                break;
+            }
+        }
+        localStorage.userData = JSON.stringify(this.data);
     }
+
+
+
 };
 
 

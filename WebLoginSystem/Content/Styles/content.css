@@ -1,0 +1,90 @@
+﻿  body{
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                background-color:#b5b5b5;
+        }
+        #container{
+            border:1px solid #000000;
+            border-radius:5px;
+            margin:5px;
+            padding:5px;
+
+            /*background-color:#f1f7d0;*/
+            /*background-image:url('pageBackground.png');*/
+         
+              background-image:url('/Content/Images/bluesky-bg.jpg'); 
+              background-attachment:scroll;  
+        }
+
+        #sidebar{
+            float:left;
+            width:30%;
+            margin:10px;
+            padding:10px;
+            border:1px dotted #e29b10;
+            border-radius:10px;
+            min-height:500px;
+        }
+
+        #sideMenu ul li{
+            list-style-type:circle;
+        }
+        #maincontent{
+            float:right;
+            width:60%;
+            margin:10px;
+            padding:10px;
+            border:1px solid #b8e944;
+            border-radius:10px;
+            min-height:500px;
+
+        }
+
+       
+
+        #clear{
+            clear:both;
+        }
+
+
+        #loggedPanel{
+            float:right;
+        }
+
+
+
+        .btn-green{
+            background-color:green;
+            color:white;
+            font-size:x-large;
+            font-family:cursive;
+            font-weight:bold;
+        }
+
+
+        a{
+            font-weight:bold;
+            font-size:large;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+
+        h1,h2,h3,h4,h5,h6{
+            font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+            font-weight:bold;
+        }
+
+        #contentMainHeader header h1{
+            font-family:Andalus;
+            font-style:italic;
+            font-weight:bold;
+            font-size:x-large;
+        }
+
+
+        /*body{
+            background-image:url('/Content/Images/bluesky-bg.jpg');
+        }*/
+
+        #contactContent{
+            white-space:pre;
+        }

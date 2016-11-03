@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery</title>
+	<meta charset="utf-8" />
+    <script src="App/Libs/jquery-3.1.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#registerPanel").hide();
+
+            $("#registerLink").click(function () {
+                $("#loginPanel").slideUp(5000);
+                $("#registerPanel").slideDown(5000);
+            });
+
+            $("#loginLink").click(function () {
+                $("#registerPanel").slideUp(1000);
+                $("#loginPanel").slideDown(1000);               
+            });
+        });
+
+        $(document).ready(function () {
+            $("fieldset").css({ "width": "500px", "height": "200px" });
+            $("form").css({ "width": "300px", "height": "200px" });
+
+            $(":text").css({ "width": "200px", "background-color": "blue" });
+            $("button").css("color", "blue");
+            $(":button").css("color", "blue");
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <div id="loginPanel">
+            <div>
+                <fieldset>
+                    <legend>Login</legend>
+                    <form id="loginForm" name="loginForm">
+                        <div>
+                            <label for="username">Username:</label>
+                            <input type="text" name="username" id="username" />
+                        </div>
+                        <div>
+                            <label for="password">Password:</label>
+                            <input type="text" name="password" id="password" />
+                        </div>
+                        <div>
+                            <button type="button">Login</button>
+                        </div>
+                        <div>
+                            <p>
+                                If you have not registered? Please <a href="javascript:void(0)" id="registerLink">Register</a> here.
+                            </p>
+                        </div>
+                    </form>
+                </fieldset>
+
+                
+            </div>
+        </div>
+        <div id="registerPanel">
+            <fieldset>
+                <legend>Register</legend>
+                <form id="registerPanel" name="registerPanel">
+                    <div>
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" id="username" />
+                    </div>
+                    <div>
+                        <label for="password">Password:</label>
+                        <input type="text" name="password" id="password" />
+                    </div>
+                    <div>
+                        <button type="button">Register</button>
+                    </div>
+                    <div>
+                        <p>
+                            If you have already registered? Please <a href="javascript:void(0)" id="loginLink">Login</a> here.
+                        </p>
+                    </div>
+                </form>
+            </fieldset>
+        </div>
+    </div>
+</body>
+</html>

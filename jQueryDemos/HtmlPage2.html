@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="App/Libs/jquery-3.1.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            alert('jquery load 1');
+        });
+        window.onload = function () {
+            alert("on load 1");
+        }
+
+        window.onload = function () {
+            alert("on load2");
+        }
+
+        $(document).ready(function () {
+            alert('jqueery load 2');
+        });
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

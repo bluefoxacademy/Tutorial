@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Demo</title>
+	<meta charset="utf-8" />
+    <script src="App/Libs/jquery-3.1.1.min.js"></script>
+    <script>
+        //$(document).ready(function () {
+        //    $("#btnSubmit").click(function () {
+        //        var username = $("#username").val();
+        //        $("#message").html("<h1>Hello.." + username + "</h1");
+        //    });
+        //});
+
+        //$(document).ready(load);
+        //$(function () { load();});
+        $(load);
+        function load() {
+            $("#btnSubmit").click(greetUser);
+        }
+
+        function greetUser() {
+            var username = $("#username").val();
+                    $("#message").html("<h1>Hello.." + username + "</h1");
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <form>
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username"/>
+            </div>
+            <div>
+                <button type="button" id="btnSubmit">Submit</button>
+            </div>
+            <div>
+                <span id="message"></span>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

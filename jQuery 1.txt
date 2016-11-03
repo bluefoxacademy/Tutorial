@@ -1,0 +1,161 @@
+View:
+	sessionStorage
+
+
+var tr="..........<a href='javascript:void(0)' onclick='viewProduct('+entry.id+")'>view</a>"
+
+<a href="javascript:void(0)" onclick="viewProduct(1)">View</a>
+
+
+<script>
+	function viewProduct(id){
+		sessionStorage.productId=id;
+		document.location.href="productDetails.html;
+	}
+</script>
+
+
+productDetails.html
+
+
+<script>
+	window.onload=function(){
+		if(sessionStorage.productId!=null && sessionStorage.productId!=undefined)
+		{
+			var id=sessionStorgae.productId;
+		}
+	}
+</script>
+=======================================
+
+
+CSS 2 :
+	creating styles
+
+	linking styles to the HTML page
+
+
+	CSS properties 
+
+
+	Selectors 
+
+
+Seudo classes for selectors:
+
+	:first
+	:first-child
+	:last
+	:last-child
+
+	:text
+	:checked
+	:button
+	
+
+
+
+IE: 
+	-ms-
+	
+firefox:
+	-moz-
+
+chrome & safari:
+	-webkit-
+
+Opera:
+	-o-
+
+
+e.g.
+	#div1{
+
+		border-radius:10px;
+		-ms-border-radius:10px;
+		-o-border-radius:10px;
+		-webkit-border-radius:10px;
+		-moz-border-radius:10px;
+	}
+=============================
+CSS preprocessors:
+	LESS
+	SASS
+======================
+@globalColor:blue;
+
+variables.less
+	@globalColor:blue;
+
+
+header.less
+	h1{
+		background-color:@globalColor;
+	}
+
+=======================
+Let us work jQuery:
+
+Let us see the problems with JavaScript:(as a developer)
+
+* we need to write the code by yourself for everything
+* It does not include much inbuilt fuctions.
+* It requires repeated code.
+* It's hard to manipulate DOM.
+* it's hard to manipulate CSS.
+* It's very complex to make AJAX in javascript.
+* It's very complex in event handling.
+
+
+we need some API or library to do the javascripts tasks easier.
+
+e.g.
+	jQuery 
+	jQuery UI
+	jQuery Mobile 
+	
+	underscore.js ( Helper methods for javascript: search, sort, filter,..)
+
+	moment.js (helper methods for date manipluation)
+
+	prototype.js ( Helper methods for DOM, CSS Manipulation)
+
+==============================================
+
+jQuery (.js)
+
+Download jQuery:
+	download from browser 
+
+
+	Or you can use build tools for downloading Front end API's
+
+e.g.
+	Bower
+
+
+	NPM (Node)
+
+	
+
+
+
+
+==================
+ready() : can be written multiple times. all will be executed.
+
+window.onload() : It loads only once per the page.
+
+
+seudo classes:
+
+:text
+
+
+<button></button>
+
+<input type="button"/>
+
+
+
+

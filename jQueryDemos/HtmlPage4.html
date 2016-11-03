@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="App/Libs/jquery-3.1.1.min.js"></script>
+    <style>
+        dt{
+            font-weight:bold;
+            background-color:#8de24c;
+            color:#ff6a00;
+            margin:10px;
+            padding:10px;
+            line-height:20px;
+        }
+
+        dd{
+            font-family:cursive;
+            font-size:small;
+            background-color:#df7ce2;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            $("dd").hide();
+        });
+
+
+        $(document).ready(function () {
+            $("dt").click(function () {
+                $(this).next().toggle(1000);
+            })
+        });
+
+
+    </script>
+</head>
+<body>
+    <dl>
+        <dt>jQuery</dt>
+        <dd>jQuery API for JavaScript</dd>
+
+        <dt>Angular</dt>
+        <dd>AngularJS for JavaScript MVC framework</dd>
+
+        <dt>Protractor</dt>
+        <dd>AngularJS Automation Test for JavaScript MVC framework</dd>
+    </dl>
+</body>
+</html>

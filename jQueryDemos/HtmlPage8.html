@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="App/Libs/jquery-3.1.1.min.js"></script>
+    <script>
+        var arr = [1, 2, 3, 4];
+        var names = ["james", "john", "satya"];
+        var emps = [{ Id: 101, Name: 'satya', Job: 'Trainer' }, { Id: 102, Name: 'James', Job: 'Dev' }];
+        var emplyee = {employeeId:101,employeName:'satya',job:'manager'};
+
+        $(function () {
+            $.each(arr, function (index, value) {
+                alert("The Index:" + index + " the value:" + value);
+            });
+
+            $.each(names, function (index, value) {
+                alert("The Index:" + index + " the value:" + value);
+            });
+
+            $.each(emps, function (index, value) {
+                alert("Entry" + index);
+                //alert(value.Id + " " + value.Name + " " + value.Job);
+                $.each(value, function (prop,value) {
+                    alert(prop + " " + value);
+                });
+            });
+
+            $.each(emplyee, function (property, value) {
+                alert(property + " " + value);
+            });
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

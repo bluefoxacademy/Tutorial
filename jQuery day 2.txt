@@ -1,0 +1,137 @@
+jQuery:
+	jQuery syntax
+
+	jQuery selectors 
+
+
+	jQuery basic functions
+
+
+
+$():
+
+	$("div").html();
+
+
+Prototype.js
+
+
+
+for(var i=0;i<10;i++){
+}
+====================
+Event handling in javascript:
+
+<script>
+//define funcdtions 
+</script>
+
+
+
+<body>
+	<element onclick="foo()"></element>
+</body>
+
+e.g.
+	onload
+	onsubmit
+	onunload
+	onclick
+	ondblclick
+	onreset
+	onChange
+	OnSelect
+	onblur
+	onfocus
+	..
+	..
+
+<button onclick="foo()">clic Me</button>
+
+how to add events  to the elements dynamically?
+
+In javascript:
+
+addEventListener 
+
+removeEventListener
+
+
+e.g.
+<head>
+	<script>
+		windload.onload=function(){
+
+		var eleSubmit=document.getElementById("btnSubmit");
+		eleSubmit.addEventListener("click",foo);
+
+		eleSubmit.addEventListener("dblClick",function(){//task});
+		}
+
+
+		function foo(){
+			//task 
+		}
+	</script>
+</head>
+<body>
+	<button id="btnSubmit" type="button">Submit</button>
+</body>
+
+
+In jQuery:
+	we have direct functions for event handlings.
+
+e.g.
+	ready()
+	click()
+	dblclick()
+	blur()
+	focus()
+	mouseOver()
+	mouveMove()
+	..
+	..
+
+e.g.
+<button id="btn1" type="button">click Me</button>
+
+
+$("#btn1").click(function(){
+	//task 
+});
+
+
+Note:
+If you want to attach the same event for different elements, then we can use "
+
+on()/off()
+bind()/unbind()
+
+live()//outdated....
+
+
+
+using this : on/off OR bind()/unbind() we can also attach multiple events to the same element and with the same callback function.
+
+
+
+<a href="javascript:void(0)" id="a1">click Me</a>
+
+
+$("#a1").bind("click mouseover",function(){
+	$(this).css("color","red");
+});
+
+
+
+$("#a1").unbind();//detaches all events
+
+
+$("#a1").unbind("click"); // it detaches only "click" 
+
+========================
+
+Task:
+	
+

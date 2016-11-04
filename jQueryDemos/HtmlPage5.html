@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="App/Libs/jquery-3.1.1.min.js"></script>
+    <script src="App/Libs/prototype.js"></script>
+   <script>
+       var jq=jQuery.noConflict();
+       jq(document).ready(function () {
+           jq("#div1").click(function () {
+               jq(this).hide(5000, function () { jq(this).show(1000);});
+           })
+
+           jq("#div2").click(function () {
+               $("div2").hide(); //prototype
+           });
+          
+       });
+   </script>
+</head>
+<body>
+
+    <div id="div1">
+        <span>click me</span>
+    </div>
+    <div id="div2">
+        <span>click me too</span>
+    </div>
+
+</body>
+</html>

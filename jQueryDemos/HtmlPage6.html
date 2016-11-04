@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="App/Libs/jquery-3.1.1.min.js"></script>
+    <script src="App/Libs/jquery-ui.js"></script>
+    <style>
+        #block1{
+            position:absolute;
+            top:0px;
+            left:0px;
+            height:100px;
+            width:100px;
+            background-color:#808080;
+        }
+
+        #block2{
+            position:absolute;
+            left:100px;
+            top:100px;
+            border:2px solid #ffd800;
+            border:5px;
+            height:200px;
+            width:200px;
+
+            background-color:#00ff90;
+        }
+    </style>
+
+    <script>
+        $(function () {
+            $("#block1").click(function () {
+                var top = 50;
+                var left = 50;
+                for (; top <= 500; top += 50) {
+                    left += 10;
+                    var size = top + left;
+                    $(this).animate({ "height": size+"px", "width":size+ "px", "top":top+ "px", "left": left+"px" }, 1000);
+                }
+                
+               
+            });
+
+            $("#block2").click(function () {
+                for (var i = 10; i <= 100; i+=10) {
+                    $(this).animate({ "border-radius": i + "px" }, 1000);
+                    $(this).animate({ "height": i + "px" }, 1000);
+                    $(this).animate({ "background-color": "#1100"+i  }, 1000);
+
+                }
+                
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="block1">
+
+    </div>
+
+    <div id="block2">
+
+    </div>
+</body>
+</html>

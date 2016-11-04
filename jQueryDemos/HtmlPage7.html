@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="App/Libs/jquery-3.1.1.min.js"></script>
+
+    <style>
+        .blue{
+            background-color:blue;
+        }
+
+        .gold{
+            background-color:gold;
+        }
+
+        .success{
+            background-color:green;
+        }
+
+        .failure{
+            background-color:red;
+        }
+
+        .average{
+            background-color:gold;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("#a1").click(function () {
+                if($(this).hasClass("blue")){
+                    $(this).removeClass("blue");
+                    $(this).addClass("gold");
+                } else if ($(this).hasClass("gold")) {
+                    $(this).removeClass("gold");
+                    $(this).addClass("blue");
+                }
+            })
+        });
+    </script>
+    <script>
+        var arr = [{ Id: 1, Name: 'john', Salary: 1000 }, { Id: 1, Name: 'john', Salary: 500 }, { Id: 1, Name: 'john', Salary: 300 }, { Id: 1, Name: 'john', Salary: 1500 }, { Id: 1, Name: 'john', Salary: 510 }];
+
+        $(function () {
+            var table="<table border='1.0'><tr><th>Id</th><th>Name</th><th>Salary</th></tr>";
+
+            arr.forEach(function (entry) {
+                if (entry.Salary <= 300) {
+                    var className = 'failure';
+                }else if(entry.Salary>300 && entry.Salary<1000){
+                    className = "Average";
+                } else {
+                    className = "success";
+                }
+
+                var tr = "<tr class='" + className + "'><td>" + entry.Id + "</td><td>" + entry.Name + "</td><td>" + entry.Salary + "</td></tr>";
+               // $(tr).addClass()
+                table += tr;
+            });
+            table += "</table>";
+            $("#grid").html(table);
+        });
+    </script>
+</head>
+<body>
+    <a href="javascript:void(0)" id="a1" class="blue">click Me</a>
+
+    <div id="grid">
+        
+    </div>
+</body>
+</html>

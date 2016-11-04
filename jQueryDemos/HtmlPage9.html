@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="App/Libs/jquery-3.1.1.min.js"></script>
+    <script>
+        $(function () {
+            var arr = [5, 6, 1, 7, 2, 9, 3, 6, 8, 9, 1, 8];
+
+            var result = $.grep(arr, function (n) {
+                return n != 1;
+            });
+            alert(result.join(','));
+
+            var evenSet = $.grep(arr, function (n) {
+                return n % 2 == 0;
+            });
+            alert(evenSet.join(","));
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

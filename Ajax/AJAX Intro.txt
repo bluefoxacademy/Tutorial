@@ -1,0 +1,250 @@
+Let us talk about AJAX :
+
+Asynchronous JavaScript and XML 
+
+Simple HTML Form : 
+
+<!doctype html>
+<html>
+	<head>
+		<title>sample HTML form</html>
+	</head>
+	<body>
+		<form id="form1" name="form1" action="" method="get">
+		<div>
+			<label>FirstName</label>
+			<input type="text" id="txtname" name="txtname"/> 
+		</div>
+		<div>
+			<label>Email</label>
+			<input type="text" id="txtemail"  name="txtemail"/>
+		</div>
+
+		<div>
+			<input type="submit" value="submit"/>
+		</div>
+		</form>
+	</body>
+</html>
+
+===========
+
+What is the requirement?
+
+	* Read some part of the page using JavaScript and Submit that data to the server using JavaScript.
+	* Make request to server and get some data using JavaScript and update that data somewhere(partial) in the page.
+
+
+	* avoid using "submit" button.
+
+	* This is called as partial postback.
+	* We need to make request to server asynchronously.
+
+
+
+For this purpose, we use AJAX 
+
+
+What is an AJAX  ?
+	Asynchronous JavaScript and XML 
+
+	It is a W3C standard to make asynchronous calls using Javascript.
+
+	Using ajax we can submit the data to the server  and get the data from server using javascript
+
+	Using AJAX, we can invoke services.
+
+What is the service here? 
+	Service means web service.
+	Web services are web callable methods.
+	That means, the web service does not include UI.
+	The web services will just return some data and accept some data(post).
+	The web service will return either XML or JSON formats.
+	Here, the I/O is done using a standard format (XML or JSON).
+
+	e.g.
+	XML Web Service ( SOAP request)
+	RESTful web Service( Http request)
+
+e.g.
+	.NET 
+		ASMX services
+		WCF web Services
+		WCF RESTful services
+		Web API methods 
+		
+	Java :
+		XML web services 
+		Servlets 
+		SPRING MVC RESTful services
+
+We can use AJAX to make calls to  any of these services.
+
+We can consume the data from these services using XmL or JSON format.
+=========================
+
+What is the difference between Web Service and dynamic web application?
+	IN web service:
+		It includes only busiiness logic methods (web methods)
+		It does not include UI 
+
+
+	Dynamic web application
+		It includes business logic methods(web methods)
+		It includes the UI
+		web methods and UI are tightly integrated.
+
+
+That is the reason, we are working with loose coupling using AJAX.
+=======================================================
+
+How AJAX works? 
+	
+	AJAX is a part of JavaScript.
+	We can make AJAX calls using Javascript. 
+
+	To create AJAX calls' ,we need some specifications : 
+
+	* XMLHttpRequest object 
+	* XMLHTTP protocol 
+	* JavaScript 
+	* DOM 
+	* XML or JSON 
+
+XMLHttpRequest Object:
+	It is a builtin JavaScript object. 
+	It is a core of AJAX.
+	It is used to create proxy between the web server and web client.
+	Using this "XMLHttpRequest" object, we can create  proxy and then we can make calls to the web services.
+
+client Request(HTML Page) <=> Proxy(XMLHttpRequest) <=> Web SErver <=> Web Services <=> Database 
+
+
+
+XMLHTTP : 
+	It is a simple http protocol.
+	It is used internally in XMLHttpRequest for communication.
+
+
+JavaScript:
+	we use for DOM manipulation 
+	READT/WRITE 
+
+DOM :
+	for creating document elements (form) 
+
+XML/JSON : 
+	These are standard data exchange formats .
+	We always send /receive data from/To service using XML /JSON format.
+
+
+How to create AJAX call using JavaScript:
+
+syntax : -
+
+var proxy=null;
+
+if(window.XMLHttpRequest){
+	proxy=new XMLHttpRequest();
+}else{
+	proxy=new ActiveXObject("Microsoft.XMLHTTP");
+}
+proxy.onreadystatechange=function(){
+	if(proxy.readyState==4){
+		var response=proxy.responseText;
+	}
+}
+
+proxy.open("RequestType","URL",true/false);
+proxy.send("send some data");
+
+
+Http methods:
+	GET
+	POST
+	DELETE
+	PUT
+
+
+
+
+
+
+
+
+
+
+Create a simple RESTful services using SPRING MVC 
+
+e.g.
+Need CRUD operations UserProfiles.
+
+
+We need an entity class: UserProfile 
+
+public class UserProfile 
+{
+	public int Id;
+	public string Username;
+	public string Password; 
+	public string Email;
+	public string Gender;
+	public string Mobile;
+}
+
+
+Now, you create a RESTful and add 4/5 methods for CRUD Operations 
+
+e.g.
+public class UsersService 
+{
+	//configure with post 
+	public void AddUser(UserProfile entity)
+	{
+		//write some code to add a new user to the database
+	}
+
+	//configure with PUT 
+	public void UpdateUser(UserProfile entity)
+	{
+		//write some code to update the existing user with given user 
+	}
+
+	//configure with DELETE
+	public void DeleteUser(int userId)
+	{
+		//write  some code to deleete the user as per given ID 
+	}
+
+	//configure with GET /id 
+	public UserProfile GetUserById(int userId)
+	{
+		//find the user as per userId
+		return that user;
+	}
+
+	//configure with GET 
+	public List<UserProfile> GetUsers()
+	{
+		return all the users 
+	}
+}
+
+
+
+
+https://docs.oracle.com/javaee/6/tutorial/doc/gilik.html( for Java RESTful)
+
+
+
+
+
+
+
+
+
+
+
+
+
+

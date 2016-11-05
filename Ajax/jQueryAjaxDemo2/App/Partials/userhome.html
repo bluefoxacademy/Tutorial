@@ -1,0 +1,22 @@
+﻿<script>
+    $(document).ready(function () {
+        if (sessionStorage.loggedUsername != null && sessionStorage.loggedUsername != undefined) {
+            $("#spnUsername").html(sessionStorage.loggedUsername);
+            $("#loginLink").hide();
+            $("#registerLink").hide();
+            $("#logoutLink").show();
+            $("#logoutLink").click(function () {
+                sessionStorage.clear();
+                $("#loginLink").show();
+                $("#registerLink").show();
+                $("#maincontent").load("App/Partials/login.html");
+                $("#logoutLink").hide();
+            });
+        }
+
+        
+    });
+</script>
+<h1>
+    Hello..User <span id="spnUsername"></span>
+</h1>

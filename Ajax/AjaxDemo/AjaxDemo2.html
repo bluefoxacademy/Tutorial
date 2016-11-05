@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script>
+        window.onload = function () {
+            var url = "http://jsonplaceholder.typicode.com/posts";
+            var http = null;
+            if (window.XMLHttpRequest) {
+                http = new XMLHttpRequest();
+            } else {
+                http = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            http.onreadystatechange = function () {
+                if (http.readyState == 4) {
+                    var response = http.responseText;
+                    var resObj = JSON.parse(response);
+                    var table = "<table border='1'><tr><td>UserIdC</td><td>Id</td><td>title</td><td>body</td></tr>";
+                    resObj.forEach(function (entry) {
+                        var tr = "<tr><td>" + entry.userId + "</td><td>" + entry.id + "</td><td>" + entry.title + "</td><td>" + entry.body + "</td></tr>";
+                        table += tr;
+                    });
+                    table += "</table>";
+                    document.getElementById("grid1").innerHTML = table;
+                }
+            }
+
+            http.open("get", url, true);
+            http.send(null);
+        }
+
+       
+    </script>
+</head>
+<body>
+    <div id="grid1">
+
+    </div>
+</body>
+</html>

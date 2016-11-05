@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="App/Libs/jquery-3.1.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var url = "http://jsonplaceholder.typicode.com/posts";
+            $.get(url).then(function (data) {
+                var table = "<table border='1'><tr><td>UserIdC</td><td>Id</td><td>title</td><td>body</td><td>Actions</td></tr>";
+                data.forEach(function (entry) {
+                    var tr = "<tr><td>" + entry.userId + "</td><td>" + entry.id + "</td><td>" + entry.title + "</td><td>" + entry.body + "</td><td><a href='javascript:void(0)' onclick='viewPost("+entry.id+")'>View</a></td></tr>";
+                    table += tr;
+                });
+                table += "</table>";
+                document.getElementById("grid1").innerHTML = table;
+            }, function (respose) { console.log(respose); });
+
+
+            
+        });
+        function viewPost(id) {
+            var url = "http://jsonplaceholder.typicode.com/posts/" + id;
+            $.get(url).then(function (data) {
+                $("#postDetails").show();
+                $("#spnUserId").html(data.userId);
+                $("#spnId").html(data.id);
+                $("#spnTitle").html(data.title);
+                $("#spnBody").html(data.body);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="grid1">
+
+    </div>
+    <div id="postDetails" style="display:none;">
+        <h3>Post Details</h3>
+        <div>
+            <label>UserID:<span id="spnUserId"></span></label>
+        </div>
+        <div>
+            <label>Id:<span id="spnId"></span></label>
+        </div>
+        <div>
+            <label>title: <span id="spnTitle"></span></label>
+        </div>
+        <div>
+            <label>body: <span id="spnBody"></span></label>
+        </div>
+    </div>
+</body>
+</html>

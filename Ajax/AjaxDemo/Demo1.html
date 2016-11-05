@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <style>
+        #timer{
+            float:right;
+            background-color:#8fd7c8;
+            font-size:x-large;
+            color:#808080;
+        }
+    </style>
+    <script>
+        function clock() {
+            var today = new Date();
+            document.getElementById("spnTime").innerHTML = today.toLocaleTimeString();
+        }
+        window.onload = function () {
+            clock();
+            setInterval(clock, 1000);
+        }
+
+        function searchContent() {
+            var searchKey = document.getElementById("searchKey").value;
+            var http = null;
+            if (window.XMLHttpRequest) {
+                http = new XMLHttpRequest();
+            } else {
+                http = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            var url = "/Search.aspx?searchKey=" + searchKey;
+
+            http.onreadystatechange = function () {
+                if (http.readyState == 4) {
+                    var response = http.responseText;
+                    document.getElementById("response").innerHTML = response;
+                }
+            }
+            http.open("get", url, true);
+            http.send(null);
+
+        }
+    </script>
+</head>
+<body>
+    <div id="timer">
+        <span id="spnTime"></span>
+    </div>
+   
+    <div id="searchBlock">
+        <form id="searchForm" name="searchForm">
+            <div>
+                <label for="searchKey">Enter a Key:</label>
+                <input type="text" id="searchKey" name="searchKey"/>
+            </div>
+            <div>
+                <input type="button" value="Search" onclick="searchContent()" />
+            </div>
+            <div id="response">
+
+            </div>
+        </form>
+    </div>
+</body>
+</html>

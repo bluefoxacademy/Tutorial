@@ -1,0 +1,96 @@
+
+issue with traditional web programing:
+
+* Postback 
+
+If you submit the form, the whole form data  will be sent to the server and the server does some process , then it will reload the whole page with new content.
+
+I don't want postback.
+
+Instead, we just need to submit only the respective form content to the server, then get some dynamic data fromm serrver and update the page partially. 
+
+we should not reload whole page. 
+
+we need partial postbacks.
+
+
+how to do that? 
+
+	* Don't use submit button.(dont' submiit the form directly.)
+	*instead, you can use javascript to read the form data and then submit form data using javascript.
+
+
+
+
+To do partial postbacks , we can use AJAX.
+
+================
+
+Front -End (UI)
+	HTML Page
+	styles (css)
+	javascript(dom manipulation)
+
+
+
+Somebody created some server side program:
+	asp.net(.aspx)
+	jsp page(.jsp)
+	servlet
+	spring mvc service
+	Web service
+	RESTful service
+
+Here, we develop some service and configure some endpoint(uri) to that service.
+
+Once it is configured with some endpont and hosted in the web server, the front end developer consume from the UI applicaiton.
+
+we can configure the services with many end points ,each with differeent method.
+
+e.g	
+	get
+	post
+	delete
+	put
+	
+
+e.g.
+	http get:
+	
+		http://www.demoservice.com/posts
+
+	If you make request to this service, you get some data(raw data)
+	The data can be in either in XML or JSON format.
+
+
+
+
+
+Server Side (Back-end Program)
+
+
+
+Note:
+	as a UI developer ,we make use of AJAX to make calls to service(RESTful service).
+	get some data, and show on the UI.
+
+
+e.g.
+http://jsonplaceholder.typicode.com/posts
+
+================
+
+JSON.parse()  : JSON to JavaScript Object
+JSON.stringify() : JavaScript object to JSON
+
+==========
+Let us create Single Page Application using jQuery and AJAX 
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script>
+    function clock() {
+    var today = new Date();
+    document.getElementById("spnTime").innerHTML = today.toLocaleTimeString();
+    }
+    window.onload = function () {
+    clock();
+    setInterval(clock, 1000);
+
+    var url = "http://jsonplaceholder.typicode.com/posts";
+    var http = null;
+    if (window.XMLHttpRequest) {
+        http = new XMLHttpRequest();
+    } else {
+        http = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    http.onreadystatechange = function () {
+        if (http.readyState == 4) {
+            var response = http.responseText;
+            var resObj = JSON.parse(response);
+            var table = "<table border='1'><tr><td>UserIdC</td><td>Id</td><td>title</td><td>body</td></tr>";
+            resObj.forEach(function (entry) {
+                var tr = "<tr><td>" + entry.userId + "</td><td>" + entry.id + "</td><td>" + entry.title + "</td><td>" + entry.body + "</td></tr>";
+                table += tr;
+            });
+            table += "</table>";
+            document.getElementById("grid1").innerHTML = table;
+        }
+    }
+
+    http.open("get", url, true);
+    http.send(null);
+    }
+
+    function searchContent() {
+    var searchKey = document.getElementById("searchKey").value;
+    var http = null;
+    if (window.XMLHttpRequest) {
+    http = new XMLHttpRequest();
+    } else {
+    http = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    var url = "/Search.aspx?searchKey=" + searchKey;
+
+    http.onreadystatechange = function () {
+    if (http.readyState == 4) {
+    var response = http.responseText;
+    document.getElementById("response").innerHTML = response;
+    }
+    }
+    http.open("get", url, true);
+    http.send(null);
+
+    }
+    </script>
+</head>
+<body>
+    <div id="timer">
+        <span id="spnTime"></span>
+    </div>
+
+    <div id="searchBlock">
+        <form id="searchForm" name="searchForm">
+            <div>
+                <label for="searchKey">Enter a Key:</label>
+                <input type="text" id="searchKey" name="searchKey" />
+            </div>
+            <div>
+                <input type="button" value="Search" onclick="searchContent()" />
+            </div>
+            <div id="response">
+
+            </div>
+        </form>
+    </div>
+
+
+    <div id="grid1">
+
+    </div>
+</body>
+</html>

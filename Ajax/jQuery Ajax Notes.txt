@@ -1,0 +1,508 @@
+Working with AJAX : 
+
+how to interact to the server using javascript(jQuery)?
+
+In case of ASP.NET/JSP, we use Code files(Server side script) to interact with the server.
+
+In this case(ASP.NET/JSP server script), when you submit the page whole content of the page will be submitted to the server and new page(new content) will reloaded.
+
+This is called postback.
+For every request, whole page will be reloaded.
+
+Instead of submitting whole page to the server, we need to submit only some part of the page to the server.
+
+Insted of reloading whole page, we need to reload only some part of the page.
+
+We need partial postback.
+========================================================================
+how to do ? 
+
+This is done with the help of client side script.(JavaScript & jQuery).
+
+We need to read some part of the page and send that data to the server using javascript.
+
+We need to get some data from server using javascript, we update that data in the some part of the page.
+
+For partial postback, we need to interact to the web server using javascript.
+
+
+For this purpose, we use AJAX
+
+Using AJAX ,we can communicate to the web server using JavaScript(jQuery).
+
+
+AJAX : 
+	Asynchronous JavaScript and XML 
+
+Using AJAX, we can make request to the web methods(asp.net pages, web services, wcf services, RESTFul , WEB API) and get the response and load that results in the page. (partial updates).
+
+Here, we are making the request from javascript(client side script).
+
+
+What are the advantages of AJAX:
+
+	* Partial postback 
+	* Asynchronous call( parallel  requests)
+
+
+XMLHttpRequest : 
+	It is used to create proxy between the web browser and server(web server).
+
+XMLHTTP : 
+	It is the standard protocol for data transfer from client to server  OR server to client.
+
+XML/JSON : 
+	These are for data exchange formats. 
+
+DOM (javascript DOM or jQuery DOM): 
+	Read/Write DOM elements. 
+
+
+Syntax : for AJAX request using Basic JavaScript:
+
+var xmlhttp=null;
+if(window.XMLHttpRequest)
+{
+	xmlhttp=new XMLHttpRequest();
+}
+else
+{
+	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");	
+}
+xmlhttp.onreadystate=function(){
+
+if(xmlhttp.readyState==4)
+{
+	var response=xmlhttp.responseText;
+}}
+
+xmlhttp.open("GET/POST/PUT/DELETE",url,true/false);
+xmlhttp.send(data);
+
+
+
+Like this we need to write the script manually in Javascript for AJAX interactions.
+
+
+AJAX by using jQuery 
+=================
+Let us try to focus more on ajax using jQuery.
+
+What is Ajax? 
+	Asynchronous javascript and XML 
+	
+	* Partial postback 
+
+	* Asynchronous calls
+
+We already studied, how to create ajax calls in JavaScript.
+
+In case of JavaScript: 
+	XMLHttpRequest 
+		Create Proxy 
+		open()
+		send()
+		responseText
+		responseXML 
+
+onreadystatechange 
+
+	if(proxy.readyState==4)	
+	{
+		proxy.responseText/responseXML 
+	}
+
+
+==================
+Working with AJAX using jQuery 
+In jQuery ,we don't need to write any code by yourself.
+We can use jquery methods to make ajax call's.
+Below are some of the jQuery methods to make ajax calls:
+
+jQuery(selector).load() /$(selector).load()
+jQuery.get() /$.get()
+jQuery.post()/$.post()
+jQuery.getJSON() /$.getJSON()
+	These are high level method.
+
+jQuery.ajax() /$.ajax()
+	This is the shorthand method for all jQuery AJAX interactions.
+===============
+.load()
+	It is a built-in jquery function.
+	It is used to load any data from server and update in the HTML page without page refresh.
+	It can load text or html or any markup(.aspx) from web server.
+
+
+Syntax: -
+
+$(selector).load( url [, data ] [, complete(responseText, textStatus, XMLHttpRequest) ] 
+
+Description: Load data from the server and place the returned HTML into the matched element.
+
+
+url
+Type: String
+A string containing the URL to which the request is sent.
+
+
+data
+Type: PlainObject or String
+A plain object or string that is sent to the server with the request.
+
+
+complete(responseText, textStatus, XMLHttpRequest)
+Type: Function()
+A callback function that is executed when the request completes.
+
+
+$( "#result" ).load( "test.html");
+
+
+Note:
+JSON 
+	JavaScript Object Notation.
+	It is a collection of Property/value pair.
+	JSON is a subset of JavaScript.
+
+
+Using JSON, We can create:
+	Simple JavaScript Object 
+	Simple Array
+	Array of Objects
+	Array of Arrays
+	
+
+
+e.g. 
+
+It is a simple json object 
+
+{
+	"firstname":"scott",
+	"lastname":"allen",
+	"address":"NJ"
+}
+
+
+or 
+	var person={"firstname":"scott","lastname":"allen","address":"NJ"};
+	[javascript object]
+
+
+
+
+e.g.
+{
+	"persons":[	{"firstname":"scott","lastname":"allen","address":"NJ"},	{"firstname":"scott","lastname":"allen","address":"NJ"},	{"firstname":"scott","lastname":"allen","address":"NJ"}
+	]
+}
+
+persons[0].firstname/lastname/address
+persons[1].firstname/lastname/address
+persons[2].firstname/lastname/address
+
+
+Note:
+To iterate a collection using jquery, we use $.each() statement.
+
+syntax : -
+$.each(collection,function(key,value){
+});
+
+e.g.
+jsonArray.json
+
+[
+	{"Name":"Satys","Address":"India"},
+	{"Name":"Scott","Address":"NJ"},
+	{"Name":"James","Address":"PA"}
+	
+]
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+  <script src="jquery-2.1.1.js"></script>
+  <script src="jquery-2.1.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            $.getJSON("jsonArray.json",function(data){
+
+                //data is the response from JSON request
+	
+                var str="<table border='1'><tr><th>Name</th><th>Address</th></tr>";
+
+                $.each(data, function (key, item) {
+                    str += "<tr><td>" + item.Name + "</td><td>" + item.Address + "</td></tr>";
+                });
+	
+            str +="</table>";
+	
+            $("#content").html(str);
+        }); //close of getJSON
+
+        });
+    </script>
+</head>
+<body>
+    <div id="content">
+</div>
+</body>
+</html>
+
+$.ajax({
+
+});
+
+The same thing can be done using $.ajax() method.
+
+    $(document).ready(function(){
+
+            $.ajax({
+                url: "jsonArray.json",
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    var str = "<table border='1'><tr><th>Name</th><th>Address</th></tr>";
+
+                    $.each(data, function (key, item) {
+                        str += "<tr><td>" + item.Name + "</td><td>" + item.Address + "</td></tr>";
+                    });
+
+                    str += "</table>";
+
+                    $("#content").html(str);
+                },
+error:function(error){
+	console.log('error');
+}
+            });
+        
+
+        });
+
+
+
+jQuery.getJSON() /$.getJSON()
+=================
+
+
+Description: Load JSON-encoded data from the server using a GET HTTP request.
+
+
+jQuery.getJSON( url [, data ] [, success( data, textStatus, jqXHR ) ] )
+
+url
+Type: String
+A string containing the URL to which the request is sent.
+
+
+data
+Type: PlainObject
+A plain object or string that is sent to the server with the request.
+
+
+success( data, textStatus, jqXHR )
+Type: Function()
+A callback function that is executed if the request succeeds.
+
+
+
+Note:
+jqXHR 	
+	It is the jQuery XMLHttpRequest object. 
+	It is used for getting the response from the server by using responseText/responseXML 
+
+
+ Note: 
+	json is also use javascript object syntax(.json).
+
+
+Example:
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/jquery-1.10.2.min.js"> </script>
+    <script>
+        $(document).ready(function () {
+
+            //$.getJSON("employee.json", function (data) {
+
+            //    $.each(data, function (key, val) {
+            //        $("#result").append(key + " " + val);
+            //    });
+
+            //});
+
+            $.ajax({
+                dataType: "json",
+                url: "employee.json",
+                type: "GET",
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    $.each(data, function (key, val) {
+                        $("#result").append("<li>" + key + " " + val + "</li>");
+                    });
+                }
+            });
+
+        
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <ul id="result">
+
+        </ul>
+    </div>
+
+</body>
+</html>
+
+
+employee.json
+
+["Scott","John","Smith"]
+
+
+
+
+=======
+$.get() //Get request 
+$.load() //get request 
+$.getJSON() //get request
+$.post(url,data,callback); //POST 
+
+$.ajax({});
+	GET,POST,PUT,DELETE 
+
+
+You can invoke any web method(RESTful service) using $.ajax() method.
+
+
+A Short hand method for all ajax methods:
+
+$.ajax({});
+	Optional Properties:
+
+$.ajax({url[,settings]});
+	
+URL : is required 
+settings are optional.
+
+$.ajax({
+	url:"",
+	type:"GET/POST/PUT/DELETE",
+	async:true/false,
+	cache:true/false,
+	contentType:"application/json;charset=utf-8",
+	crossDomain:true/false,
+	data:,
+	dataType:"xml/json/script,html",
+	error:function(jqXHR,textStatus,error){},
+	success:function(data,textStatus,jqXHR){}
+});
+
+
+using this $.ajax() method, we can make request to any service.
+
+e.g.
+ASP.NET pages(.aspx) (POST/GET)
+web services (.asmx) (GET/POST)
+WCF services(.svc) (GET/POST)
+WCF RESTful services(.svc/.../) (GET/PUT/POST/DELETE)
+Web API : (MVC model) GET/PUT/POST/DELETE)
+Java Spring MVC RESTful services /Servlet methods 
+
+==========
+Lets create A simple RESTful services 
+
+You can use any backend service:
+
+Requirement:
+Create a simple RESTful for Product Manager application 
+Speficification:
+
+We need two domain classes:
+	Category 
+	Product 
+
+	public class Category 
+	{
+		public int CategoryId{get;set;}
+		public string CategoryName{get;set;}
+	}
+
+
+
+	public class Product 
+	{
+		public int ProductId{get;set;}
+		public string ProductName{get;set;}
+		public decimal UnitPrice{get;set;}
+		public int CategoryId{get;set;}
+	}
+
+
+
+as per this domain  classes, you create data access logic using any technoloy(EF code First, Hibernate)
+
+.NET:
+	C# 
+	ASP.NET Web API 
+	SQL Server
+	EF Code First 
+	CORS
+
+Java
+	Java 
+	JAX-RS 
+	Spring MVC 
+	MySQL 
+	Hibernate 
+====================
+Routes : 
+
+GET:
+	http://xxxxxxxxxxx/Categories
+GET/1 
+	http://xxxxxxx/Categories/1
+
+
+POST :
+	http://xxxxxxxxxx/Categories
+		{"CategoryId":"1", "CategoryName":"Books"}
+
+PUT :
+	http://xxxxxxxxxxxx/Categories
+		{"CategoryId":"1","CategoryName":"Pens"}
+DELETE
+	http://xxxxxxxxxx/Categories/1
+
+GET
+http://localhost:xxx/Products 
+	To get all products
+
+GET/1
+http://localhost:xxx/Products/1
+	To get product by id 
+
+POST
+http://localhost:xxx/Products
+	send some product object (JSON)
+
+PUT
+http://localhost:xxx/Products
+	send some product object(JSON)
+
+DELETE 
+http://localhost:xxx/Products/1
+
+
+============================

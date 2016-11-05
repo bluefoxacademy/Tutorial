@@ -1,0 +1,25 @@
+﻿/* Styles form and form fields*/
+.form{
+    background-color:#f7eaac;
+    width:400px;
+    height:200px;
+    border:1px solid #075b32;
+    outline:2px dotted #ffd800;
+    margin:10px;
+    padding:10px;
+}
+
+
+.form-group{
+    margin:10px;
+    padding:10px;
+    border:1px solid #c0ea70;
+}
+
+.control-label{
+    font-weight:bold;
+}
+
+.form-control{
+    width:200px;
+}

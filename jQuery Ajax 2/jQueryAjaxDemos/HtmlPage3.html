@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="App/Libs/jquery-3.1.1.js"></script>
+    <script>
+        $.fn.greenify = function () {
+            $(this).css({ "background-color": "green", "color": "gold" });
+            return this;
+        }
+        $(function () {
+            $("#btn1").greenify().css("font-weight", "bold");
+
+           
+        });
+    </script>
+</head>
+<body>
+    <button id="btn1">Get Info</button>
+</body>
+</html>

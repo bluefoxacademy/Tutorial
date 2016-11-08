@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="App/Libs/jquery-3.1.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //$.getJSON("data.json").then(function (data) {
+            //    var list = $("#topNav");
+            //    $.each(data, function (index, value) {
+            //        var listItem = "<li><a href='" + value.url + "'>" + value.display + "</a></li>";
+            //        list.append(listItem);
+            //    });
+            //}, function (error) { });
+
+
+            //$.get("data.json").then(function (data) {
+            //    var list = $("#topNav");
+            //    $.each(data, function (index, value) {
+            //        var listItem = "<li><a href='" + value.url + "'>" + value.display + "</a></li>";
+            //        list.append(listItem);
+            //    });
+            //}, function (error) { });
+
+            $.ajax({
+                method: "GET",
+                url: "data.json",
+                success: function (data) {
+                    var list = $("#topNav");
+                        $.each(data, function (index, value) {
+                            var listItem = "<li><a href='" + value.url + "'>" + value.display + "</a></li>";
+                            list.append(listItem);
+                        });
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            });
+        });
+    </script>
+    <style>
+        ul#topNav li{
+            list-style:none;
+            display:inline;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul id="topNav">
+
+        </ul>
+    </nav>
+</body>
+</html>

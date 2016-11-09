@@ -1,0 +1,436 @@
+Demo1 : Without any styles with HTML tags:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML page</title>
+</head>
+<body>
+            <div id="wrapper">
+
+                <!-- the header and navigation -->
+                <div id="header">
+                    <h1>Hello..CSS</h1>
+                    <div id="navigation">
+                            <ul>
+                                <li><a href="#">navigation1</a></li>
+                                <li><a href="#">navigation2</a></li>
+                            </ul>
+                    </div>
+                 </div>
+
+
+                <!-- the sidebar -->
+                <div id="sidebar">
+                <p>here is the sidebar</p>
+                </div>
+
+
+                        <!-- the content -->
+                <div id="content">
+                <p>here is the content</p>
+                </div>
+
+                <!-- the footer -->
+                <div id="footer">
+                <p>Here is the footer</p>
+                </div>
+        </div>
+
+
+
+
+
+</body>
+</html>
+
+
+
+Demo2 : With HTML tags with CSS styles
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML Page</title>
+        <style>
+            #wrapper {
+                width:960px;                
+                margin:5px;
+            }
+
+            #header {
+                width:920px;
+                padding:10px 10px;
+                background-color:#d9c4c4;
+                margin:5px;
+            }
+                #header h1 {
+                    text-align:center;
+                }
+
+          
+
+            #navigation ul li {
+                display:inline;
+                list-style-type:none;
+
+            }
+
+                #navigation ul li a {
+                    text-decoration:none;
+                }
+
+                #navigation ul li a:hover {
+                    text-decoration:underline;
+                    color:black;
+                    background-color:white;
+                }
+
+            #sidebar {
+                background-color:#b0f0ee;
+                width:200px;
+                float:left;
+                padding:10px 10px;
+                margin:5px;
+            }
+
+            #content {
+                width:640px;
+                padding:10px 10px;
+                float:right;
+                background-color:#e6b1dd;
+                margin-right: 10px;
+                margin-top:5px;
+                margin-bottom:5px;
+            }
+
+            #footer {
+                width:940px;             
+                text-align:center;
+                font-weight:bold;
+                background-color:#b0f0ee;
+
+            }
+        </style>
+</head>
+<body>
+            <div id="wrapper">
+
+                <!-- the header and navigation -->
+                <div id="header">
+                    <h1>Hello..CSS</h1>
+                    <div id="navigation">
+                            <ul>
+                                <li><a href="#">navigation1</a></li>
+                                <li><a href="#">navigation2</a></li>
+                            </ul>
+                    </div>
+                 </div>
+
+
+                <!-- the sidebar -->
+                <div id="sidebar">
+                <p>here is the sidebar</p>
+                </div>
+
+
+                        <!-- the content -->
+                <div id="content">
+                <p>here is the content</p>
+                </div>
+
+                <div style="clear:both"></div>
+                <!-- the footer -->
+                <div id="footer">
+                <p>Here is the footer</p>
+                </div>
+        </div>
+
+
+
+
+
+</body>
+</html>
+
+
+
+	
+Demo3 : HTML5 semantic elements with Styles
+    <!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>HTML Page</title>
+
+        <style>
+                #wrapper {
+                    margin-right: auto;
+                    margin-left: auto;
+                    width: 960px;
+                }
+
+                #header {
+                    background-color:#d9c4c4;
+                    margin-right: 10px;
+                    margin-left: 10px;
+                    width: 940px;
+                }
+                    header{
+                        text-align:center;
+                        font-weight:bold;
+                        font-family:'Monotype Corsiva';
+                    }
+
+
+             #navigation {
+                 padding-bottom: 25px;
+                margin-top: 26px;
+                margin-left: -10px;
+                padding-right: 10px;
+                padding-left: 10px;
+                width: 940px;
+                background-color:#989393;
+
+             }
+                #navigation ul li {
+                    display:inline;
+                    list-style-type:none;
+
+                }
+
+                    #navigation ul li a {
+                        text-decoration:none;
+                    }
+
+                    #navigation ul li a:hover {
+                        text-decoration:underline;
+                        color:black;
+                        background-color:white;
+                    }
+
+                #sidebar {
+                        border-right-color: #e8e8e8;
+                        border-right-style: solid;
+                        border-right-width: 2px;
+                        margin-top: 58px;
+                        padding-right: 10px;
+                        margin-right: 10px;
+                        margin-left: 10px;
+                        float: left;
+                        width: 220px;
+
+                        background-color:#f3c4c4;
+                    
+                }
+
+                #content {
+                    margin-top: 58px;
+margin-right: 10px;
+float: right;
+width: 698px;
+background-color:#e8d4fa;
+                }
+
+                #footer {
+                   float: left;
+margin-top: 20px;
+margin-right: 10px;
+margin-left: 10px;
+clear: both;
+width: 940px;
+background-color:#dfc7ef;
+
+
+                }
+            </style>
+    </head>
+    <body>
+                <section id="wrapper">
+
+                    <!-- the header and navigation -->
+                    <section id="header">
+                        <header>Hello..CSS</header>
+                        <nav id="navigation">
+                                <ul>
+                                    <li><a href="#">navigation1</a></li>
+                                    <li><a href="#">navigation2</a></li>
+                                </ul>
+                        </nav>
+                     </section>
+
+
+                    <!-- the sidebar -->
+                    <aside id="sidebar">
+                    <p>here is the sidebar</p>
+                    </aside>
+
+
+                            <!-- the content -->
+                    <section id="content">
+                    <p>here is the content</p>
+                    </section>
+
+
+                    <!-- the footer -->
+                    <footer id="footer">
+                    <p>Here is the footer</p>
+                    </footer>
+            </section>
+
+
+
+
+
+    </body>
+    </html>
+
+
+=====================
+Fluid Layouts/Responsive Layouts 
+
+
+A formula to remember 
+
+
+target %context = result
+
+==============================
+Setting a context for proportional elements
+
+We need something to "hold" and become the context for all the proportional
+elements (content, sidebar, footer, and so on)
+
+We therefore need to set a proportional value for the width that the #wrapper should
+be in relation to the viewport size
+
+
+======================
+#wrapper {
+margin-right: auto;
+margin-left: auto;
+width: 96%; /* Holding outermost DIV */
+}
+
+
+
+Consider the formula again, 
+target %context = result.
+
+#header {
+margin-right: 10px;
+margin-left: 10px;
+width: 97.9166667%; /* 940 %960 */
+}
+
+Example : Responsive UI with Simple CSS properties
+    <!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>HTML Page</title>
+
+         <style>
+               #wrapper {
+margin-right: auto;
+margin-left: auto;
+width: 96%; /* Holding outermost DIV */
+}
+
+#header {
+    background-color:#808080;
+margin-right: 10px;
+margin-left: 10px;
+width: 97.9166667%; /* 940 %960 */
+}
+
+             header {
+                 text-align:center;
+                 font-family:Calibri;
+             }
+#navigation {
+    background-color:#ea9e9e;
+padding-bottom: 25px;
+margin-top: 26px;
+margin-left: -10px;
+padding-right: 10px;
+padding-left: 10px;
+width: 72.7083333%; /* 698 %960 */
+}
+
+#navigation ul li {
+display: inline-block;
+}
+
+#content {
+margin-top: 58px;
+margin-right: 10px;
+float: right;
+background-color:#caf2ef;
+width: 72.7083333%; /* 698 %960 */
+}
+
+#sidebar {
+    background-color:#bcf7a5;
+border-right-color: #e8e8e8;
+border-right-style: solid;
+border-right-width: 2px;
+margin-top: 58px;
+margin-right: 10px;
+margin-left: 10px;
+float: left;
+width: 22.7083333%; /* 218 %960 */
+}
+
+#footer {
+    text-align:center;
+    background-color:#b5b5b5;
+float: left;
+margin-top: 20px;
+margin-right: 10px;
+margin-left: 10px;
+clear: both;
+width: 97.9166667%; /* 940 %960 */
+}
+
+
+
+            </style>
+    </head>
+    <body>
+                <section id="wrapper">
+
+                    <!-- the header and navigation -->
+                    <section id="header">
+                        <header>Hello..CSS</header>
+                        <nav id="navigation">
+                                <ul>
+                                    <li><a href="#">navigation1</a></li>
+                                    <li><a href="#">navigation2</a></li>
+                                </ul>
+                        </nav>
+                     </section>
+
+
+                    <!-- the sidebar -->
+                    <section id="sidebar">
+                    <p>here is the sidebar</p>
+                    </section>
+
+
+                            <!-- the content -->
+                    <section id="content">
+                    <p>here is the content</p>
+                    </section>
+
+                    <div style="clear:both"></div>
+                    <!-- the footer -->
+                    <footer id="footer">
+                    <p>Here is the footer</p>
+                    </footer>
+            </section>
+
+
+
+
+
+    </body>
+    </html>

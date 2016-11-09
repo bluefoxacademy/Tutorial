@@ -1,0 +1,10 @@
+﻿h1,h3,h2{
+    font-family:Arial;
+    color:red;
+}
+
+#block1{
+    height:100px;
+    width:200px;
+    border:1px solid #ffffff;
+}

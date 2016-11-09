@@ -1,0 +1,186 @@
+CSS media Queries Examples: 
+
+Example1 : for print/screen with linked stylesheet with media attribute
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>CSS Media</title>
+    <link rel="stylesheet" href="print.css" media="print" /> 
+    <link rel="stylesheet" href="screen.css" media="screen" />
+</head>
+<body>
+    <h1>Hello..CSS</h1>
+    <h2>Responsive Web Pages</h2>
+    <img id="image1" src="Koala.jpg" alt="not found" /> 
+</body>
+</html>
+
+
+print.css
+
+#image1 {
+   display:none;
+}
+
+screen.css
+body {
+    background-color:#0bf399;
+}
+#image1 {
+   
+    height:500px;
+    width:500px;
+
+}
+
+
+
+Example2 : @media with Embedded Styles 
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>CSS Media</title>
+   <style>
+       @media screen {
+                body {
+            background-color:#0bf399;
+        }
+            #image1 {
+   
+                height:500px;
+                width:500px;
+
+            }
+       }
+
+       @media print {
+
+                #image1 {
+                   display:none;
+                }
+       }
+   </style>
+</head>
+<body>
+    <h1>Hello..CSS</h1>
+    <h2>Responsive Web Pages</h2>
+    <img id="image1" src="Koala.jpg" alt="not found" /> 
+</body>
+</html>
+
+
+
+
+
+Example3 : @import and media element 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>CSS Media</title>
+   <style>
+       @import 'print.css' print;
+       @import 'screen.css' screen;
+   </style>
+</head>
+<body>
+    <h1>Hello..CSS</h1>
+    <h2>Responsive Web Pages</h2>
+    <img id="image1" src="Koala.jpg" alt="not found" /> 
+</body>
+</html>
+
+
+
+Example : with max-width and media 
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>CSS Media</title>
+    
+   <style type="text/css">
+
+   
+        @media screen and (max-width:1040px) {
+           body {
+               background-color:#b6ff00;
+           }
+       }
+
+
+
+      @media screen and (max-width:640px) {
+           body {
+               background-color:#808080;
+           }
+       }
+
+
+       @media screen and (max-width: 480px) {
+           body {
+               background-color:#0094ff;
+           }
+       }
+
+       
+
+       
+    
+
+
+
+     
+
+       
+   </style>
+</head>
+<body>
+    <h1>Hello..CSS</h1>
+    <h2>Responsive Web Pages</h2>
+     
+</body>
+</html>
+
+
+
+Example : with min and max width 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>CSS Media</title>
+    
+   <style type="text/css">
+
+   
+       
+       @media screen and (max-width: 480px) {
+           body {
+               background-color:#0094ff;
+           }
+       }
+
+        @media screen and (min-width:480px) and (max-width:640px) {
+           body {
+               background-color:#808080;
+           }
+       }
+
+
+        @media screen and (min-width:640px) and (max-width:1040px) {
+           body {
+               background-color:#b6ff00;
+           }
+       }
+   
+       
+   </style>
+</head>
+<body>
+    <h1>Hello..CSS</h1>
+    <h2>Responsive Web Pages</h2>
+     
+</body>
+</html>
+

@@ -1,0 +1,59 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    }
+    body {
+    overflow-x: hidden;
+    }
+    #demo-top-bar {
+    text-align: left;
+    background: #808080;
+    position: relative;
+    zoom: 1;
+    width: 100%;
+    z-index: 6000;
+    padding: 20px 0 20px;
+    }
+    #demo-bar-inside {
+    text-align:left;
+    width: 960px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    }
+    #demo-bar-buttons {
+    padding-top: 10px;
+    float: right;
+    }
+    #demo-bar-buttons a {
+    font-size: 12px;
+    margin-left: 20px;
+    color: red;
+    margin: 2px 0;
+    text-decoration: none;
+    font: 14px "Lucida Grande", Sans-Serif;
+    }
+    #demo-bar-buttons a:hover,
+    #demo-bar-buttons a:focus {
+    text-decoration: underline;
+    }
+    #demo-bar-badge {
+    display: inline-block;
+    width: 302px;
+    padding: 0 !important;
+    margin: 0 !important;
+    background-color: transparent;
+    }
+    #demo-bar-badge a {    
+    width: 100%;
+    height: 38px;
+    border-radius: 0;
+    bottom: auto;
+    margin: 0;
+    background-size: 100%;
+    overflow: hidden;
+    text-indent: -9999px;
+    }
+    #demo-bar-badge:before, #demo-bar-badge:after {
+    display: none ;
+    }

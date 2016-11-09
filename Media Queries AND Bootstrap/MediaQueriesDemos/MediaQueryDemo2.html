@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+   <style>
+       @media screen{
+           h1,h3,h2{
+    font-family:Arial;
+    color:red;
+}
+
+#block1{
+    height:100px;
+    width:200px;
+    border:1px solid #ffffff;
+}
+       }
+
+       @media print{
+           h1,h3,h2{
+    font-size:x-large;
+    font-family:cursive;
+    font-weight:bold;
+    font-style:italic;
+}
+
+#block1{
+    display:none;
+}
+       }
+   </style>
+</head>
+<body>
+    <h2>Media Demo</h2>
+    <h4>Sample Query</h4>
+    <div id="block1">
+        <img src="bluesky-bg.jpg" />
+    </div>
+
+</body>
+</html>

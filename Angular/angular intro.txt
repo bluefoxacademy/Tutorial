@@ -1,0 +1,256 @@
+Web Apps:
+
+
+UI 
+
+BL/DAL(Back-end)
+RESTful API
+.NET Web API 
+
+Java : 
+	Spring MVC 
+
+UI:
+	PL 
+	Behavior 
+
+PL:
+	HTML 5, 
+	CSS 3
+	Media Queries
+	CSS Bootstrap 
+
+RWD 
+
+Behavior: 
+	JavaScript/jQuery 
+
+
+	DOM Manipulation
+	Event handling
+	CSS Manipulation
+	pagination
+	Web Storage(localStorage, sessionStorage)
+	AJAX 
+
+
+What is the problem we are facing with simple JavaScript & JQuery?
+
+	* Complexity 
+	* No modularity
+	* There is not model-view binding(data binding)
+	* there is no clear separation of UI , data(model), behavior(Application logic)
+
+
+	UI: PL 
+
+
+	data (model) : The data can be from UI or the data can be from API.
+
+	Application logic: User Interaction logic(Input/output logic)
+
+
+	Model 
+	View
+	Controller(behaviour)
+
+
+	* There is no pattern maintaining the URL's(no routing).
+
+	* To load partial views, we can make use of AJAX(jQuery load) 
+
+	* There is no standard pattern for Single Page application.
+
+	* No option for creating elements(directives).
+
+	* We don't have any option for creating re-usable components.
+
+
+ 
+To avoid all these problems, we need a design pattern/framework.
+
+We can do the application faster and high peformance by using some MVC frameworks.
+
+
+MVC for front -end application.
+
+What is MVC framework?
+
+	It is a kind of design pattern.
+	It provides loose coupling.
+	Here, we can split the application into different components.
+
+	Model :
+		It represents the data.
+		This data can be from UI(view)
+		This data can be from API(backend).
+		
+	View : It is just a UI.
+		It includes HTML tags , CSS styles 
+		forms, static data,,,
+	
+	Controller:
+		This is the mediator between View/Model.
+
+		It takes the data from the UI(view), it does some validations and then sends to the Model.
+		It fetch the data from the Model, then renders that data to the UI.
+
+		It handles all the Input/output logic.
+
+
+Request process:
+User request => browser => Controller => fetch the data from Model => controller will render some data to the view => View will render some UI to the User.
+
+
+User submit the data on UI => The data goes to controller => the controller does some validation=> controller will pass this data to the Model=> Model will submit this data to the RESTful service using AJAX.
+
+===========================================
+We got many front-end MVC frameworks:
+	* Angular 1.x , 2.x
+	* ReactJS
+	* EmberJS
+	* KnockoutJS 
+	* Backjone.js
+	* Django( ruby)
+	...
+
+===============================
+
+SPA:(Angular)
+	
+	UI(view) :
+		Html 5, 
+		CSS3
+		Media queries
+		Boostrap (jQuery is required for bootstrap)
+		LESS, SASS
+		Angular directives/templates
+		
+	Behaviour 
+		Angularjs (javascript)
+
+======================================
+HTML :
+	<form>
+		<input type="text"/>
+	</form>
+
+angular tempate:
+	<div>
+		<span>{{message}}</span>
+		<form>
+			<input type="text" ng-model="name"/>
+		</form>
+
+
+		<div ng-if="IsValid==true">
+		</div>
+	</div>
+=====
+
+	
+
+View (UI)
+
+
+Controller (Handle user interactions)
+
+
+
+to pass the data  from view to Controller OR controller to the view, we need a context.
+
+This context will hold model and shared between view  & controller.
+
+
+This is context is represented as "scope".
+
+======
+
+Node:
+	NPM
+
+
+Bower 
+
+
+Composer
+
+
+visual Studio  : Nuget tool
+
+
+
+OR
+
+You can directly download from : angularjs.org
+
+	Angularjs includes many .js file.
+	as per the need, we can embed them in our application.
+
+
+	The core library is required for any angular application.
+
+
+eg.
+	angular.min.js
+
+Create the standard folder structure:
+
+
+AngularApp(Root)
+	Index.html (shell page)
+	App
+		app.js
+		controllers
+		directives
+		partials 
+		services
+		factores
+	
+	Content
+		Images
+		Styles
+			Boostrap
+			fonts
+			
+			site.css
+	Scripts
+		
+===========================
+
+lets do a simple Aplication:
+	Product Manager Application 
+
+		Create a product
+		Get all products(grid)
+		View a single product
+		delete a product
+		Update a product 
+
+
+=====================
+To pass the data from view => model Or model  => view , we need some context .
+
+	This context is called : "scope"
+	
+	We can create custom context or we can use builtin context objects.
+
+	$scope
+	$rootScope
+		These are builtin context objects.
+
+
+	$scope 
+		This is for a specific controller/view 
+
+	$rootScope
+		This is for whole application.
+
+
+We can inject these objects in a controller and use directly.
+================================================================
+
+
+	
+
+

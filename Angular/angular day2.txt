@@ -1,0 +1,88 @@
+Angular app:
+
+steps:
+
+* Download angularjs library/framework
+
+* Create  new angular project
+
+* Create Angular project structure
+
+* Create Index (shell page) & design the layout
+
+* Create a module (angular) 
+
+* Configure the App(shell page) with angular application using angular diretive(ng-app)
+
+* Then, you add controllers, directives, factories, services, filters, routes...
+
+* Then, you can configure the templates with controllers and use data binding.
+
+Builtin directives:
+
+ngApp (ng-app)  : To start up the angular application.
+ng-if : Add/remove the element/component based on condition.
+ng-show : display the element based on the condition (The element will be there in the page)
+ng-hide : hides the element based on the condition. (the element will be there in the page)
+ng-init : This is for inititializing scope.
+ng-repeat : this is for iteration 
+ng-bind : one -way binding.
+ng-model : two-way binding.
+ng-placeholder : html 5 placeholder.
+ng-class : adding css class based on condition.
+ng-attr  : updating attribute.
+ng-required
+ng-pattern
+ng-value
+..
+
+
+
+ng-model:
+	we use for forms (add new/edit)
+
+form fields :
+	textbox
+	radiobutton
+	checkbox
+	textarea
+	dropdown
+	file upload
+
+
+angular exp:
+	{{property}}
+
+
+
+directives:
+	ng-model
+	data-ng-model ( HTML 5 standard)
+
+	If you validate the page against html 5 validator, then you must use "data-ng-*")
+
+==================
+
+how to create context model without using $scope?
+
+
+You can use "this" pointer to create context for controller.
+
+
+==========
+Take that application as reference: 
+
+add couple new things to that app:
+
+* Make sure that ,it works for all screens.(bootstrap)
+* add delete action, implement delete action.
+* Enable sorting for all the columns
+* Enable paging..
+	By default, show 5 records per page, then enable paging..
+
+	for pagination style : bootstrap pagination..
+
+
+
+
+

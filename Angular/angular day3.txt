@@ -1,0 +1,176 @@
+angular : 
+
+creating module
+
+creating controller
+
+$scope
+
+templates	
+	filters
+	directives
+	binding 
+
+
+view Model : with respect to View
+
+
+model: 
+	with respect to database
+
+UI => data goes to view Model (scope)=> model => database 
+
+UI <= data comes from view model(scope) <= model <= database
+
+
+Injecting builtin services in the controller: 
+
+myApp.controller('ControllerName',function($scope,$rootScope,$route,$location){
+});
+
+OR
+
+myApp.controller('controllerName',['$scope','$rootScope',function($scop,$rootScope){
+}]);
+
+
+
+Note:
+
+if you want initialize the scope or mode as soon controller get's called, we can take some implicit method.
+
+
+e.g.
+
+var myApp=angular.module('myApp',[]);
+
+myApp.controller('sampleController',function($scope){
+	$scope.data=[];
+
+	var activate=function(){
+		$scope.data.push({Id:101});
+	}
+
+		activate();
+
+});
+
+
+
+================
+
+
+Named constructor:
+
+var controllerId='sampleController';
+myApp.controller(controllerId,function($scope){
+});
+
+========
+function sampleController($scope){
+}
+
+myApp.controller('sampleController',sampleController);
+====================================
+
+each template is registere with some controller;
+
+
+Nested templates :
+
+
+
+=======
+
+$scope
+$rootScope
+$route
+$location
+$http
+$resource
+$model
+$routeParams
+..
+==========
+
+Real Application:
+	Shell page
+		Layout
+
+	Navigation
+		hyperlinks (routes)
+			for each route:
+				dynamic view(partial view) /template
+				Application logic(controller)
+
+
+how to do you connect all this?
+=============
+
+AMD
+	require.js
+
+=========================
+
+top level methods in angular:
+
+var app=angular.module('app',[]);
+app.run(function(){
+	//rootscope intialization
+	//global event handling
+});
+app.config(function(){
+	//intitialize the routes
+
+});
+
+
+steps:
+	create modules
+	configure the routes in each module.(dont' include run)
+	add controllers/factories/services/filters/directives as part of the modules.
+	
+
+	create the main module and inject all other modules as part of main module.
+	create a single run() method in the main module
+	configure routes for main module(if required)
+	then, setup the app(shell page) with angular app(ng-app)
+===============================================================================
+	
+Note:
+
+Unit testing :
+	during development phase
+	Here, we test components(behavior) Not UI.
+
+	e.g
+		QUnit 
+		
+
+End-end testing (Automation testing)
+	Here, we need to have developed and deployed application.
+	Here ,we the UI and behaviour.
+
+	e.g.
+		Protractor 		
+		Salenium 
+		mocha
+		
+
+=====================================
+
+Note:
+	To work with routes in angular, you need to download and add the library :
+
+	* Angularjs core library
+	* Angularjs route library 
+
+
+Note:
+we can use "#/routename" to create angular routes 
+
+e.g.
+<a href="#/about">About</a>
+
+
+

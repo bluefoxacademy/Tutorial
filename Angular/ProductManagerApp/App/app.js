@@ -20,5 +20,15 @@ app.config(function ($routeProvider) {
    {
        controller: 'homeController',
        templateUrl: 'App/Partials/contact.html'
-   }).otherwise({ redirectTo: '/' });
+   }).when('/products', {
+       controller: 'productsController',
+       templateUrl:'App/Partials/productlist-template.html'
+   }).when('/products/:id', {
+       controller: 'productsController',
+       templateUrl:'App/Partials/productDetails-template.html'
+   }).when('/addNewProduct', {
+       controller: 'productsController',
+       templateUrl:'App/Partials/addNewProduct-template.html'
+   })
+        .otherwise({ redirectTo: '/' });
 });

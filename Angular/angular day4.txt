@@ -1,0 +1,184 @@
+Routing :
+
+ngRoute ( builtin module)
+	js: 	angular.route.min.js
+
+var app=angular.module('app',['ngRoute']);
+
+app.run(function($rootScope){
+	//initialize data 
+});
+
+app.config(function($routeProvider){
+
+$routeProvider
+.when('/routeName',{controller:'',templateUrl:''})
+.otherwise();
+});
+
+In template: 
+	<a href="#/routeName">link text</a>
+
+
+e.g.
+	<a href="#/contact">contact</a>
+
+
+e.g.(js)
+	$location
+		It is for routing using javascript.
+
+
+e..g
+	$location.path('/routeName');
+=================================================
+
+note:
+	To work with routes, you need to "ngView" directive in the shell page.
+
+
+Index.html
+	<!--content section-->
+	<div>
+		<div ng-view></div>
+	</div>
+
+==================
+Note:
+	Controller is called for every route.
+
+
+Assume that, we have some CRUD operations for Products Model:
+		Create Product
+		Update Product
+		Delete product
+		Get Product by Id
+		Get All Products
+
+We need to write these methods in a component, that must be used across the application.
+This must be instantiated only once.
+so that, we can avoid repeated code and can re-use the functionality.
+
+
+how to do this?
+We can make use of Singleton object for this purpose.
+
+
+What singleton object?
+	This is a component(constructor), which encapsulates the methods and properties.
+	It creates a single object for the first request, use same object for all the sub-sequent requests.
+
+
+how to implement single objects in angular?
+* factory 
+* service
+* provider
+* value 
+
+===========
+factory/service:
+	
+	In case of factory, we need to create custom object, then add  properties/methods to that object, then return that custom object in the factory.
+
+e.g.
+	app.factory('sampleFactory',function(inj1,inj,...){
+
+		var factory={};
+			factory.Property=value;
+			factory.Property1=value1;
+
+			factory.Method1=function(){
+			}
+			
+
+		return factory;
+		
+	});
+
+		
+
+	In case of service, you can directly add propeties and methods to "this" pointer.
+	WE don't need to return any object. 
+	service itself an object(singleton).
+
+
+	app.service('logService',function(inj1,inj2,..){
+		
+		this.property=value;
+		...
+
+
+		this.method1=function(){
+		}
+	});
+
+
+Note:
+	we can inject factory/service anywhere in the application.
+
+e.g.
+	inject factory/service in controllers , directives, filters, run()
+	Inject factory in another factory.
+	Inject factory in a service.
+
+	Inject service in another service.
+	Inject service in a factory.
+
+
+provider:
+	This is for creating/customize routes
+This is injected only the config()method.
+
+	app.provider('customProvider',function($routeProvider){
+	
+		this.property=value;
+		this.method=function(){
+		}
+
+
+		this.$get=function(){
+			return this;
+		}
+	});
+
+
+value: 
+	This is for creating a single value(number, string ,bool , object).
+
+
+e.g.
+	app.value('KeyName','Keyvalue');
+
+
+=========================
+	
+funtion Customer(){
+	this.fistName='scott';
+	this.lastName='allen';
+	this.fullName=function(){
+		return  this.firstName+" "+this.lastName;
+	}
+}
+
+var obj1=new Customer();
+	console.log(obj1.fullName);
+
+var obj2=new Customer();
+	obj2.fistName='satya';
+	obj2.lastName='saaa';
+	console.log(obj2.fullName);
+===========
+in real app:
+	service:
+		LogService
+		Data Service(ajax calls)
+		Localization service
+		
+
+	factory:
+		Application specific 
+		customerFactory
+		employeeFactory 
+		SecurityFactory 
+		...
+====================================================================

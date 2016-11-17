@@ -1,0 +1,34 @@
+﻿<div class="row">
+    <div class="col-md-6">
+        <form>
+            <div class="form-group">
+                <h4>Add New Product</h4>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Name:</label>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" ng-model="newProductModel.Name" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Price:</label>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" ng-model="newProductModel.Price" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Category:</label>
+                <div class="col-md-6">
+                    <select id="ddlCategory" name="ddlCategory" class="form-control" ng-model="newProductModel.Category">
+                        <option>Please Select</option>
+                        <option ng-repeat="category in categories" ng-value="{{category}}">{{category}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" ng-click="saveProduct()">Save</button>
+                <a href="#/myProducts" class="btn btn-default">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

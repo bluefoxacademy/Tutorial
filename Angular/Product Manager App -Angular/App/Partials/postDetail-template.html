@@ -1,0 +1,35 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <label class="control-label">UserID:</label>
+            <span>
+                {{selectedPost.userId}}
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Id:</label>
+            <span>
+                {{selectedPost.id}}
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Title:</label>
+            <span>
+                {{selectedPost.title}}
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Body:</label>
+            <span>
+                {{selectedPost.body}}
+            </span>
+        </div>
+        <div class="form-group">
+            <a href="#/posts" class="btn btn-default">Back</a>
+        </div>
+    </div>
+</div>
+
+<div ng-if="isLoading" >
+    <span>Loading.....</span>
+</div>

@@ -1,0 +1,34 @@
+﻿<div class="row">
+    <div class="col-md-3">
+        <a href="#/addMyProduct" class="btn btn-default">Add New Product</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-stripped">
+            <thead class="tbl-header">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="prod in products">
+                    <td>{{prod.Id}}</td>
+                    <td>{{prod.Name}}</td>
+                    <td>{{prod.Price}}</td>
+                    <td>{{prod.Category}}</td>
+                    <td>
+                        <a href="#/myProducts/{{prod.Id}}" class="btn btn-link">View</a> |
+                        <a href="#/deleteProduct/{{prod.Id}}" class="btn btn-danger">Delete</a> |
+                        <a href="#/editProduct/{{prod.Id}}" class="btn btn-info">Edit</a>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

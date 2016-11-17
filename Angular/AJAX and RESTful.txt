@@ -1,0 +1,1228 @@
+Consuming RESTful services:
+
+AJAX Calls using Angular :
+
+
+These RESTful services are web services.
+Anybody can consume these services.
+We can configure the RESTful to return either JSON OR XML.
+You have to Enable CORS in the RESTful service.
+CORS : 
+	Cross Origin Resource Sharing.
+	We need to enable http-headers to accept request from any domain.
+
+Let us use some Fake RESTful services to consume using our application.
+
+e.g.
+http://jsonplaceholder.typicode.com/posts
+http://jsonplaceholder.typicode.com/users
+http://jsonplaceholder.typicode.com/comments
+http://jsonplaceholder.typicode.com/albums 
+http://jsonplaceholder.typicode.com/photos
+
+
+Resources
+
+Inspired by common use cases.
+/posts		100 items
+/comments		500 items
+/albums		100 items
+/photos		200 items
+/todos		200 items
+/users		10 items
+
+
+Routes
+
+All HTTP verbs are supported.
+GET	/posts
+GET	/posts/1
+GET	/posts/1/comments
+GET	/comments?postId=1
+GET	/posts?userId=1
+POST	/posts
+PUT	/posts/1
+PATCH	/posts/1
+DELETE	/posts/1
+
+
+Some Other online RESTful services:
+Real Weather information RESTful service:
+
+Get Weather info by city name:
+http://api.openweathermap.org/data/2.5/weather?q=Newyork
+
+
+http://api.openweathermap.org/data/2.5/weather?id=2172797
+
+
+Let us take jQuery ajax method and consume any of these services.
+
+example:
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="app/Libs/jquery-2.1.1.min.js"></script>
+    <script>
+        $(function () {
+
+            $.ajax({
+                url: 'http://jsonplaceholder.typicode.com/posts',
+                type: 'GET',
+                success: function (data) {
+                    var str = "<table><tr><th>userId</th><th>title</th><th>body</th></tr>";
+
+                    $.each(data,function(key,value){
+                        str += "<tr><td>" + value.userId + "</td><td>" + value.title + "</td><td>" + value.body + "</td></tr>";
+                    });
+
+                    str += "</table>";
+
+                    $("#grid").html(str);
+
+                },
+                error:function(){
+                }
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="grid">
+
+    </div>
+</body>
+</html>
+
+==============================================================
+Consuming RESTful Services using Angular  $http service 
+
+Angular $http Service
+
+The $http service is a core Angular service that facilitates communication with the remote HTTP servers via the browser's XMLHttpRequest object
+
+$http.get()
+$http.put()
+$http.post()
+$http.delete()
+
+
+ Simple GET request example :
+
+$http.get('/someUrl').
+  success(function(data, status, headers, config) {
+    // this callback will be called asynchronously
+    // when the response is available
+  }).
+  error(function(data, status, headers, config) {
+    // called asynchronously if an error occurs
+    // or server returns response with an error status.
+  });
+
+
+OR
+
+$http.get('url').then(successcallback,errorcallback);
+
+
+e.g.
+Query String 
+
+http://www.mydomain.com/users 
+	Here,we get all the users (no query string)
+http://www.mydomain.com/users/1
+	here , we get only the user with userid Or id with "1"
+http://www.mydomain.com/users?userid=1
+	
+http://www.mydomain.com/users?username=satya&email=satya
+
+==========================================================
+
+
+// Simple POST request example (passing data) :
+
+$http.post('/someUrl', {msg:'hello word!'}).
+  success(function(data, status, headers, config) {
+    // this callback will be called asynchronously
+    // when the response is available
+  }).
+  error(function(data, status, headers, config) {
+    // called asynchronously if an error occurs
+    // or server returns response with an error status.
+  });
+
+
+
+Short Cut methods:
+
+$http.get('/someUrl').success(successCallback).error(callback);
+$http.post('/someUrl', data).success(successCallback).error(callback);
+$http.put('/someUrl', data).success(successCallback).error(callback);
+$http.delete('/someUrl', data).success(successCallback).error(callback);
+
+
+
+
+Simple examples for $http CRUD :
+
+
+        //get all customer information
+        $http.get('/api/Customer/').success(function (data) {
+            $scope.customers = data;
+        })
+        .error(function (error) {
+            $scope.error = "An Error has occured while loading posts!"+error;
+        });
+
+
+
+//post syntax
+
+            $http.post('/api/Customer/', $scope.newcustomer).success(function (data) {
+                alert("Added Successfully!!");
+                $scope.customers.push(data);
+            }).error(function (data) {
+                $scope.error = "An Error has occured while Adding Customer! " + data;
+            });
+
+
+//Syntax for Put
+
+$http.put('/api/Customer/' + $scope.newCustomer.id, $scope.newCustomer).success(function (data) {
+                alert("Saved Successfully!!");
+               }).error(function (data) {
+                $scope.error = "An Error has occured while Saving customer! " + data;
+               });
+
+
+//Syntax for Delete
+
+            $http.delete('/api/Customer/' + Id,data).success(function (data) {
+                alert("Deleted Successfully!!");
+             }).error(function (data) {
+                $scope.error = "An Error has occured while Saving Customer! " + data;
+            });
+
+
+========================================================================================
+Example for Angular application with CRUD operations with RESTful service:
+
+RESTful Service : 
+
+DATABASE TABLE:
+	userprofiles 
+		UserId ( identity column) int
+		Username (primary key) nvarchar(20)
+		Password nvarchar(20)
+		Email nvarchar(50)
+		Mobile nvarchar(20)
+		Gender  nvarchar(10)
+
+Create a RESTful service using any of your favorite technology and access this database for CRUD operations 
+
+e.g.
+	ASP.NET web API RESTful Service
+
+Create a class and define CRUD operations and access the database 
+
+e.g.   
+
+public class UsersController : ApiController
+    {
+
+        // GET api/Users
+        public IEnumerable<UserProfile> GetUserProfiles()
+        {
+
+        }
+
+        // GET api/Users/5
+        public UserProfile GetUserProfile(int id)
+        {
+        }
+
+        // PUT api/Users/5
+        public HttpResponseMessage PutUserProfile(UserProfile userprofile)
+        {
+        }
+
+        // POST api/Users
+        public HttpResponseMessage PostUserProfile(UserProfile userprofile)
+        {
+        }
+
+        // DELETE api/Users/5
+        public HttpResponseMessage DeleteUserProfile(int id)
+        {
+        }
+    
+    }
+
+
+Now the RESTful Service is Ready:
+The URL for our RESTful service: 
+http://localhost:57878/api/users
+
+
+You can make Ajax calls to this RESTful service using any of the ajax technology.
+
+You can use basic JavaScript Ajax call
+You can use jQuery $.ajax() method
+You can use Angular $http service 
+You can use Angular $resource service.
+
+
+Let us use : 
+Angular $http service for Demo:
+
+app.js
+var webAdminApp = angular.module('webAdminApp', []);
+
+function AccountController($scope, $http) {
+
+    function init() {
+        $http.get('http://localhost:57878/api/users').success(function (data) {
+            $scope.users = data;
+        }).error(function (data) {
+            $scope.error = 'not loaded';
+        });
+    }
+
+    init();
+
+    
+
+    $scope.getUserById = function (userid) {
+
+        $http.get('http://localhost:57878/api/users/'+userid).success(function (data) {
+            $scope.user = data;
+        }).error(function (data) {
+            $scope.error = 'not loaded';
+        });
+    }
+
+    $scope.editUser = function (userid) {
+        $scope.isAddOrEdit = true;
+        $scope.isEditing = true;
+        $scope.isAdding = false;
+        $scope.getUserById(userid);
+    }
+
+    $scope.viewUser = function (userid) {
+        $scope.isAddOrEdit = true;
+        $scope.isEditing = false;
+        $scope.getUserById(userid);
+
+    }
+    $scope.addNew = function () {
+        $scope.user = null;
+        $scope.isAddOrEdit = true;
+        $scope.isAdding = true;
+    }
+
+    $scope.isAddOrEdit = false;
+
+
+    $scope.addNewUser=function(){
+        $scope.user.UserId = 0;
+
+        $http.post('http://localhost:57878/api/users', $scope.user).success(function (data) {
+            alert("Added Successfully!!");
+        }).error(function (data) {
+            $scope.error = "An Error has occured while Adding Customer! " + data;
+        });
+
+        init();
+
+        $scope.isAddOrEdit = false;
+        $scope.user = null;
+      
+
+    }
+
+
+    $scope.cancel = function () {
+        $scope.isAddOrEdit = false;
+        $scope.isEditing = false;
+        $scope.isAdding = false;
+    }
+
+    $scope.updateUser = function () {
+
+        
+        $http.put('http://localhost:57878/api/users/'  , $scope.user).success(function (data) {
+            alert("Saved Successfully!!");
+        }).error(function (data) {
+            alert("error");
+            $scope.error = "An Error has occured while Saving customer! " + data;
+        });
+
+        $scope.isAddOrEdit = false;
+        $scope.user = null;
+
+        init();
+
+    }
+
+    $scope.deleteUser = function (userid) {
+
+        $http.delete('http://localhost:57878/api/users/' + userid).success(function (data) {
+            alert("Deleted Successfully!!");
+           
+        }).error(function (data) {
+            $scope.error = "An Error has occured while Saving Customer! " + data;
+        });
+
+        init();
+
+    }
+
+
+}
+
+webAdminApp.controller('AccountController', AccountController);
+
+
+Index.html
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="app/Libs/angular.min.js"></script>
+    <script src="app/app.js"></script>
+</head>
+<body data-ng-app="webAdminApp" data-ng-controller="AccountController">
+
+    <div id="addOrEditOrView" ng-show="isAddOrEdit">
+        <label>Username</label>
+        <input type="text" ng-model="user.Username" /> <br />
+
+        <label>Password</label>
+        <input type="password" ng-model="user.Password" /> <br />
+
+        <label>Email</label>
+        <input type="text" ng-model="user.email" /> <br />
+        
+
+
+        <label>Mobile</label>
+        <input type="text" ng-model="user.Mobile" /> <br />
+
+        <label>Gender</label>
+        <input type="radio" value="Male" name="Gender" ng-model="user.Gender" /> Male &nbsp; &nbsp; <input type="radio" name="Gender" ng-model="user.Gender" value="Female" />  Female<br />
+
+        <button type="button" ng-click="addNewUser()" ng-show="isAdding">Save</button> 
+        <button type="button" ng-click="updateUser()" ng-show="isEditing">Update</button>
+        <button type="button" ng-click="cancel()">Cancel</button>
+    </div>
+   
+    <div id="grid" ng-hide="isAddOrEdit">
+
+        <button type="button" ng-click="addNew()">Add New</button><br />
+        <h3>User Info</h3>
+        <table>
+            <tr>
+                <td>UserId</td>
+                <td>Username</td>
+                <td>Password</td>
+                <td>email</td>
+                <td>Mobile</td>
+                <td>Gender</td>
+                <td>Actions</td>
+            </tr>
+            <tr data-ng-repeat="user in users">
+                <td>{{user.UserId}}</td>
+                <td>{{user.Username}}</td>
+                <td>{{user.Password}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.Mobile}}</td>
+                <td>{{user.Gender}}</td>
+                <td>
+                    <button type="button" ng-click="editUser(user.UserId)">Edit</button>|
+                    <button type="button" ng-click="viewUser(user.UserId)" >View</button>|
+                    <button type="button" ng-click="deleteUser(user.UserId)">Delete</button>
+                </td>
+            </tr>
+            
+
+        </table>
+
+        {{error}}
+    </div>
+</body>
+</html>
+=========================
+
+Product Manager Application 
+Angular Http ajax calls to RESTful services and CRUD Operations 
+
+ASP.NET Web API Web Service :
+
+database: 
+ProductId (int , identity)
+ProductName nvarchar(20)
+Price money 
+Category nvarchar(20)
+
+
+Create a RESTful web service and define CRUD operations
+
+URL :
+
+get : 	http://xxxxxxxxxxxxxx/products 
+get/1: 	http://xxxxxxxxxxx/products/1
+post : http://xxxxxxxxxxxxxxxx/products 	(send data )
+put : http://xxxxxxxxxxxxxxx/products (send data)
+delete : http://xxxxxxxxxxxx/products/1 
+
+
+Now, You create a Angular Application and make ajax calls using http service 
+
+
+app.js
+
+var productManagerApp = angular.module('productApp', []);
+
+
+
+function ProductController($scope,$http) {
+   
+    $scope.isAddOrEditOrView = {status:false,isAdding:false,isEditing:false,isViewing:false};
+
+    function init() {
+        getProducts();
+    }
+
+    init();
+
+    function getProducts() {
+        $http.get('http://localhost:57878/api/products').success(function (data) {
+            $scope.products = data;
+        }).error(function () { alert('error'); });
+
+    }
+    $scope.addNew = function () {
+        $scope.isAddOrEditOrView.status = true;
+        $scope.isAddOrEditOrView.isAdding = true;
+
+    }
+
+    $scope.saveProduct = function () {
+        $scope.product.ProductId = 0;
+     
+
+        $http.post('http://localhost:57878/api/products', $scope.product)
+            .success(function () { alert('saved') }).
+            error(function () { alert('error'); });
+
+
+        getProducts();
+
+        $scope.product = null;
+        $scope.isAddOrEditOrView.status = false;
+        $scope.isAddOrEditOrView.isAdding = false;
+    }
+    
+    $scope.cancel = function () {
+        $scope.isAddOrEditOrView.status = false;
+        $scope.isAddOrEditOrView.isAdding = false;
+        $scope.isAddOrEditOrView.isEditing = false;
+        $scope.isAddOrEditOrView.isEditing = false;
+        $scope.product = null;
+    }
+
+
+    $scope.editProduct = function (productId) {
+
+        $scope.getProductById(productId);
+
+        $scope.isAddOrEditOrView.status = true;
+        $scope.isAddOrEditOrView.isEditing = true;
+        $scope.isAddOrEditOrView.isAdding = false;
+        $scope.isAddOrEditOrView.isViewing = false;
+    }
+    $scope.updateProduct = function () {
+
+        $http.put('http://localhost:57878/api/products', $scope.product)
+            .success(function () { alert('Updated...') }).
+            error(function () { alert('error'); });
+
+        getProducts();
+        $scope.product = null;
+        $scope.isAddOrEditOrView.status = false;
+        $scope.isAddOrEditOrView.isEditing = false;
+        $scope.isAddOrEditOrView.isAdding = false;
+        $scope.isAddOrEditOrView.isViewing = false;
+
+    }
+
+    $scope.deleteProduct = function (productId) {
+        $http.delete('http://localhost:57878/api/products/' + productId).success(function () {
+            alert('deleted...');
+        });
+
+        getProducts();
+
+        $scope.isAddOrEditOrView.status = false;
+        $scope.isAddOrEditOrView.isEditing = false;
+        $scope.isAddOrEditOrView.isAdding = false;
+        $scope.isAddOrEditOrView.isViewing = false;
+    }
+
+    $scope.viewProduct = function (productId) {
+        $scope.getProductById(productId);
+
+        $scope.isAddOrEditOrView.status = true;
+        $scope.isAddOrEditOrView.isAdding = false;
+        $scope.isAddOrEditOrView.isEditing = false;
+        $scope.isAddOrEditOrView.isViewing = true;
+    }
+    $scope.getProductById = function (productId) {
+        
+        $http.get('http://localhost:57878/api/products/' + productId).success(function (data) {
+            $scope.product = data;
+        });
+    }
+
+
+
+}
+
+productManagerApp.controller('ProductController', ProductController);
+
+
+Index.html
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" data-ng-app="productApp">
+<head>
+    <title>Product Manager Application</title>
+    <script src="app/Libs/jquery-2.1.1.min.js"></script>
+    <script src="app/Libs/angular.min.js"></script>
+    <script src="app/js/bootstrap.min.js"></script>
+
+    <script src="app/app.js"></script>
+    <script src="app/Controllers/productController.js"></script>
+
+    <link rel="stylesheet" href="app/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="app/css/bootstrap-theme.min.css" />
+
+
+</head>
+<body>
+    <nav class="nav navbar-default navbar-fixed-top">
+        <div class="container">
+            <nav  class="nav navbar-left">
+            <ul class="nav navbar-nav">
+                <li><a href="#">Angular App</a></li>
+            </ul>
+         </nav>
+        </div>
+    </nav>
+
+  <div class="page-header"> 
+
+  </div>
+    <div id="productmanager" class="container" data-ng-controller="ProductController">
+
+        <div id="addOrEditOrView" ng-show="isAddOrEditOrView.status" class="jumbotron">
+            <form role="form">
+                <div class="form-group">
+                    <label>Product Name</label>
+                    <input type="text" ng-model="product.ProductName" />
+                </div>
+
+                <div class="form-group">
+                    <label>Product Price</label>
+                    <input type="text" ng-model="product.Price" />
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <input type="text" ng-model="product.Category" /> 
+                </div>
+
+                <div class="form-group" ng-show="isAddOrEditOrView.isAdding">
+                    <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+                    &nbsp;
+                    &nbsp;
+                    <button type="button"  class="btn btn-primary" ng-click="saveProduct()">Save</button>
+                </div>
+
+                 <div class="form-group" ng-show="isAddOrEditOrView.isEditing">
+                      <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+                    &nbsp;
+                    &nbsp;
+                    <button type="button"  class="btn btn-primary" ng-click="updateProduct()">Update</button>
+                </div>
+
+                 <div class="form-group" ng-show="isAddOrEditOrView.isViewing">
+                      <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+                </div>
+
+            </form>
+        </div>
+
+
+        <div id="listProducts" ng-hide="isAddOrEditOrView.status">
+
+            <button type="button" class="btn btn-default" ng-click="addNew()">Add New</button>
+            <br />
+            <br />
+            <div>
+              <span class="text-success bg-success">Search</span>   <input type="text" ng-model="query" /><span class="glyphicon glyphicon-search"></span>  <br /> 
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ProductId</th>
+                         <th>ProductName</th>
+                          <th>Price</th>
+                            <th>Category</th>
+                            <th>Actions</th>
+                    </tr>
+                    <tr data-ng-repeat="product in products |filter:query"> 
+                        <td>{{product.ProductId}}</td>
+                        <td>{{product.ProductName}}</td>
+                        <td>{{product.Price}}</td>
+                        <td>{{product.Category}}</td>
+                        <td>
+                            <button type="button" class="btn btn-link" ng-click="editProduct(product.ProductId)">Edit</button>|
+                            <button type="button" class="btn btn-danger" ng-click="deleteProduct(product.ProductId)">Delete</button>|
+                            <button type="button" class="btn btn-info" ng-click="viewProduct(product.ProductId)">View</button>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+
+
+    </div>
+</body>
+</html>
+====================================================================================
+Angular CRUD operations to the RESTful service using $resource service
+
+$resource in an inbuilt module from Angular fromwork.
+
+It is built on top of $http service.
+
+You can make ajax calls to any RESTful service using $resource with few lines of code.
+
+Steps to work with $resource
+
+Step1: 
+	Download Angular Resource module 
+URL : 
+	AngularJS.org 
+		Download
+			Browser More Modules
+				Angular.resource.min.js
+
+	https://code.angularjs.org/1.3.15/angular-resource.min.js
+
+Step2:
+	embed this resource in your HTML index.html
+
+Step3:
+Add the dependency in the angular module.
+e.g.
+	var app=angular.module('appName',['ngRoute','ngResource']);
+
+
+Step4 : 
+	create a Factory and Initialize the $resource with RESTful service url 
+	 	Or 
+	You can directly use in Controller 
+
+
+syntax : -
+$resource(url, [paramDefaults], [actions], options);
+
+
+Description: 
+
+URL :
+A parameterized URL template with parameters prefixed by : as in /user/:username
+http://xxxxxxxxxxxxxx/products/:id or any respective query string name
+
+
+paramDefaults : this is optional  
+If you want to set some optional value to this "query string" parameter , you can set here..
+
+e.g.
+{verb:'greet', salutation:'Hello'}
+
+
+actions  : this is also Optional
+Hash with declaration of custom actions that should extend the default set of resource actions
+
+{action1: {method:?, params:?, isArray:?, headers:?, ...},
+ action2: {method:?, params:?, isArray:?, headers:?, ...},
+ ...}
+
+
+ Where:
+
+    action ?{string} ?The name of action. This name becomes the name of the method on your resource object.
+
+    method ?{string} ?Case insensitive HTTP method (e.g. GET, POST, PUT, DELETE, JSONP, etc).
+
+    params ?{Object=} ?Optional set of pre-bound parameters for this action. If any of the parameter value is a function, it will be executed every time when a param value needs to be obtained for a request (unless the param was overridden).
+
+    url ?{string} ?action specific url override. The url templating is supported just like for the resource-level urls.
+
+    isArray ?{boolean=} ?If true then the returned object for this action is an array, see returns section.
+
+    transformRequest ?{function(data, headersGetter)|Array.<function(data, headersGetter)>} ?transform function or an array of such functions. The transform function takes the http request body and headers and returns its transformed (typically serialized) version. By default, transformRequest will contain one function that checks if the request data is an object and serializes to using angular.toJson. To prevent this behavior, set transformRequest to an empty array: transformRequest: []
+
+    transformResponse ?{function(data, headersGetter)|Array.<function(data, headersGetter)>} ?transform function or an array of such functions. The transform function takes the http response body and headers and returns its transformed (typically deserialized) version. By default, transformResponse will contain one function that checks if the response looks like a JSON string and deserializes it using angular.fromJson. To prevent this behavior, set transformResponse to an empty array: transformResponse: []
+
+
+    cache ?{boolean|Cache} ?If true, a default $http cache will be used to cache the GET request, otherwise if a cache instance built with $cacheFactory, this cache will be used for caching.
+
+    timeout ?{number|Promise} ?timeout in milliseconds, or promise that should abort the request when resolved.
+
+    withCredentials - {boolean} - whether to set the withCredentials flag on the XHR object.
+
+    responseType - {string} - see requestType.
+
+    interceptor - {Object=} - The interceptor object has two optional methods - response and responseError. Both response and responseError interceptors get called with http response object
+
+
+
+
+options:
+stripTrailingSlashes ?{boolean} ?If true then the trailing slashes from any calculated URL will be stripped. (Defaults to true.)
+
+Returns:
+
+{ 'get':    {method:'GET'},
+  'save':   {method:'POST'},
+   'update':   {method:'PUT'},
+  'query':  {method:'GET', isArray:true},
+  'delete': {method:'DELETE'} 
+};
+
+
+e.g.
+var User = $resource('/user/:userId', {userId:'@id'});
+
+var user = User.get({userId:123}, function(data) {
+});
+=================================================================
+Complete Example:
+
+
+//Create a Module 
+var productManagerApp = angular.module('productApp', ['ngResource']);
+
+
+
+//Create a Factory and return $resource 
+
+productManagerApp.factory('Entry', function ($resource) {
+    return $resource('http://localhost:57878/api/products/:id',null, 
+        { 'get':    {method:'GET'},
+  'save':   {method:'POST'},
+   'update':   {method:'PUT'},
+  'query':  {method:'GET', isArray:true},
+  'delete': {method:'DELETE'} 
+});
+});
+
+
+//Create a Controller and use Resource Factory 
+function ProductController($scope, $location, Entry) {
+
+    $scope.isAddOrEditOrView = { status: false, isAdding: false, isEditing: false, isViewing: false };
+
+    function init() {
+        getProducts();
+    }
+
+    init();
+
+    function getProducts() {
+        $scope.products = Entry.query();
+    }
+    $scope.addNew = function () {
+        $scope.isAddOrEditOrView.status = true;
+        $scope.isAddOrEditOrView.isAdding = true;
+
+    }
+
+
+    $scope.product = new Entry();  
+
+    $scope.saveProduct = function () {
+
+       
+        $scope.product.$save(function () {
+            alert("Saved..");
+        });       
+
+        getProducts();
+
+        $scope.product = null;
+        $scope.isAddOrEditOrView.status = false;
+        $scope.isAddOrEditOrView.isAdding = false;
+    }
+
+    $scope.cancel = function () {
+        $scope.isAddOrEditOrView.status = false;
+        $scope.isAddOrEditOrView.isAdding = false;
+        $scope.isAddOrEditOrView.isEditing = false;
+        $scope.isAddOrEditOrView.isEditing = false;
+        $scope.product = null;
+    }
+
+
+    $scope.editProduct = function (productId) {
+
+        $scope.getProductById(productId);
+
+        $scope.isAddOrEditOrView.status = true;
+        $scope.isAddOrEditOrView.isEditing = true;
+        $scope.isAddOrEditOrView.isAdding = false;
+        $scope.isAddOrEditOrView.isViewing = false;
+    }
+
+
+    $scope.updateProduct = function () {
+
+        $scope.product.$update(function () {
+            alert("Updated...");
+        });
+
+
+
+        getProducts();
+        $scope.product = null;
+        $scope.isAddOrEditOrView.status = false;
+        $scope.isAddOrEditOrView.isEditing = false;
+        $scope.isAddOrEditOrView.isAdding = false;
+        $scope.isAddOrEditOrView.isViewing = false;
+
+    }
+
+    $scope.deleteProduct = function (productId) {
+        $scope.getProductById(productId);
+
+        $scope.product.$delete(function () {
+            alert("deleted...");
+        });
+      
+        getProducts();
+
+        $scope.isAddOrEditOrView.status = false;
+        $scope.isAddOrEditOrView.isEditing = false;
+        $scope.isAddOrEditOrView.isAdding = false;
+        $scope.isAddOrEditOrView.isViewing = false;
+    }
+
+    $scope.viewProduct = function (productId) {
+        $scope.getProductById(productId);
+
+        $scope.isAddOrEditOrView.status = true;
+        $scope.isAddOrEditOrView.isAdding = false;
+        $scope.isAddOrEditOrView.isEditing = false;
+        $scope.isAddOrEditOrView.isViewing = true;
+    }
+    $scope.getProductById = function (productId) {
+        $scope.product = Entry.get({ id: productId });       
+    }
+
+}
+
+
+
+productManagerApp.controller('ProductController', ProductController);
+
+
+
+
+Index.html
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" data-ng-app="productApp">
+<head>
+    <title>Product Manager Application</title>
+    <script src="app/Libs/jquery-2.1.1.min.js"></script>
+    <script src="app/Libs/angular.min.js"></script>
+    <script src="app/js/bootstrap.min.js"></script>
+    <script src="app/Libs/angular-resource.min.js"></script>
+ 
+    <script src="app/Controllers/angularResourcesforREST.js"></script>
+
+    <link rel="stylesheet" href="app/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="app/css/bootstrap-theme.min.css" />
+
+
+</head>
+<body>
+    <nav class="nav navbar-default navbar-fixed-top">
+        <div class="container">
+            <nav  class="nav navbar-left">
+            <ul class="nav navbar-nav">
+                <li><a href="#">Angular App</a></li>
+            </ul>
+         </nav>
+        </div>
+    </nav>
+
+  <div class="page-header"> 
+
+  </div>
+    <div id="productmanager" class="container" data-ng-controller="ProductController">
+
+        <div id="addOrEditOrView" ng-show="isAddOrEditOrView.status" class="jumbotron">
+            <form role="form">
+                <div class="form-group">
+                    <label>Product Name</label>
+                    <input type="text" ng-model="product.ProductName" />
+                </div>
+
+                <div class="form-group">
+                    <label>Product Price</label>
+                    <input type="text" ng-model="product.Price" />
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <input type="text" ng-model="product.Category" /> 
+                </div>
+
+                <div class="form-group" ng-show="isAddOrEditOrView.isAdding">
+                    <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+                    &nbsp;
+                    &nbsp;
+                    <button type="button"  class="btn btn-primary" ng-click="saveProduct()">Save</button>
+                </div>
+
+                 <div class="form-group" ng-show="isAddOrEditOrView.isEditing">
+                      <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+                    &nbsp;
+                    &nbsp;
+                    <button type="button"  class="btn btn-primary" ng-click="updateProduct()">Update</button>
+                </div>
+
+                 <div class="form-group" ng-show="isAddOrEditOrView.isViewing">
+                      <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+                </div>
+
+            </form>
+        </div>
+
+
+        <div id="listProducts" ng-hide="isAddOrEditOrView.status">
+
+            <button type="button" class="btn btn-default" ng-click="addNew()">Add New</button>
+            <br />
+            <br />
+            <form role="form" class="form-inline">
+                <div class="col-md-2">
+                         <label class="label-primary">Search</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" ng-model="query" class="form-control" /><span class="glyphicon glyphicon-search"></span>  <br /> 
+                </div>
+            </form>
+    
+     
+                    <table class="table table-hover table-responsive">
+                <thead>
+                    <tr>
+                        <th>ProductId</th>
+                         <th>ProductName</th>
+                          <th>Price</th>
+                            <th>Category</th>
+                            <th>Actions</th>
+                    </tr>
+                    <tr data-ng-repeat="product in products |filter:query"> 
+                        <td>{{product.ProductId}}</td>
+                        <td>{{product.ProductName}}</td>
+                        <td>{{product.Price}}</td>
+                        <td>{{product.Category}}</td>
+                        <td>
+                            <button type="button" class="btn btn-link" ng-click="editProduct(product.ProductId)">Edit</button>|
+                            <button type="button" class="btn btn-danger" ng-click="deleteProduct(product.ProductId)">Delete</button>|
+                            <button type="button" class="btn btn-info" ng-click="viewProduct(product.ProductId)">View</button>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+
+
+    </div>
+</body>
+</html>
+====================================================================================
+
+Creating angular Service and Making http ajax calls using $http
+
+webAdminApp.service('userService', function ($http) {
+
+    var result = [];
+ 
+       this.getUsers = function () {
+        $http.get('http://localhost:57878/api/users').success(function (data) {
+            result = data;
+        }).error(function (data) {
+            alert("error");
+        });
+
+           return result;
+    }
+
+
+
+
+    this.getUserById = function (userid) {
+
+        $http.get('http://localhost:57878/api/users/' + userid).success(function (data) {
+            sessionStorage.selectedUser = data;
+        }).error(function (data) {
+            $scope.error = 'not loaded';
+        });
+
+    }
+
+   
+
+  
+
+    this.addNewUser = function (user) {
+        user.UserId = 0;
+
+        $http.post('http://localhost:57878/api/users', user).success(function (data) {
+            alert("Added Successfully!!");
+        }).error(function (data) {
+            alert("error");
+        });
+    }
+
+
+
+    this.updateUser = function (user) {
+
+
+        $http.put('http://localhost:57878/api/users/', user).success(function (data) {
+            alert("Saved Successfully!!");
+        }).error(function (data) {
+            alert("error");
+        });
+
+    }
+
+    this.deleteUser = function (userid) {
+
+        $http.delete('http://localhost:57878/api/users/' + userid).success(function (data) {
+            alert("Deleted Successfully!!");
+
+        }).error(function (data) {
+            $scope.error = "An Error has occured while Saving Customer! " + data;
+        });
+
+    }
+
+});
+
+
+var webAdminApp = angular.module('webAdminApp', []);
+
+function AccountController($scope,$http, userService) {
+
+
+    function init() {
+        
+             $http.get('http://localhost:57878/api/users').success(function (data) {
+            $scope.users = data;
+        }).error(function (data) {
+            alert("error");
+        });
+    }
+
+
+    init();
+
+
+    
+
+    $scope.getUserById = function (userid) {
+
+        $http.get('http://localhost:57878/api/users/' + userid).success(function (data) {
+            $scope.user = data;
+        }).error(function (data) {
+            $scope.error = 'not loaded';
+        });
+    }
+
+    $scope.editUser = function (userid) {
+        $scope.isAddOrEdit = true;
+        $scope.isEditing = true;
+        $scope.isAdding = false;
+        $scope.getUserById(userid);
+    }
+
+    $scope.viewUser = function (userid) {
+        $scope.isAddOrEdit = true;
+        $scope.isEditing = false;
+        $scope.getUserById(userid);
+
+    }
+    $scope.addNew = function () {
+        $scope.user = null;
+        $scope.isAddOrEdit = true;
+        $scope.isAdding = true;
+    }
+
+    $scope.isAddOrEdit = false;
+
+
+    $scope.addNewUser=function(){
+        $scope.user.UserId = 0;
+        userService.addNewUser($scope.user);
+
+       
+        init();
+        $scope.isAddOrEdit = false;
+        $scope.user = null;
+        
+      
+
+    }
+
+
+    $scope.cancel = function () {
+        $scope.isAddOrEdit = false;
+        $scope.isEditing = false;
+        $scope.isAdding = false;
+    }
+
+    $scope.updateUser = function () {
+
+        
+        userService.updateUser($scope.user);
+
+        $scope.isAddOrEdit = false;
+        $scope.user = null;
+
+        init();
+
+    }
+
+    $scope.deleteUser = function (userid) {
+
+        userService.deleteUser(userid);
+        init();
+
+    }
+
+
+}
+
+webAdminApp.controller('AccountController', AccountController);

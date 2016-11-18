@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/angular.min.js"></script>
+    <script src="App/app.js"></script>
+    <style>
+        .form-login input.ng-invalid.ng-touched{
+            background-color:red;
+        }
+        .form-login input.ng-valid.ng-touched{
+            background-color:green;
+        }
+    </style>
+</head>
+<body>
+    <div ng-controller="loginController" >
+        <form class="form-login" name="loginForm">
+            <div>
+                <label>Username:</label>
+                <input type="text" id="username" name="username" ng-model="loginModel.username" required/>
+            </div>
+            <div>
+                <label>Password:</label>
+                <input type="password" id="password" name="password" ng-model="loginModel.password" required/>
+            </div>
+            <div>
+                <button type="button">Login</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

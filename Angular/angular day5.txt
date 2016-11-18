@@ -1,0 +1,108 @@
+Modules
+controllers
+scope
+model
+routes
+templates
+ajax
+services
+factories
+run()
+=======================
+$scope
+	It is a view model angular
+	It holds all the properties and methods which are bound to the templates.
+	It supports two-way binding.
+
+
+how binding works in angular?
+
+e.g.
+	controller:
+		$scope
+			$scope.name
+
+
+
+	template
+		input fields
+			ng-model =name
+, 
+how this update works ? 
+	angular can make use of digest life cycle to update model and view.
+
+It includes 3 options:
+	$watch
+	$digest
+	$apply 
+
+$scope.$watch
+$scope.$digest
+$scope.$apply
+
+Note:
+In angular for every property in scope, there will be a watch.
+This $watch will keep watching the changes in that property.
+If there is new value, it will update the model/view
+This update is done by $digest.
+
+one $digest for one controller.
+multiple watches in a single digest.
+
+
+$watch will just keep watchting the changes. It does not do anything.
+
+$digest will udpate the model if there is any change in the model.
+
+
+
+
+$digest : It will just update the model if there is any change.
+
+$apply: 
+	If you want do some task first,then update the model, then we use "$apply"
+
+	$apply will internally calls $digest.
+
+==========================================================
+injecter will takes care DI.
+
+$inject:
+	This is for Inject modules/factories in any otther controller or any component.
+
+You can make use "[]" directly for DI.
+OR
+you can use "$inject" to add DI explicitly.
+==========
+uppercase
+lowercase
+date
+number
+currrency
+filter
+orderBy
+
+
+uppercaseFilter
+lowercaseFiiter
+dateFilter
+numberFilter
+filterFilter
+
+
+
+
+
+
+
+
+=============
+{{'satya' | reverse}}
+==============
+<div class="form-group" ng-class="{'has-error': loginForm.Username.$invalid && (loginForm.Username.$isdirty || submitted)}">
+                <label class="control-label">Username:</label>
+                <input type="text" name="Username" class="form-control" ng-model="LoginModel.Username" ng-required="true" />
+                <div >
+                    <span class="help-block" ng-show="loginForm.Username.$error.required && (loginForm.Username.$isdirty || submitted)">Username is required.</span>
+                </div>
+            </div>

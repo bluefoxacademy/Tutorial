@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/angular.min.js"></script>
+    <script src="App/app.js"></script>
+</head>
+<body>
+    <div ng-controller="demoController">
+        <div>
+            <span>{{time}}</span>
+        </div>
+        <div>
+            <button type="button" ng-click="updateTime()">Update Time</button>
+        </div>
+        <div>
+            <button type="button" id="btn1">click Me to Update</button>
+        </div>
+
+        <div>
+            <span>{{'satya' | reverse}}</span>
+        </div>
+
+        <div>
+            <span>{{'google' | reverse:true}}</span>
+        </div>
+
+    </div>
+
+    <div ng-controller="employeeController">
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Job</th>
+                    <th>Salary</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="emp in employees">
+                    <td>{{emp.Id}}</td>
+                    <td>{{emp.Name}}</td>
+                    <td>{{emp.Job}}</td>
+                    <td>{{emp.salary}}</td>
+                    <td>{{emp.salary| status}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

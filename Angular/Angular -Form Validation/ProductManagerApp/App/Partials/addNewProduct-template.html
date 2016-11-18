@@ -1,0 +1,41 @@
+﻿<div class="row">
+    <div class="col-md-6">
+        <form name="prodForm">
+            <div class="form-group">
+                <h4>Add New Product</h4>
+            </div>
+            <div class="form-group" ng-class="{'has-error': prodForm.prodId.$invalid && (prodForm.prodId.$isdirty || submitted)}">
+                <label class="control-label">Id:</label>
+                <div class="col-md-6">
+                    <input type="text" name="prodId" class="form-control" ng-model="newProductModel.Id" required/>
+                </div>
+                <div>
+                    <span class="help-block" ng-show="prodForm.prodId.$error.required && (prodForm.prodId.$isdirty || submitted)">Id is required.</span>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': prodForm.prodName.$invalid && (prodForm.prodName.$isdirty || submitted)}">
+                <label class="control-label">Name:</label>
+                <div class="col-md-6">
+                    <input type="text" name="prodName" class="form-control" ng-model="newProductModel.Name" required/>
+                </div>
+                <div>
+                    <span class="help-block" ng-show="prodForm.prodName.$error.required && (prodForm.prodName.$isdirty || submitted)">Name is required.</span>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': prodForm.prodPrice.$invalid && (prodForm.prodPrice.$isdirty || submitted)}">
+                <label class="control-label">Price:</label>
+                <div class="col-md-6">
+                    <input type="text" name="prodPrice" class="form-control" ng-model="newProductModel.Price" required ng-pattern="/^[0-9]+$/"/>
+                </div>
+                <div>
+                    <span class="help-block" ng-show="prodForm.prodPrice.$error.required && (prodForm.prodPrice.$isdirty || submitted)">Price is required.</span>
+                    <span class="help-block" ng-show="prodForm.prodPrice.$error.pattern && (prodForm.prodPrice.$isdirty || submitted)">Price must be numeric.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" ng-click="saveProduct()">Save</button>
+                <a href="#/products" class="btn btn-default">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

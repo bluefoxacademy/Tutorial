@@ -1,0 +1,153 @@
+Directives:
+	It is a kind of reusable component(angular element/attribute)
+
+
+	<input type="text" />
+		textbox(builtin)
+
+
+		brand new textbox with additional behaviour 
+
+		
+	<input type="text" name="" id="" />
+
+		need to add a new attribute this textbox which can change some behaviour.
+
+			
+
+
+		
+
+	angular directives:
+		These are angular specific attributes/elements.
+		we can change behaviour of the element using these directives
+
+
+e.g.
+	ngApp (ng-app)
+	ngIf (ng-if)
+	ngRepeat (ng-repeat)
+	ngShow (ng-show)
+	ngHide (ng-hide)
+	ngSrc (ng-src)
+	ngClass (ng-class)
+	ngAttr (ng-attr)
+	ngInit (ng-init)
+	
+
+how to use directives in angular template:
+* as element
+* as attribute
+* as class 
+* as comment 
+
+depends on the way, we create a dirctive.
+
+	
+how to create custom directive? 
+
+angular.module()
+.run()
+.config()
+.factory()
+.service()
+.provider()
+.value()
+.filter()
+.directive()
+=======
+we can use custom directives for different purpose.
+
+e.g.
+create a datePicker 
+use in many templates.
+
+
+
+create a status directive , change the color based on status(inprogess, pending, changes required, review ...)
+use in many pages.
+
+
+create a popup modal and use for many templates.
+
+
+create a grid directive and use for displaying different model data
+
+create a directives charts and use in many templates.
+
+
+pagination 
+
+
+For this ,you can create own directives or you can use some 3rd party directives..
+
+e.g.
+	angular bootstrap (lot of directives)
+====================
+Note:
+we can use camelCase for directives..
+
+In .JS, we use camelCase
+	e.g.
+	myGrid
+	myDatePicker
+	appInfo
+	myPopUpModal
+
+in angular template:
+	<div my-grid></div>
+	<my-grid></my-grid>
+
+	<input type="text"  my-date-picker="currentDate"/>
+
+
+syntax : - 
+
+var app=angular.module('app',[]);
+app.directive('demoDirective',function(){
+	return {
+		restrict:'',
+		transclude:true/false,
+		link:function(){},
+		controller:function(){}
+		scope:{},
+		template:'',
+		templateUrl:''
+	};
+});
+
+=============
+The directive will automatically inherit the scope of the controller.
+
+restrict: for creating type of directive ( element, atttribute, class)
+transclude  : include inner text as part of directive
+scope : to create isolated scope
+controller: to create isolated controller
+link : to manipulate the DOM 
+template: inline temmplate
+templateUrl : external partial 
+=============
+
+angular routing 
+	angular.route.min.js
+
+	It allows us to configure routes 
+	ngRoute module.
+
+	Here, we can load one partial at a time.
+
+	Index.html
+		about.html
+		home.html
+		..
+
+=========
+angular regular routing : 
+	ngView
+
+	<div ng-view></div>
+
+
+for nested routing : 
+	<div ui-view></div>
+

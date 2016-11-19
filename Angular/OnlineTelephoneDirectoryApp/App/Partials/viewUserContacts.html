@@ -1,0 +1,153 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <h4>My Contacts</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <table class="table table-hover table-striped table-bordered">
+            <thead style="background-color:#cccccc;">
+                <tr>
+                    <th class="col-xs-3 col-sm-3 col-md-3">Name</th>
+                    <th class="col-xs-3 col-sm-3 col-md-3">Email</th>
+                    <th class="col-xs-3 col-sm-3 col-md-3">Mobile</th>
+                    <th class="col-xs-3 col-sm-3 col-md-3 text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="userContact in userContacts">
+                    <td>{{userContact.Name}}</td>
+                    <td>{{userContact.Email}}</td>
+                    <td>{{userContact.Mobile}}</td>
+                    <td>
+                        <!-- Single button -->
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Action <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="javascript:void(0)" class="btn btn-link"  data-toggle="modal"  data-target="#myModal" ng-click="setCurrentContact(userContact)">Delete</a></li>
+                                <li><a href="javascript:void(0)" class="btn btn-link"  data-toggle="modal" data-target="#myEditContactModal" ng-click="editContact(userContact)">Edit</a></li>
+                                <li><a href="javascript:void(0)" class="btn btn-link"  data-toggle="modal" data-target="#myViewContactModal"  ng-click="viewContact(userContact)">View</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot ng-if="userContacts.length<=0">
+                <tr>
+                    <td colspan="4" align="center">
+                        <span>No Contacts found</span>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+   
+</div>
+
+<!-- Modal For Delete Contact -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Delete Contact</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <label class="control-label">Name:</label>
+                        <span>{{selectedContact.Name}}</span>
+                    </div>
+                </div>  
+               <div class="row">
+                   <div class="col-xs-12 col-sm-12 col-md-12">
+                       <h5 class="text-info">
+                           Are you sure you wish to delete contact? If yes, please click on Submit.
+                       </h5>
+                   </div>
+               </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="deleteContact()">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal For Edit Contact -->
+<div class="modal fade" id="myEditContactModal" tabindex="-1" role="dialog" aria-labelledby="myEditContactModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Edit Contact</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <form>
+                            <div class="form-group">
+                                <label class="control-label">Name:</label>
+                                <input type="text" class="form-control" ng-model="selectedContact.Name" ng-disabled="true"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Email:</label>
+                                <input type="email" class="form-control" ng-model="selectedContact.Email" />
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Mobile:</label>
+                                <input type="text" class="form-control" ng-model="selectedContact.Mobile" />
+                            </div>
+                        </form>
+                    </div>
+
+                </div> 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="updateContact()">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal For View Contact -->
+<div class="modal fade" id="myViewContactModal" tabindex="-1" role="dialog" aria-labelledby="myViewContactModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Contact Info</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <form>
+                            <div class="form-group">
+                                <label class="control-label">Name:</label>
+                                <span>{{selectedContact.Name}}</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Email:</label>
+                                <span>{{selectedContact.Email}}</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Mobile:</label>
+                                <span>{{selectedContact.Mobile}}</span>
+                            </div>
+                        </form>
+                    </div>
+
+                </div> 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

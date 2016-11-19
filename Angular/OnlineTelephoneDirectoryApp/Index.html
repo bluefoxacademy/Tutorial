@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Demo App</title>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width"/>
+    <script src="App/Libs/JS/angular.min.js"></script>
+    <script src="App/Libs/JS/angular-route.min.js"></script>
+    <script src="App/Libs/JS/jquery-2.2.4.min.js"></script>
+    <script src="App/Libs/JS/bootstrap.min.js"></script>
+    
+
+    <link rel="stylesheet" href="App/Libs/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="App/Libs/Content/bootstrap-theme.min.css" />
+    <script src="App/app.js"></script>
+    <script src="App/Controllers/IndexController.js"></script>
+    <script src="App/Factories/telephoneFactory.js"></script>
+    <script src="App/Factories/userFactory.js"></script>
+    <script src="App/Controllers/UserController.js"></script>
+    <script src="App/Controllers/contactsController.js"></script>
+    <style>
+        .start-header{
+            padding-top:40px;
+            margin-top:50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Telephone Directory</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+              <div class="pull-right">
+                <ul class="nav navbar-nav">
+                    <li><a href="#/">Home</a></li>
+                    <li><a href="#/about">About</a></li>
+                    <li><a href="#/contact">Contact</a></li>
+                </ul>
+            </div>
+                        
+           </div>
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="pull-right">
+                            <div ng-if="IsAlreadyLogin==false">
+                                [Welcome Guest!]&nbsp;&nbsp;[<a href="#/login" class="btn btn-link">Login</a>/<a href="#/register" class="btn btn-link">Register</a>]
+                            </div>
+                            <div  ng-if="IsAlreadyLogin==true">
+                                <div>
+                                    [Welcome <span>{{loggedInUser}}</span>!]&nbsp;&nbsp;[<a href="#/logout" class="btn btn-link">Logout</a>]
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+            
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+    <br />
+    <br />
+    <!-- Begin page content -->
+    <div class="container">           
+                    <div class="start-header">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-10 col-md-8">
+                                <div ng-view=""></div>
+                            </div>
+                            <div class="col-xs-12 col-sm-2 col-md-4"  ng-if="IsAlreadyLogin==true">
+                                <nav class="sidebar">
+                                    <div class="bg-primary" style="margin:5px;padding:5px;">
+                                       <h5>Quick Links</h5>
+                                    </div>
+                                    <ul class="nav nav-sidebar">
+                                        <li><a href="#/viewContacts" class="btn btn-link">View Contacts</a></li>
+                                        <li><a href="#/addNewContact" class="btn btn-link">Add Contact</a></li>
+                                        <li><a href="#/resetPassword" class="btn btn-link">Reset Password</a></li>
+                                        <li><a href="#/editInfo" class="btn btn-link">Edit Info</a></li>
+                                        <li><a href="#/viewInfo" class="btn btn-link">View Info</a></li>
+                                    </ul>
+                                </nav>
+                         
+                            </div>
+                        </div>
+                        
+                    </div>                 
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="center-block">
+                <p class="text-muted">&copy; Online Telephone Directory-2016</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

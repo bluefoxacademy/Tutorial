@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/angular.min.js"></script>
+    <script src="App/app.js"></script>
+</head>
+<body>
+    <div ng-controller="myController1">
+        <div>
+            <greet-directive>Hello....</greet-directive>
+        </div>
+        <div>
+            <my-customer></my-customer>
+        </div>
+    </div>
+
+    <div ng-controller="myController2">
+        <greet-directive></greet-directive>
+        <div>
+            <my-customer></my-customer>
+        </div>
+    </div>
+</body>
+</html>

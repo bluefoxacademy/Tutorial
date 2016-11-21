@@ -1,0 +1,28 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6">
+        <form>
+            <div class="form-group">
+                <h2 class="form-signin-heading">Add New Contact</h2>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Name:</label>
+                <input type="text" class="form-control" ng-model="newContact.Name" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Email:</label>
+                <input type="email" class="form-control" ng-model="newContact.Email" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Mobile:</label>
+                <input type="text" class="form-control" ng-model="newContact.Mobile" />
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" ng-click="saveContact()">Save</button>
+                &nbsp;
+                &nbsp;
+                <button type="button" class="btn btn-default" ng-click="cancelContact()">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+</div> 

@@ -1,0 +1,43 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <form name="registerForm">
+            <div class="form-group">
+                <h2 class="form-signin-heading">Please Register</h2>
+            </div>
+            <div class="form-group"  ng-class="{'has-error': registerForm.Username.$invalid && (registerForm.Username.$isdirty || submitted)}">
+                <label class="control-label">Username:</label>
+                <input type="text" name="Username" class="form-control" ng-model="RegisterModel.Username" required />
+                <div>
+                    <span class="help-block ng-binding ng-hide" ng-show="registerForm.Username.$error.required && (registerForm.Username.$isdirty || submitted)">Username is required.</span>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': registerForm.Passsword.$invalid && (registerForm.Passsword.$isdirty || submitted)}">
+                <label class="control-label">Passwrord:</label>
+                <input type="password" name="Passsword" class="form-control" ng-model="RegisterModel.Password" required />
+                <div>
+                    <span class="help-block ng-binding ng-hide" ng-show="registerForm.Passsword.$error.required && (registerForm.Passsword.$isdirty || submitted)">Password is required.</span>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': registerForm.Email.$invalid && (registerForm.Email.$isdirty || submitted)}">
+                <label class="control-label">Email:</label>
+                <input type="email" name="Email" class="form-control" ng-model="RegisterModel.Email" required/>
+                <div>
+                    <span class="help-block ng-binding ng-hide" ng-show="registerForm.Email.$error.required && (registerForm.Email.$isdirty || submitted)">Email is required.</span>
+                    <span class="help-block ng-binding ng-hide" ng-show="registerForm.Email.$error.email && (registerForm.Email.$isdirty || submitted)">Email is Invalid.</span>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': registerForm.Mobile.$invalid && (registerForm.Mobile.$isdirty || submitted)}">
+                <label class="control-label">Mobile:</label>
+                <input type="text" name="Mobile" class="form-control" ng-model="RegisterModel.Mobile" ng-pattern="/^\d{10}$/" required/>
+                <div>
+                    <span class="help-block ng-binding ng-hide" ng-show="registerForm.Mobile.$error.required && (registerForm.Mobile.$isdirty || submitted)">Mobile is required.</span>
+                    <span class="help-block ng-binding ng-hide" ng-show="registerForm.Mobile.$error.pattern && (registerForm.Mobile.$isdirty || submitted)">Mobile is Invalid.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary btn-block" ng-click="registerUser()">Register</button>
+            </div>
+        </form>
+    </div>
+    
+</div> 

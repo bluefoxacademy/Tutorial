@@ -77,3 +77,53 @@ app.filter('status', function () {
 app.controller('loginController', function ($scope) {
     $scope.submitted = false;
 });
+
+
+app.directive('greetDirective', function () {
+    return {
+        transclude:true,
+        template: '<h1 ng-transclude>Welcome to Angular</h1>'
+    };
+});
+
+app.controller('myController1', function ($scope) {
+    $scope.customer = {Name:'satya',Address:'PA'};
+});
+
+app.controller('myController2', function ($scope) {
+    $scope.customer = { Name: 'Scott', Address: 'NJ' };
+});
+
+app.directive('myCustomer', function () {
+    return {
+        template: 'Name:{{customer.Name}} Address:{{customer.Address}}'
+    };
+});
+app.controller('employeeController', function ($scope) {
+    $scope.employees = [{Id:1,Name:'satya',Address:'PA'}, {Id:2,Name:'john',Address:'NJ'}];
+});
+
+app.controller('customerController', function ($scope) {
+    $scope.customers = [{ Id: 1, Name: 'James', Address: 'NY' }, { Id: 2, Name: 'Scott', Address: 'CA' }];
+});
+
+app.directive('myGrid', function () {
+    return {
+        restrict:'AE',
+        templateUrl: 'App/Partials/my-grid-template.html',
+        scope: {
+            data:'=info'
+        }
+    };
+});
+
+app.directive('myDirective', function () {
+    return {
+        templateUrl: 'App/Partials/myDirective-template.html',
+        controller: function ($scope) {
+            $scope.clickMe = function () {
+                alert('clicked...');
+            }
+        }
+    };
+});

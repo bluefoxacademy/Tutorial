@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="App/Libs/JS/angular.min.js"></script>
+    <script>
+        var app = angular.module('app', []);
+        app.factory('TemperatureMonitor', function () {
+            var factory = {};
+            var arr = [];
+            factory.recordTemperature = function (num) {
+                arr.push(num);
+            }
+            factory.getCurrentMedian = function () {
+                var sortedArray = arr.sort(function (a, b) { return a - b; });
+                var median = null;
+                if (sortedArray != null && sortedArray.length > 0) {
+                    if (sortedArray.length % 2 == 0) {
+                        var medianIndex = Math.floor(sortedArray.length / 2);
+                        var SummOfMiddleNumbers = sortedArray[medianIndex - 1] + sortedArray[medianIndex];
+                        median = SummOfMiddleNumbers / 2;
+                    } else {
+                        var medianIndex = Math.floor(sortedArray.length / 2);
+                        median = sortedArray[medianIndex];
+
+                    }
+                }
+                return median;
+            }
+            return factory;
+        });
+        app.controller('sampleController', function ($scope, TemperatureMonitor) {
+            var init = function () {
+                TemperatureMonitor.recordTemperature(3);
+                TemperatureMonitor.recordTemperature(7);
+                TemperatureMonitor.recordTemperature(5);
+                $scope.median=TemperatureMonitor.getCurrentMedian();
+            }();
+        });
+    </script>
+</head>
+<body>
+    <div ng-controller="sampleController">
+        {{median}}
+    </div>
+
+</body>
+</html>

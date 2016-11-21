@@ -1,0 +1,30 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <form class="form-signin" name="loginForm">
+            <div class="form-group">
+                <h2 class="form-signin-heading">Please sign in</h2>
+            </div>
+            <div class="form-group" ng-class="{'has-error': loginForm.Username.$invalid && (loginForm.Username.$isdirty || submitted)}">
+                <label class="control-label">Username:</label>
+                <input type="text" name="Username" class="form-control" ng-model="LoginModel.Username" ng-required="true" />
+                <div >
+                    <span class="help-block ng-binding ng-hide" ng-show="loginForm.Username.$error.required && (loginForm.Username.$isdirty || submitted)">Username is required.</span>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': loginForm.Password.$invalid && (loginForm.Password.$isdirty || submitted)}">
+                <label class="control-label">Password:</label>
+                <input type="password" name="Password" class="form-control" ng-model="LoginModel.Password" ng-required="true"/>
+                <div >
+                    <span class="help-block ng-binding ng-hide" ng-show="loginForm.Password.$error.required && (loginForm.Password.$isdirty || submitted)">Password is required.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-lg btn-primary btn-block" ng-click="ValidateUser()">Login</button>
+            </div>
+            <div class="form-group has-error" ng-if="IsUserValid==false"  >
+                <span class="help-block">Invalid Credentails</span>
+            </div>
+        </form>
+    </div>
+   
+</div>

@@ -1,0 +1,761 @@
+Node Examples:
+
+Example1: Just for testing node.js 
+
+console.log("You have Configured Node Js Successfully");
+
+
+Example2: Just for printing Greeting message
+
+var sys = require('sys');
+
+setTimeout(function () {
+    sys.puts("World!");
+}, 2000);
+sys.puts("Hello");
+
+// Waits 2 seconds and then prints World and exit's
+
+
+Example: 
+var sys=require('sys');
+
+var today=new Date();
+sys.puts('Current DateTime:'+today);
+
+setInterval(function(){
+var today=new Date();
+	sys.puts(today.toLocaleTimeString());
+},1000);
+
+
+
+
+
+Example3: for creating custom HTTP server using node.js
+
+var http = require('http');
+
+try{
+http.createServer(function (request, response) {
+  
+response.setHeader('Access-Control-Allow-Origin', '*');
+response.setHeader('Access-Control-Request-Method', '*');
+response.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+response.setHeader('Access-Control-Allow-Headers', '*');
+
+      response.end('Hello World\n');
+}).listen(2020);
+
+console.log('Server started');
+}
+catch(err){
+  console.log("Error");
+}
+
+
+Note: 
+This is how we enable CORS
+
+
+jQuery client for this server : 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="jquery-2.1.1.min.js">
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            $.support.cors = true;
+
+            $.ajax({
+                url: 'http://localhost:2020/',
+                type: 'GET',
+                success: function (response) {
+                    $("#message").html(response);
+                },
+                error: function (error) {
+                    alert("error");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <span id="message"></span>
+</body>
+</html>
+
+===================================================
+
+NodeJs RESTFul for GET/JSON:
+
+var http = require('http');
+
+try{
+http.createServer(function (request, response) {
+  
+response.setHeader('Access-Control-Allow-Origin', '*');
+response.setHeader('Access-Control-Request-Method', '*');
+response.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+response.setHeader('Access-Control-Allow-Headers', '*');
+
+var employee={employeeId:1,employeeName:'satya',job:'manager'};
+var jsonString=JSON.stringify(employee);
+      response.end(jsonString);
+}).listen(2020);
+
+console.log('Server started');
+}
+catch(err){
+  console.log("Error");
+}
+
+
+
+jQuery Client:
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="jquery-2.1.1.min.js">
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            $.support.cors = true;
+
+            $.ajax({
+                url: 'http://localhost:2020/',
+                type: 'GET',
+                  success: function (response) {                   
+                      var data = JSON.parse(response);
+                     
+                    var str = "";
+                    str = 'employeeId:' + data.employeeId + ' employeeName:' + data.employeeName + ' job:' + data.job;
+
+                    $("#message").html(str);
+                },
+                error: function (error) {
+                    alert("error");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <span id="message"></span>
+</body>
+</html>
+
+
+
+
+
+
+Example4: DNS Example
+
+var dns = require('dns');
+
+dns.resolve4('ndtv.com', function (err, addr, ttl, cname) {
+    console.log(addr);
+});
+
+
+
+
+
+
+Example: for http server 
+var http = require('http');
+
+var userCount = 0;
+http.createServer(function (request, response) {
+    console.log('New connection');
+	console.log("new request..");
+	
+    userCount++;
+
+console.log("request no:"+userCount);
+
+    response.writeHead(200, {'Content-Type': 'text/plain'});
+    response.write('Hello!\n');
+    response.write('We have had '+userCount+' visits!\n');
+    response.end();
+}).listen(2020);
+
+console.log('Server started');
+
+==================================
+Example for Creating Web Server and responding as per the URL:
+
+server.js:
+
+var http = require('http');
+var fs = require('fs');
+var url = require('url');
+
+// Create a server
+http.createServer( function (request, response) {
+
+// Parse the request containing file name
+var pathname = url.parse(request.url).pathname;
+
+
+// Print the name of the file for which request is made.
+console.log("Request for " + pathname + " received.");
+
+// Read the requested file content from file system
+fs.readFile(pathname.substr(1), function (err, data) {
+if (err) {
+console.log(err);
+// HTTP Status: 404 : NOT FOUND
+// Content Type: text/plain
+response.writeHead(404, {'Content-Type': 'text/html'});
+}else{
+//Page found
+// HTTP Status: 200 : OK
+// Content Type: text/plain
+response.writeHead(200, {'Content-Type': 'text/html'});
+// Write the content of the file to response body
+response.write(data.toString());
+}
+// Send the response body
+response.end();
+});
+}).listen(8081);
+// Console will print the message
+console.log('Server running at http://127.0.0.1:8081/');
+
+
+sample pages:
+index.html
+
+<html>
+<head>
+<title>Sample Page</title>
+</head>
+<body>
+Hello World!
+</body>
+</html>
+
+
+Sample client :
+client.js
+
+var http = require('http');
+// Options to be used by request
+var options = {
+host: 'localhost',
+port: '8081',
+path: '/index.html'
+};
+
+// Callback function is used to deal with response
+var callback = function(response){
+// Continuously update stream with data
+var body = '';
+response.on('data', function(data) {
+body += data;
+});
+response.on('end', function() {
+// Data received completely.
+console.log(body);
+});
+}
+// Make a request to the server
+var req = http.request(options, callback);
+req.end();
+
+
+
+================================
+Example : for Express
+
+var express = require('express');
+var app = express();
+
+app.get('/', function (req, res) {
+    res.send('Hello World!');
+})
+
+var server = app.listen(3000, function () {
+   
+    var host = server.address().address;
+    var port = server.address().port;   
+    console.log('Example app listening at http://%s:%s', host, port);
+
+});
+
+
+
+package.json
+
+{
+ 
+ "name": "express demo",
+ 
+ "version": "0.0.1",
+  
+"dependencies": 
+{
+   
+ "body-parser": "^1.8.1",
+   
+ "express": "^4.9.0"
+  }
+
+}
+
+
+
+
+
+save both files in the same folder.
+
+
+first you install the dependencies.
+
+syntax : - (NODE command prompt)
+
+NPM install 
+
+
+Next, run the js file
+
+syntax : -
+
+node expressdemo.js
+
+
+Then, test your server from client/browser.
+==========================
+
+
+Example : Get/POST Demo
+
+server.js
+
+var express   =     require("express");
+var bodyParser  =    require("body-parser");
+
+var app       =     express();
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.get('/',function(req,res){
+  res.sendfile("index.html");
+});
+
+app.post('/login',function(req,res){
+  var user_name=req.body.user;
+  var password=req.body.password;
+  console.log("From Client pOST request: User name = "+user_name+" and password is "+password);
+
+  if(user_name=='satya' && password=='satya'){
+  res.sendfile('default.html');
+    }else  {
+  res.send('not done');
+    }
+});
+
+
+app.listen(3000,function(){
+  console.log("Started on PORT 3000");
+})
+
+
+package.json
+{
+  "name": "get-post-demo",
+  "version": "0.0.1",
+  "dependencies": {
+    "body-parser": "^1.8.1",
+    "express": "^4.9.0"
+  }
+}
+
+
+
+Index.html
+<!doctype html>
+<html>
+	<head>
+		<title>Login Page</title>
+	</head>
+	<body>
+		<h2>Hello...from NODE Server</h2>
+		<form method="post" action="/login">
+			<div>
+			<label>Username </label>
+			<input type="text" name="user"/> 
+			</div>
+
+			<div>
+				<label>Password</label>
+			<input type="password" name="password"/>
+			</div>
+
+			<div>
+				<input type="submit" value="Login"/> 
+			</div>
+		</form>
+	</body>
+</html>
+
+default.html
+
+
+<!doctype html>
+<html>
+	<head>
+	</head>
+	<body>
+		<h1>Hello..User</h1>
+		<h1>You logged in </h1>
+	</body>
+</html>
+
+
+========================
+package.json
+{
+  "name": "file_upload",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "^4.8.6","ejs": "^1.0.0","mysql": "^2.4.3"
+  }
+}
+
+
+================================
+Example for routing :
+
+var express = require('express');
+var app = express();
+// This responds with "Hello World" on the homepage
+app.get('/', function (req, res) {
+console.log("Got a GET request for the homepage");
+res.send('Hello GET');
+})
+// This responds a POST request for the homepage
+app.post('/', function (req, res) {
+console.log("Got a POST request for the homepage");
+res.send('Hello POST');
+})
+// This responds a DELETE request for the /del_user page.
+app.delete('/del_user', function (req, res) {
+console.log("Got a DELETE request for /del_user");
+res.send('Hello DELETE');
+})
+
+// This responds a GET request for the /list_user page.
+app.get('/list_user', function (req, res) {
+console.log("Got a GET request for /list_user");
+res.send('Page Listing');
+})
+// This responds a GET request for abcd, abxcd, ab123cd, and so on
+app.get('/ab*cd', function(req, res) {
+console.log("Got a GET request for /ab*cd");
+res.send('Page Pattern Match');
+})
+var server = app.listen(8081, function () {
+var host = server.address().address
+var port = server.address().port
+console.log("Example app listening at http://%s:%s", host, port)
+})
+
+
+================
+For static pages like images:
+
+var express = require('express');
+var app = express();
+app.use(express.static('public'));
+app.get('/', function (req, res) {
+res.send('Hello World');
+})
+var server = app.listen(8081, function () {
+var host = server.address().address
+var port = server.address().port
+console.log("Example app listening at http://%s:%s", host, port)
+})
+
+
+http://127.0.0.1:8081/images/logo.png
+=======================
+Get:
+
+index.html
+
+<html>
+<body>
+<form action="http://127.0.0.1:8081/process_get" method="GET">
+First Name: <input type="text" name="first_name"> <br>
+Last Name: <input type="text" name="last_name">
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>
+
+
+
+var express = require('express');
+var app = express();
+app.use(express.static('public'));
+app.get('/index.html', function (req, res) {
+res.sendFile( __dirname + "/" + "index.html" );
+})
+app.get('/process_get', function (req, res) {
+// Prepare output in JSON format
+response = {
+first_name:req.query.first_name,
+last_name:req.query.last_name
+};
+console.log(response);
+res.end(JSON.stringify(response));
+})
+var server = app.listen(8081, function () {
+var host = server.address().address
+var port = server.address().port
+console.log("Example app listening at http://%s:%s", host, port)
+})
+
+
+
+for post:
+
+Index.html
+<html>
+<body>
+<form action="http://127.0.0.1:8081/process_post" method="POST">
+First Name: <input type="text" name="first_name"> <br>
+Last Name: <input type="text" name="last_name">
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>
+
+
+server.js
+
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
+// Create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+app.use(express.static('public'));
+app.get('/index.html', function (req, res) {
+res.sendFile( __dirname + "/" + "index.html" );
+})
+app.post('/process_post', urlencodedParser, function (req, res) {
+// Prepare output in JSON format
+response = {
+first_name:req.body.first_name,
+last_name:req.body.last_name
+};
+console.log(response);
+res.end(JSON.stringify(response));
+})
+var server = app.listen(8081, function () {
+var host = server.address().address
+var port = server.address().port
+console.log("Example app listening at http://%s:%s", host, port)
+})
+
+===========
+file upload:
+
+index.html
+
+<html>
+<head>
+<title>File Uploading Form</title>
+</head>
+<body>
+<h3>File Upload:</h3>
+Select a file to upload: <br />
+<form action="http://127.0.0.1:8081/file_upload" method="POST"
+enctype="multipart/form-data">
+<input type="file" name="file" size="50" />
+<br />
+<input type="submit" value="Upload File" />
+</form>
+</body>
+</html>
+
+
+
+
+
+server.js
+
+var express = require('express');
+var app = express();
+var fs = require("fs");
+var bodyParser = require('body-parser');
+var multer = require('multer');
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(multer({ dest: '/tmp/'}));
+app.get('/index.htm', function (req, res) {
+res.sendFile( __dirname + "/" + "index.htm" );
+})
+app.post('/file_upload', function (req, res) {
+console.log(req.files.file.name);
+console.log(req.files.file.path);
+console.log(req.files.file.type);
+var file = __dirname + "/" + req.files.file.name;
+fs.readFile( req.files.file.path, function (err, data) {
+fs.writeFile(file, data, function (err) {
+if( err ){
+console.log( err );
+}else{
+response = {
+
+message:'File uploaded successfully',
+filename:req.files.file.name
+};
+}
+console.log( response );
+res.end( JSON.stringify( response ) );
+});
+});
+})
+var server = app.listen(8081, function () {
+var host = server.address().address
+var port = server.address().port
+console.log("Example app listening at http://%s:%s", host, port)
+})
+
+================
+RESTful Services 
+
+users.json
+
+{
+"user1" : {
+"name" : "mahesh",
+"password" : "password1",
+"profession" : "teacher",
+"id": 1
+},
+"user2" : {
+"name" : "suresh",
+"password" : "password2",
+"profession" : "librarian",
+"id": 2
+},
+"user3" : {
+"name" : "ramesh",
+"password" : "password3",
+"profession" : "clerk",
+"id": 3
+}
+}
+
+
+
+server.js
+
+var express = require('express');
+var app = express();
+var fs = require("fs");
+app.get('/listUsers', function (req, res) {
+fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
+console.log( data );
+res.end( data );
+});
+})
+var server = app.listen(8081, function () {
+var host = server.address().address
+var port = server.address().port
+console.log("Example app listening at http://%s:%s", host, port)
+})
+
+
+
+
+add new user : 
+
+server.js
+
+var express = require('express');
+var app = express();
+var fs = require("fs");
+var user = {
+"user4" : {
+"name" : "mohit",
+"password" : "password4",
+"profession" : "teacher",
+"id": 4
+}
+}
+app.get('/addUser', function (req, res) {
+// First read existing users.
+fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
+data = JSON.parse( data );
+data["user4"] = user["user4"];
+console.log( data );
+res.end( JSON.stringify(data));
+});
+})
+var server = app.listen(8081, function () {
+var host = server.address().address
+var port = server.address().port
+console.log("Example app listening at http://%s:%s", host, port)
+})
+
+
+
+get by Id:
+
+var express = require('express');
+var app = express();
+var fs = require("fs");
+
+
+app.get('/users/:id', function (req, res) {
+// First read existing users.
+fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
+data = JSON.parse( data );
+var user = data["user" + req.params.id]
+console.log( user );
+res.end( JSON.stringify(user));
+});
+})
+var server = app.listen(8081, function () {
+var host = server.address().address
+var port = server.address().port
+console.log("Example app listening at http://%s:%s", host, port)
+})
+
+
+delete:
+var express = require('express');
+var app = express();
+var fs = require("fs");
+var id = 2;
+app.get('/deleteUser/:id', function (req, res) {
+// First read existing users.
+fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
+data = JSON.parse( data );
+delete data["user" + req.params.id];
+console.log( data );
+res.end( JSON.stringify(data));
+});
+})
+var server = app.listen(8081, function () {
+var host = server.address().address
+var port = server.address().port
+console.log("Example app listening at http://%s:%s", host, port)
+})
+
+
+
+
+

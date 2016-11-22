@@ -1,0 +1,97 @@
+today let us talk about Node.js:
+
+front end applications:
+
+	* Designing the UI for web apps
+	* Designing the RWD for web apps
+	* Client side scripting for web apps 
+	* Single Page Applications
+	* MVC for JavaScript (client side script)
+	* AngularJS for Single Page Application
+
+
+from where data is coming? 
+To where data is going? 
+
+We used localStorage for data store...
+
+
+
+In the real apps, we can make use of some database(SQL Server, MySQL, Oracle, MongoDb,...)
+
+
+How to connect to database and get/post data to the database? 
+
+For this , we can use of Server Side programinng.
+
+	e.g.
+		PHP
+		.NET
+		Java
+		Ruby
+		..
+		..
+
+	These are not javascript coding..
+
+
+
+I want the same javascript for server side programing...
+
+We need the same javascript for UI and server side programing..
+
+
+how do it? 
+
+We can use Node.JS for server side programing using JavaScript.
+
+=================================
+
+
+Node.JS 
+	: Platform for server side programing.
+		JavaScript is used in Node.JS for progrmaing.
+
+
+AngularJS  vs Node.js
+	
+	AngularJS is Javascript MVC framework for Singe Page app(UI)
+
+
+	Node.JS is a platform where where we do server side programming using javascript.
+
+
+You can make use of both : (Angular & Node.js) for complete web applications.
+
+LAMP
+	Linux, Apache, MySQL, PHP
+
+MEAN Stack 
+	MongoDb
+	Express(Node.JS)
+	Angular (SPA)
+	Node.JS( Server side programing platform for JavaScript)
+
+========================================
+IIS
+Apache 
+
+
+Serialization
+	Convert from JavaScript object to JSON string
+	JSON.stringify()
+
+
+
+De-Serialization 
+	Convert from JSON string to JavaScript object.
+	JSON.parse()
+
+
+Client <===>Server
+
+Client will submit the data (serilized data)=> The server can read that JSON data and deserialize back to object for additional manipuluation and send some response to client in JSON format(serialized data.
+
+client will receive serialized data from server and can deserializee and then present on the UI.
+
+

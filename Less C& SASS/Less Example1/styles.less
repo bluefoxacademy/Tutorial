@@ -1,0 +1,31 @@
+@lightBlue:#ddf;
+@defaultTheme:#b5b5b5;
+@defaultRadius:35px;
+
+.Round(@radius:@defaultRadius){
+	-webkit-border-radius:@radius;
+	-moz-border-radius:@radius;
+	-o-border-radius:@radius;
+	border-radius:@radius;
+}
+body{
+	background-color:@defaultTheme;
+	font-family:'verdana';
+}
+
+.shape{
+
+	width:100px;
+	height:150px;
+	border:1px solid #000000;	
+	background-color:@lightBlue;
+	.Round(50px);
+}
+
+.block{
+	width:500px;
+	height:400px;
+	border:2px solid red;
+	background-color:blue;
+	.Round(100px);
+}

@@ -1,0 +1,8 @@
+npm install -g node-sass
+
+node-sass my-styles.scss my-styles.css
+
+
+
+node-sass my-sass-folder/ -o my-css-folder/
+

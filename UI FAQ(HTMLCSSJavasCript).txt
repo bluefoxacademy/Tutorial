@@ -1,0 +1,765 @@
+What is HTML 5?
+HTML 5 is a new standard for HTML whose main target is to deliver everything without need to any additional plugins like flash, Silverlight etc. It has everything from animations, videos, rich GUI etc.
+HTML5 is cooperation output between World Wide Web Consortium (W3C) and the Web Hypertext Application Technology Working Group (WHATWG).
+
+
+In HTML 5 we do not need DTD why?
+You do not need to refer DTD
+<!DOCTYPE html>  
+
+
+If I do not put <! DOCTYPE html> will HTML 5 work?
+
+No, browser will not be able to identify that it’s a HTML document and HTML 5 tags will not function properly.
+
+Which browsers support HTML 5?
+Almost all lastest browsers i.e. Safari, Chrome, Firefox, Opera, Internet Explorer (IE 9+) support HTML 5.
+
+
+How is the page structure of HTML 5 different from HTML 4 or previous HTML?
+
+A typical web page has headers, footers, navigation, central area and side bars. Now if we want to represent the same in HTML 4 with proper names to the HTML section we would probably use a DIV tag.
+
+But in HTML 5 they have made it more clear by creating element names for those sections which makes your HTML more readable.
+
+<header>: Represents header data of HTML.
+<footer>: Footer section of the page.
+<nav>: Navigation elements in the page.
+<article>: Self-contained content.
+<section>: Used inside article to define sections or group content in to sections.
+<aside>: Represent side bar contents of a page.
+
+
+
+
+What is datalist in HTML 5?
+Datalist element in HTML 5 helps to provide autocomplete feature in a textbox as shown below.
+
+<input list="Country">
+<datalist id="Country">
+<option value="India">
+<option value="Italy">
+<option value="Iran">
+<option value="Israel">
+<option value="Indonesia">
+</datalist> 
+
+
+What are the different new form element types in HTML 5?
+
+There are 10 important new form elements introduced in HTML 5:-
+
+Color
+Date
+Datetime-local
+Email
+Time
+Url
+Range
+Telephone
+Number
+Search
+
+What is SVG?
+SVG stands for scalable vector graphics. It’s a text based graphic language which draws images using text, lines, dots etc.
+
+
+What is canvas in HTML 5?
+Canvas is an HTML area on which you can draw graphics.
+
+
+
+What are selectors in CSS?
+Selectors help to select an element to which you want to apply a style. 
+
+
+
+What is the use of column layout in CSS3?
+we can create multiple columns in a single box.
+
+-moz-column-count:3; /* Firefox */
+-webkit-column-count:3; /* Safari and Chrome */
+column-count:3; 
+
+
+
+Can you explain CSS box model?
+
+Border: - This defines the maximum area in which the element will be contained. We can make the border visible, invisible, define height and width etc.
+
+Padding: - This defines the spacing between border and element.
+
+Margin: - This defines the spacing between border and any neighboring elements.
+
+(HTML 5 )
+What is difference between session storage and local storage?
+
+Local storage data persists forever but session storage is valid until the browser is open, as soon as the browser closes the session variable resets.
+
+
+
+What does DOCTYPE mean?
+The term DOCTYPE tells the browser which type of HTML is used on a webpage. In turn, the browsers use DOCTYPE to determine how to render a page.
+
+What elements have disappeared in HTML5?
+<frame> and <frameset>
+
+
+
+What are different ways to apply styles to a Web page?
+ * Inline styles
+* Embedded Styles
+* External styles (Imported styles)
+
+In CSS,we have different selectors:
+ID selector 
+Class selector 
+Element name selector 
+contextual selector 
+group selector 
+
+
+What is a class? What is an ID? 
+A class is a style (i.e., a group of CSS attributes) that can be applied to one or more HTML elements
+
+
+An ID selector is a name assigned to a specific style. In turn, it can be associated with one HTML element with the assigned ID.
+
+What is Contextual Selector?
+Contextual selector addresses specific occurrence of an element. It is a string of individual selectors separated by white space (search pattern)
+
+e.g.
+p b
+
+div i
+
+
+What are Pseudo Classes in CSS?
+Pseudo classes allow you to identify HTML elements on characteristics
+
+a:link {font-color: red;}
+a:visited {font-color: green;}
+a:hover {font-color: yellow;}
+a:active {}
+
+p.first-child {font-weight: bold;}
+
+
+
+
+How do you float an element, and what does that mean? What’s Clearing?
+
+With CSS float, an element can be pushed to the left or right, allowing other elements to wrap around it.
+
+What’s the difference between position: relative & position: absolute?
+In case of relative position, we can place the elements one after other.
+We can't overlap the elements in relative postion.
+We can't change the position dynamically in case of relative. 
+We can't make the element movable for relative position.
+
+
+In case of absolute position,we can place the element where you want exactly using x,y coordinate system.
+	top,left.
+
+
+
+What does z-index do? 
+The z-index property specifies the stack order of an element.
+An element with greater stack order is always in front of an element with a lower stack order.
+
+Explain the difference between visibility:hidden; and display:none; ?
+Visibility:Hidden; - It is not visible but takes up it's original space.
+Display:None; - It is hidden and takes up absolutely no space as if it was never there.
+
+Name three ways to define a color in html?
+1) Hex
+2) RGB
+3) Name (ie red)
+
+.colorMe {
+	color:red;
+	color:#ff0000;
+	color:rgb(0,0,255);
+}
+
+
+
+
+What is the difference between == and === in JavaScript ?
+
+The 3 equal signs mean "equality without type coercion". Using the triple equals, the values must be equal in type as well. 
+
+== is equal to 
+=== is exactly equal to (value and type)
+
+0==false // true 
+0===false // false, because they are of a different type
+1=="1" // true, auto type coercion(implicit type conversion in js)
+1==="1" // false, because they are of a different type
+
+
+
+
+What is a javascript object?
+
+A collection of data containing both properties and methods.
+
+
+Describe what "this" is in JavaScript?
+In JavaScript, 'this' normally refers to the object which 'owns' the method
+
+
+
+What are the types used in JavaScript? 
+Ans:String, Number, Boolean, Function, Object, Null, Undefined.
+
+
+
+How will you get the Checkbox status whether it is checked or not? 
+Ans:
+
+
+var status = document.getElementById('checkbox1').checked; 
+alert(status); 
+
+
+
+How to create arrays in JavaScript?
+
+a) The first way to create array
+Declare Array:
+
+var names = new Array(); 
+Add Elements in Array:-
+names[0] = "Vikas";
+names[1] = "Ashish";
+names[2] = "Nikhil";
+
+
+b) This is the second way:
+var names = new Array("Vikas", "Ashish", "Nikhil");
+
+
+How do you submit a form using JavaScript?
+document.forms[0].submit();
+
+submit() is the builtin function.
+When you call submit(), the form data will be sent to the server in the form of name/value pair.
+
+If you want submit the form using normal button other than submit.
+
+
+What does isNaN() function do?
+Ans: It returns true if the argument is not a number.
+document.write(isNaN("Hello")+ "<br>"); //true
+document.write(isNaN("2013/06/23")+ "<br>"); //true 
+document.write(isNaN(123)+ "<br>"); //false 
+
+
+
+What is the use of Math Object in JavaScript? 
+
+The math object provides you properties and methods for mathematical constants and functions.
+e.g.
+Math.PI
+Math.sqrt()
+
+
+
+What is an object in JavaScript, give an example? 
+
+An object is just a container for a collection of named values:(methods/properties)
+
+var man = new Object();
+man.name = 'Vikas Ahlawat';
+man.living = true;
+man.age = 27;
+man.getName=function(){}
+
+alert(man.name);
+alert(man.living);
+alert(man.age);
+
+Or
+var man={name:satya,living:true,age:27};
+alert(man.name);
+alert(man.living);
+alert(man.age);
+
+
+
+
+How you will add function as a property in a JavaScript object? Give an example. 
+
+var man = new Object();
+man.name = 'Vikas Ahlawat';
+man.living = true;
+man.age = 27;
+man.getName = function() { return man.name;}
+console.log(man.getName()); // Logs 'Vikas Ahlawat'.
+The scope of this object is till you close the browser.
+You can access this object  in any function.
+
+e.g.
+<script>
+var man = new Object();
+man.name = 'Vikas Ahlawat';
+man.living = true;
+man.age = 27;
+man.getName = function() { return man.name;}
+
+	funtion foo1()
+	{
+		alert(man.name);
+	}
+
+	function foo2()
+	{
+		man.name="Satya";
+		alert(man.name);
+	}
+</script>
+
+
+
+Name any two JavaScript functions which are used to convert nonnumeric values into numbers?
+Number()
+parseInt()
+parseFloat()
+
+Does JavaScript Support automatic type conversion, If yes give example.
+
+Yes! Javascript support automatic type conversion
+
+var s = '5';
+var a = s*1;
+var b = +s;
+typeof(s); //"string"
+typeof(a); //"number"
+typeof(b); //"number" 
+
+
+How do you detect the operating system in client machine ? 
+We use navigator.appVersion 
+
+
+Where the cookies stored ? 
+	In client browser machine in text files.
+
+how to set document background color using javascript? 
+	document.bgColor 
+
+In a popup browser window, how do you refer to the main browser window? 
+window.opener
+
+
+What is the data type of variables in javascript ?"
+all the variables are of object in javascript.
+
+
+What is the difference in GET & POST methods ? 
+GET : parameters are passed in the query string. Limitation is there.(2kb)
+
+
+POST : parameters are passed in the request body. no limit.
+
+
+
+How to set focus in an element using javascript ?
+
+document.getElementById("someid").focus()
+
+
+What is the way to append value to an array ? 
+arrayName[arrayName.length]=newvalue;
+
+
+What is the difference between null and undefined ? 
+	null means object type. variable declared but not assigned is the null.
+	variable not declared ,but used is the undefined. 
+
+
+how do you disable an element? 
+	document.getElementById("someid").disabled=true;
+
+how to invoke a javascript function ,instead of going to some other page using anchor tag? 
+
+<a href="javascript:void(0)" onclick="foo()">click Me</a> 
+
+
+how to change style of an element using javascript ?
+	document.getElementById("someid").style.property=value;
+
+
+how to make elements invisible ? 
+	document.getElementById("someid").style.visibility="visible" /"hidden"
+
+
+how to set the cursor to wait in page ? 
+	document.body.style.cursor="auto";
+
+how to reload the current page ? 
+	window.location.reload(true);
+
+how to force the page to go another url ? 
+	location.href="some url";
+
+What is eval() function ?
+	It is used to evaluate the expression.
+e.g.
+	var basic_salary=456534;	
+	var result=eval("basic"+"_salary");
+
+
+
+What is jQuery and why do we use jquery ?
+
+how javascript and jquery are different? 
+
+Is jquery replacement of javascript? NO
+
+jQuery is for client side or server side ? 
+	Client side 
+
+Is jQuery is a W3C standard ? NO
+
+how to use jQuery ? 
+	download and embed in html page.
+	$(document).ready(function(){
+	});
+	OR
+	jQuery(document).ready(function(){
+	});
+
+
+
+Can we have multiple document.ready() function on the same page?
+YES
+
+
+Can we use our own specific character in the place of $ sign in jQuery?
+
+Yes. It is possible using jQuery.noConflict().
+
+
+Is it possible to use other client side libraries like MooTools, Prototype along with jQuery?
+YES
+
+What is jQuery.noConflict?
+
+ other client side libraries like MooTools, Prototype can be used with jQuery and they also use $() as their global function and to define variables. This situation creates conflict as $() is used by jQuery and other library as their global function. To overcome from such situations, jQuery has introduced jQuery.noConflict().
+
+jQuery.noConflict();
+// Use jQuery via jQuery(...)
+jQuery(document).ready(function(){
+   jQuery("div").hide();
+});  
+
+OR
+var $j = jQuery.noConflict();
+// Use jQuery via jQuery(...)
+$j(document).ready(function(){
+   $j("div").hide();
+});  
+
+
+Is there any difference between body onload() and document.ready() function?
+
+We can have more than one document.ready() function in a page where we can have only one body onload function.
+
+document.ready() function is called as soon as DOM is loaded where body.onload() function is called when everything gets loaded on the page that includes DOM, images and all associated resources of the page.
+
+What is the difference between .js and .min.js?
+jQuery library comes in 2 different versions Production and Deployment. The deployment version is also known as minified version.
+
+
+ So .min.js is basically the minified version of jQuery library file. Both the files are same as far as functionality is concerned. but .min.js is quite small in size so it loads quickly and saves bandwidth.
+
+
+
+What is a CDN?
+
+Ans: A content delivery network or content distribution network (CDN) is a large distributed system of servers deployed in multiple data centers across the Internet. The goal of a CDN is to serve content to end-users with high availability and high performance.
+
+Which are the popular jQuery CDN? and what is the advantage of using CDN?
+
+Ans: There are 3 popular jQuery CDNs.
+1. Google.
+2. Microsoft
+3. jQuery.
+
+How to load jQuery from CDN?
+
+<script type="text/javascript"
+    src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+</script>
+
+<script type="text/javascript"
+    src="http://ajax.microsoft.com/ajax/jquery/jquery-1.9.1.min.js">
+</script>
+
+<script type="text/javascript"
+    src="http://code.jquery.com/jquery-1.9.1.min.js">
+</script>
+
+
+What are selectors in jQuery and how many types of selectors are there?
+
+Name: Selects all elements which match with the given element Name.
+#ID: Selects a single element which matches with the given ID
+.Class: Selects all elements which match with the given Class.
+Universal (*): Selects all elements available in a DOM.
+Multiple Elements E, F, G: Selects the combined results of all the specified selectors E, F or G.
+Attribute Selector: Select elements based on its attribute value.
+
+
+What are the fastest selectors in jQuery?
+
+Ans: ID and element selectors are the fastest selectors in jQuery.
+
+Difference between $(this) and 'this' in jQuery?
+
+This and $(this) refers to the same element. The only difference is the way they are used. 'this' is used in traditional sense, when 'this' is wrapped in $() then it becomes a jQuery object and you are able to use the power of jQuery.
+
+How do you check if an element is empty?
+
+$(document).ready(function(){
+    if ($('#element').is(':empty')){
+       //Element is empty
+  }
+}); 
+
+OR
+$(document).ready(function(){
+    if($.trim($('#element').html())=='') {
+       //Element is empty
+  }
+});  
+
+How do you check if an element exists or not in jQuery? 
+
+$(document).ready(function(){
+    if ($('#element').length > 0){
+       //Element exists
+  });
+});
+
+What is the use of jquery .each() function?
+
+The $.each() function is used to iterate over a jQuery object. The $.each() function can be used to iterate over any collection, whether it is an object or an array.
+
+What is the difference between $('div') and $('<div/>') in jQuery?
+Ans: $('<div/>') : This creates a new div element. However this is not added to DOM tree unless you don't append it to any DOM element.
+
+$('div') : This selects all the div element present on the page.
+
+How do you implement animation functionality?
+(selector).animate({styles},speed,easing,callback)
+
+How do you stop the currently-running animation?
+Using jQuery ".stop()" method.
+
+
+What is event.PreventDefault?
+Ans: The event.preventDefault() method stops the default action of an element from happening. For example, Prevents a link from following the URL.
+
+Can you include multiple version of jQuery? If yes, then how they are executed?
+Yes. Multiple versions of jQuery can be included in same page.
+
+
+What is chaining in jQuery?
+$(document).ready(function(){
+    $('#dvContent').addClass('dummy');
+    $('#dvContent').css('color', 'red');
+    $('#dvContent').fadeIn('slow');
+});?
+The above jQuery code sample can be re-written using chaining. See below.
+
+?$(document).ready(function(){
+    $('#dvContent').addClass('dummy')
+          .css('color', 'red')
+          .fadeIn('slow');     
+});?
+
+Can we use jQuery to make ajax request?
+YES
+
+What are various methods to make ajax request in jQuery?
+Using below jQuery methods, you can make ajax calls.
+
+$.load() : Load a piece of html into a container DOM
+$.getJSON(): Load JSON with GET method.
+$.getScript(): Load a JavaScript file.
+$.get(): Use to make a GET call and play extensively with the response.
+$.post(): Use to make a POST call and don't want to load the response to some container DOM.
+$.ajax(): Use this to do something on XHR failures, or to specify ajax options (e.g. cache: true) on the fly.
+
+
+
+
+Is there any advantage of using $.ajax() for ajax call against $.get() or $.post()?
+YES. we can get success result in $.ajax().
+
+
+Can you call C# code-behind method using jQuery? If yes,then how?
+
+Yes. We can call C# code-behind function via $.ajax. But for do that it is compulsory to mark the method as WebMethod.
+
+
+
+Is it possible to get value of multiple CSS properties in single statement?
+YES (in the lastest version).
+var propCollection = $("#dvBox").css([ "width", "height", "backgroundColor" ]);
+
+
+
+What is jQuery UI?
+jQuery UI is a curated set of user interface interactions, effects, widgets, and themes built on top of the jQuery JavaScript Library that can be used to build interactive web applications.
+
+
+What is the difference between jQuery and jQuery UI?
+jQuery is the core library. jQueryUI is built on top of it. If you use jQueryUI, you must also include jQuery.
+
+
+
+To select all elements in a page, we can use all selectors, for that we need to use *(asterisk symbol). 
+
+<script language="javascript" type="text/javascript">
+
+         $("*").css("border", "2px dotted red"); 
+
+</script>
+
+
+Name the Jquery methods which are used for apply css class?
+$("#Id1").addClass('YourClassName'); // for apply class
+$("#Id1").removeClass('YourClassName'); // for remove class
+$("#Id1").hasClass('YourClassName'); // for checking class is there or not
+
+
+
+	How to get the server response from an AJAX request using Jquery? 
+
+$.ajax({
+     url: 'pcdsEmpRecords.svc',
+     success: function(response) {
+        alert(response);
+     },
+     error: function(xhr) {
+        alert('Error!  Status = ' + xhr.status);
+     }
+ });
+
+How do you get the text value of a selected option? 
+ <select id="pcdsselect">
+
+   <option value="1">Mr</option>
+   <option value="2">Mrs</option>
+   <option value="3">Ms</option>
+   <option value="4">Dr</option>
+
+   <option value="5">Prof</option>
+ </select>
+
+ $("#pcdsselect option:selected").val();
+ // => 1
+
+ $("#mpcdsselect option:selected").text();
+ // => "Mr"
+
+===========
+You have any questions left? 
+
+Silverlight 
+
+WPF 
+	It is for Windows applications 
+	It is based on XAML 
+	It separates the UI and code file 
+		.xaml & .cs 
+	It supports 2D direct support
+	It supports 3D direct support 
+	It supports animation 
+	It supports mulitimedia 
+	It supports styles (local Resources ,global resources)
+	Databinding in WPF is simple compare to regular windows forms 
+
+Note:
+	WPF is only for windows with all the above features.
+
+We need to implement all these features web applications(web pages)
+	.html
+	.asp
+	.aspx
+	.php
+	.jsp
+	any page (adode flash)
+
+
+For this purpose, we got a microsoft product : Silverlight 
+
+Silverlight is an extenion of WPF 
+Using Silverlight ,we can create user controls with all the WPF featues . 
+
+Then, we can embed that silverlight user control in any web page.
+
+In the web page, we don't need .net compiler for execution for silivelight component. 
+
+We just need light weight sliverlight plugin.
+
+We use mostly for banners,media elements and animated headers in the web page using silverlight.
+
+
+Out of Browser option is there in silverlight.
+Using this ooption, we can run silverlight component as part of page Or we can run as normal window form executable.
+
+===============
+for ajax controls ,we have ajax toolkit.
+
+
+teleric 
+	Third party controls for asp.net 
+	This is the 3rd party toolkit for builtin controls for asp.net
+e.g.
+	charts
+	tabs
+	geolocation related controls
+
+any body mentioned in the proejcts?
+=============
+cookies in javascript:
+	we can store some data and send that data to the server to identify the client.
+
+If you cookies, for every round trip the cookie will be send to the serrver.
+
+To avoid this problem,we got some new featueres in HTML 5.
+
+localStorage
+
+sessionStorage
+
+We use both for storing some data in the client machine.
+We can re-use that data in all the pages in the web site.
+
+
+
+
+Local storage data persists forever but session storage is valid until the browser is open, as soon as the browser closes the session variable resets.
+
+localStorage is for all the users. 
+
+sessionStorage is for only current user.
+
+
+
+=======
+In html doc, you can include many elements 
+e.g.
+images
+anchors
+table
+list
+...
+form input types 
+
+DOM means only html form elements 

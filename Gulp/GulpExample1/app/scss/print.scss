@@ -1,0 +1,9 @@
+$myWidth:10px;
+.print {
+  width: percentage(3/6);
+}
+
+.block{
+    width:$myWidth;
+    color:blue;
+}

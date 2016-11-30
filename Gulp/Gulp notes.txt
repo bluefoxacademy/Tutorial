@@ -1,0 +1,565 @@
+Gulp Tutorial:
+
+Gulp is a tool that helps you out with several tasks when it comes to web development. 
+It's often used to do front end tasks like:
+
+* Spinning up a web server
+* Reloading the browser automatically whenever a file is saved
+* Using preprocessors like Sass or LESS
+* Optimizing assets like CSS, JavaScript, and images
+
+
+
+Tools like Gulp are often referred to as "build tools" because they are tools for running the tasks for building a website. 
+
+The two most popular build tools out there right now are Gulp and Grunt. 
+
+
+
+
+Installing Gulp:
+
+You need to have Node.js (Node) installed onto your computer before you can install Gulp.
+
+npm install gulp -g
+
+
+
+
+First, we'll create a folder for Project.
+Run the npm init command from inside that directory:
+
+
+npm init
+
+
+
+The npm init command creates a package.json file for your project which stores information about the project, like the dependencies used in the project (Gulp is an example of a dependency).
+
+
+
+
+Once the package.json file is created, we can install Gulp into the project by using the following command:
+
+npm install gulp --save-dev
+
+This time, we're installing Gulp into project instead of installing it globally.
+
+
+If you check the project folder when the command has finished executing, you should see that Gulp has created a node_modules folder. 
+
+You should also see a gulp folder within node_modules.
+
+
+
+Gulp is flexible enough to work with any folder structure. 
+
+You'll just have to understand the inner workings before tweaking it for your project.
+
+For this article, we will use the structure of a generic webapp:
+
+ |- app/
+      |- css/
+      |- fonts/
+      |- images/ 
+      |- index.html
+      |- js/ 
+      |- scss/
+  |- dist/
+  |- gulpfile.js
+  |- node_modules/
+  |- package.json
+
+
+
+
+
+In this structure, we'll use the app folder for development purposes, while the dist (as in "distribution") folder is used to contain optimized files for the production site.
+
+Since app is used for development purposes, all our code will be placed in app.
+
+Writing Your First Gulp Task
+
+The first step to using Gulp is to require it in the gulpfile.
+
+var gulp = require('gulp');
+
+
+
+The require statement tells Node to look into the node_modules folder for a package named gulp. 
+
+Once the package is found, we assign its contents to the variable gulp.
+
+We can now begin to write a gulp task with this gulp variable. The basic syntax of a gulp task is:
+
+
+gulp.task('task-name', function() {
+  // Stuff here
+});
+
+e.g.
+
+gulp.task('hello', function() {
+  console.log('Hello World');
+});
+
+Execution: gulp hello
+
+e.g.
+
+gulp.task('task-name', function () {
+  return gulp.src('source-files') // Get source files with gulp.src
+    .pipe(aGulpPlugin()) // Sends it through a gulp plugin
+    .pipe(gulp.dest('destination')) // Outputs the file in the destination folder
+})
+
+
+We can use gulp-sass by replacing aGulpPlugin() with sass(). 
+
+Since the task is meant to compile Sass into CSS, let's name it sass.
+
+Preprocessing with Gulp:
+
+We can compile Sass to CSS in Gulp with the help of a plugin called gulp-sass. You can install gulp-sass into your project by using the npm install command like we did for gulp.
+
+We'd also want to use the --save-dev flag to ensure that gulp-sass gets added to devDependencies in package.json.
+
+
+npm install gulp-sass --save-dev
+
+
+
+e.g.
+gulp.task('sass', function(){
+  return gulp.src('source-files')
+    .pipe(sass()) // Using gulp-sass
+    .pipe(gulp.dest('destination'))
+});
+
+
+e.g.
+gulp.task('sass', function(){
+  return gulp.src('app/scss/styles.scss')
+    .pipe(sass()) // Converts Sass to CSS with gulp-sass
+    .pipe(gulp.dest('app/css'))
+});
+
+
+e.g styles.scss
+
+// styles.scss
+.testing {
+  width: percentage(5/7);
+}
+
+
+
+
+Globbing in Node:
+
+
+Globs are matching patterns for files that allow you to add more than one file into gulp.src. It's like regular expressions, but specifically for file paths.
+
+When you use a glob, the computer checks file names and paths for the specified pattern. 
+If the pattern exists, then a file is matched.
+
+
+
+Most workflows with Gulp tend to only require 4 different globbing patterns:
+
+*.scss: The * pattern is a wildcard that matches any pattern in the current directory. In this case, we¡¯re matching any files ending with .scss in the root folder (project).
+
+
+**/*.scss: This is a more extreme version of the * pattern that matches any file ending with .scss in the root folder and any child directories.
+
+!not-me.scss: The ! indicates that Gulp should exclude the pattern from its matches, which is useful if you had to exclude a file from a matched pattern. In this case, not-me.scss would be excluded from the match.
+
+
+*.+(scss|sass): The plus + and parentheses () allows Gulp to match multiple patterns, with different patterns separated by the pipe | character. In this case, Gulp will match any file ending with .scss or .sass in the root folder.
+
+
+Since we know about globbing now, we can replace app/scss/styles.scss with a scss/**/*.scss pattern, which matches any file with a .scss extension in app/scss or a child directory.
+
+
+
+e.g.
+gulp.task('sass', function() {
+  return gulp.src('app/scss/**/*.scss') 
+// Gets all files ending with .scss in app/scss and children dirs
+    .pipe(sass())
+    .pipe(gulp.dest('app/css'))
+})
+
+
+Note:
+
+we can tell Gulp to automatically run the sass task whenever a file is saved through a process called "watching".
+
+
+Watching Sass files for changes:
+
+Gulp provides us with a watch method that checks to see if a file was saved. The syntax for the watch method is:
+
+
+// Gulp watch syntax
+gulp.watch('files-to-watch', ['tasks', 'to', 'run']);
+
+
+If we want to watch all Sass files and run the sass task whenever a Sass file is saved, we just have to replace files-to-watch with the app/scss/**/*.scss, and ['tasks', 'to', 'run'] with ['sass']:
+
+
+
+
+e.g.
+
+// Gulp watch syntax
+gulp.watch('app/scss/**/*.scss', ['sass']); 
+
+
+
+
+More often though, we'll want to watch more than one type of file at once. To do so, we can group together multiple watch processes into a watch task:
+
+e.g.
+
+gulp.task('watch', function(){
+  gulp.watch('app/scss/**/*.scss', ['sass']); 
+  // Other watchers
+})
+
+
+
+If you ran the gulp watch command right now, you'll see that Gulp starts watching immediately
+
+
+Live-reloading with Browser Sync:
+
+Browser Sync helps make web development easier by spinning up a web server that helps us do live-reloading easily. It has other features, like synchronizing actions across multiple devices, as well.
+
+
+npm install browser-sync --save-dev
+
+To use Browser Sync, we'll have to require Browser Sync.
+
+var browserSync = require('browser-sync').create();
+
+We need to create a browserSync task to enable Gulp to spin up a server using Browser Sync. Since we're running a server, we need to let Browser Sync know where the root of the server should be. In our case, it's the `app` folder:
+
+
+
+e.g.
+gulp.task('browserSync', function() {
+  browserSync.init({
+    server: {
+      baseDir: 'app'
+    },
+  })
+})
+
+
+
+We also have to change our sass task slightly so Browser Sync can inject new CSS styles (update the CSS) into the browser whenever the sass task is ran.
+
+gulp.task('sass', function() {
+  return gulp.src('app/scss/**/*.scss') // Gets all files ending with .scss in app/scss
+    .pipe(sass())
+    .pipe(gulp.dest('app/css'))
+    .pipe(browserSync.reload({
+      stream: true
+    }))
+});
+
+
+We're done with configuring Browser Sync. Now, we have to run both the watch and browserSync tasks at the same time for live-reloading to occur.
+
+
+Gulp to run them together by telling the watch task that browserSync must be completed before watch is allowed to run.
+
+
+e.g.
+gulp.task('watch', ['browserSync'], function (){
+  gulp.watch('app/scss/**/*.scss', ['sass']); 
+  // Other watchers
+})
+
+We'll also want to make sure sass runs before watch so the CSS will already be the latest whenever we run a Gulp command.
+
+
+
+gulp.task('watch', ['browserSync', 'sass'], function (){
+  gulp.watch('app/scss/**/*.scss', ['sass']); 
+  // Other watchers
+});
+
+
+
+Now, if you run gulp watch in the command line, Gulp should start both the sass and browserSync tasks concurrently. When both tasks are completed, watch will run.
+
+
+
+
+Optimizing CSS and JavaScript files:
+
+
+Developers have two tasks to perform when we try to optimize CSS and JavaScript files for production: minification and concatenation.
+
+Say we have included 3 script tags in index.html.
+
+
+
+<body>
+  <!-- other stuff -->
+  <script src="js/lib/a-library.js"></script>
+  <script src="js/lib/another-library.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+These scripts are located in two different directories. It'll be difficult to concatenate them with traditional plugins like gulp-concatenate.
+
+Thankfully, there's a useful Gulp plugin, gulp-useref that solves this problem.
+
+Gulp-useref concatenates any number of CSS and JavaScript files into a single file by looking for a comment that starts with "<!--build:" and ends with "<!--endbuild-->". Its syntax is:
+
+
+
+
+
+<!-- build:<type> <path> -->
+... HTML Markup, list of script / link tags.
+<!-- endbuild -->
+
+
+
+
+
+<type> can either be js, css, or remove. It's best to set type to the type of file that you're trying to concatenate. If you set type to remove, Gulp will remove the entire build block without generating a file.
+
+<path> here refers to the target path of the generated file.
+
+We'll want the final JavaScript file to be generated in the js folder, as main.min.js. Hence, the markup would be:
+
+
+
+<!--build:js js/main.min.js -->
+<script src="js/lib/a-library.js"></script>
+<script src="js/lib/another-library.js"></script>
+<script src="js/main.js"></script>
+<!-- endbuild -->
+
+
+
+Now let's configure the gulp-useref plugin in the gulpfile. We'll have to install the plugin and require it in the gulpfile.
+
+
+
+npm install gulp-useref --save-dev
+
+var useref = require('gulp-useref');
+e.g.
+
+gulp.task('useref', function(){
+  return gulp.src('app/*.html')
+    .pipe(useref())
+    .pipe(gulp.dest('dist'))
+});
+
+
+
+
+The file however, isn't minified right now. We'll have to use the gulp-uglify plugin to help with minifying JavaScript files. We also need a second plugin called gulp-if to ensure that we only attempt to minify JavaScript files.
+
+
+npm install gulp-uglify --save-dev
+
+
+
+// Other requires...
+var uglify = require('gulp-uglify');
+var gulpIf = require('gulp-if');
+
+gulp.task('useref', function(){
+  return gulp.src('app/*.html')
+    .pipe(useref())
+    // Minifies only if it's a JavaScript file
+    .pipe(gulpIf('*.js', uglify()))
+    .pipe(gulp.dest('dist'))
+});
+
+
+
+
+
+We can use the same method to concatenate any CSS files (if you decided to add more than one) as well. We'll follow the same process and add a build comment.
+
+
+
+
+
+<!--build:css css/styles.min.css-->
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/another-stylesheet.css">
+<!--endbuild-->
+
+
+
+We can also minify the concatenated CSS file as well. We need to use a package called gulp-cssnano plugin to help us with minification.
+
+
+npm install gulp-cssnano
+
+
+var cssnano = require('gulp-cssnano');
+
+gulp.task('useref', function(){
+  return gulp.src('app/*.html')
+    .pipe(useref())
+    .pipe(gulpIf('*.js', uglify()))
+    // Minifies only if it's a CSS file
+    .pipe(gulpIf('*.css', cssnano()))
+    .pipe(gulp.dest('dist'))
+});
+
+
+Optimizing Images:
+we need to use gulp-imagemin to help us with optimizing images.
+
+npm install gulp-imagemin --save-dev
+
+var imagemin = require('gulp-imagemin');
+
+gulp.task('images', function(){
+  return gulp.src('app/images/**/*.+(png|jpg|gif|svg)')
+  .pipe(imagemin())
+  .pipe(gulp.dest('dist/images'))
+});
+
+Optimizing images however, is an extremely slow process that you'd not want to repeat unless necessary. To do so, we can use the gulp-cache plugin.
+
+npm install gulp-cache --save-dev
+
+var cache = require('gulp-cache');
+
+gulp.task('images', function(){
+  return gulp.src('app/images/**/*.+(png|jpg|jpeg|gif|svg)')
+  // Caching images that ran through imagemin
+  .pipe(cache(imagemin({
+      interlaced: true
+    })))
+  .pipe(gulp.dest('dist/images'))
+});
+
+
+Copying Fonts to Dist
+
+Since font files are already optimized, there's nothing more we need to do. All we have to do is to copy the fonts into dist.
+
+gulp.task('fonts', function() {
+  return gulp.src('app/fonts/**/*')
+  .pipe(gulp.dest('dist/fonts'))
+})
+
+
+
+
+Cleaning up generated files automatically:
+
+Since we're generating files automatically, we'll want to make sure that files that are no longer used don't remain anywhere without us knowing.
+
+This process is called cleaning (or in simpler terms, deleting files).
+
+We'll have to use del to help us with cleaning
+
+
+
+npm install del --save-dev
+
+
+var del = require('del');
+
+The del function takes in an array of node globs which tells it what folders to delete.
+
+
+e.g.
+
+gulp.task('clean:dist', function() {
+  return del.sync('dist');
+})
+
+
+
+
+Combining Gulp tasks:
+
+e.g.
+gulp.task('build', [`clean`, `sass`, `useref`, `images`, `fonts`], function (){
+  console.log('Building files');
+})
+
+
+
+
+Unfortunately, we wouldn't be able to write the build task this way because Gulp activates all tasks in the second argument simultaneously.
+
+There's a possibility that useref, images, or even fonts gets completed before clean does, which means the entire `dist` folder gets deleted.
+
+
+
+
+
+So, to ensure that cleans get completed before the rest of the tasks, we need to use an extra plugin called Run Sequence.
+
+
+npm install run-sequence --save-dev
+
+
+Here's the syntax of a task sequence with run sequence:
+
+var runSequence = require('run-sequence');
+
+gulp.task('task-name', function(callback) {
+  runSequence('task-one', 'task-two', 'task-three', callback);
+});
+
+
+When task-name is called, Gulp will run task-one first. When task-one finishes, Gulp will automatically start task-two. Finally, when task-two is complete, Gulp will run task-three.
+
+
+
+Run Sequence also allows you to run tasks simultaneously if you place them in an array:
+
+e..g
+gulp.task('task-name', function(callback) {
+  runSequence('task-one', ['tasks','two','run','in','parallel'], 'task-three', callback);
+});
+
+
+
+In this case, Gulp first runs task-one. When task-one is completed, Gulp runs every task in the second argument simultaneously. All tasks in this second argument must be completed before task-three is run.
+
+
+
+So we can now create a task that ensures that clean:dist runs first, followed by all the other tasks:
+
+e.g.
+gulp.task('build', function (callback) {
+  runSequence('clean:dist', 
+    ['sass', 'useref', 'images', 'fonts'],
+    callback
+  )
+})
+
+
+
+To make things consistent, we can also build the same sequence with the first group. Let's use default as the task name this time:
+e.g.
+gulp.task('default', function (callback) {
+  runSequence(['sass','browserSync', 'watch'],
+    callback
+  )
+})
+
+
+
+
+Why default? Because when you have a task named default, you can run it simply by typing the gulp command, which saves some keystrokes.
+

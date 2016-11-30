@@ -1,0 +1,8 @@
+$myColor:blue;
+.testing {
+  width: percentage(5/7);
+}
+body{
+    background-color:$myColor;
+    font-weight:bolder;
+}
